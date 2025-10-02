@@ -39,7 +39,7 @@ export default function Experience(): JSX.Element {
   const [openCampus, setOpenCampus] = useState<number | null>(null);
 
   return (
-    <main className="p-8 min-h-screen">
+    <main className="p-25 min-h-screen">
       <h1 className="text-3xl font-bold mb-8 text-center">Experience</h1>
       <section className="mb-12">
   <h2 className="text-2xl font-semibold mb-4 text-center">Work</h2>

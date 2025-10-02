@@ -18,12 +18,12 @@ const artImages = [
     src: "/car.jpeg",
     title: "navigator",
     subtitle: "oil on canvas"
-  }
+  },
   {
     src: "/deserthaircut.jpg",
     title: "deserted",
     subtitle: "oil on wood board"
-  }
+  },
   {
     src: "/rollercoaster.jpg",
     title: "pit stop",

@@ -80,16 +80,16 @@ export default function Experience(): JSX.Element {
   <h2 className="text-2xl font-semibold mb-4 text-center">Work</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {workExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto h-16"
+            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"
                 onClick={() => setOpenWork(openWork === index ? null : index)}>
               <div className="flex items-center gap-4 w-full">
-                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-16 object-contain" />
-                <div className="flex-1">
-                  <p className="font-bold text-lg">{exp.title}</p>
-                  <p>{exp.subtitle}</p>
+                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center" />
+                <div className="flex-1 flex flex-col justify-center">
+                  <p className="font-bold text-lg leading-tight">{exp.title}</p>
+                  <p className="leading-tight">{exp.subtitle}</p>
                 </div>
-                <div className="flex flex-col items-end min-w-fit">
-                  <p className="text-sm whitespace-nowrap">{exp.duration}</p>
+                <div className="flex flex-col items-end min-w-fit justify-center">
+                  <p className="text-sm whitespace-nowrap leading-tight">{exp.duration}</p>
                   <span className="ml-2 text-xl">{openWork === index ? '▲' : '▼'}</span>
                 </div>
               </div>
@@ -106,16 +106,16 @@ export default function Experience(): JSX.Element {
   <h2 className="text-2xl font-semibold mb-4 text-center">Campus Involvement</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {campusExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto h-12"
+            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"
                 onClick={() => setOpenCampus(openCampus === index ? null : index)}>
               <div className="flex items-center gap-4 w-full">
-                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain" />
-                <div className="flex-1">
-                  <p className="font-bold text-lg">{exp.title}</p>
-                  <p>{exp.subtitle}</p>
+                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center" />
+                <div className="flex-1 flex flex-col justify-center">
+                  <p className="font-bold text-lg leading-tight">{exp.title}</p>
+                  <p className="leading-tight">{exp.subtitle}</p>
                 </div>
-                <div className="flex flex-col items-end min-w-fit">
-                  <p className="text-sm whitespace-nowrap">{exp.duration}</p>
+                <div className="flex flex-col items-end min-w-fit justify-center">
+                  <p className="text-sm whitespace-nowrap leading-tight">{exp.duration}</p>
                   <span className="ml-2 text-xl">{openCampus === index ? '▲' : '▼'}</span>
                 </div>
               </div>

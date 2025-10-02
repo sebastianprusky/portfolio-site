@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a href="/art" className="text-sm font-medium hover:underline">Art</a>
         </nav>
 
-        {/* Add padding-top so content is not hidden behind navbar */}
+        {/* Padding so content is not hidden behind navbar */}
         <div className="pt-20">
           {children}
         </div>

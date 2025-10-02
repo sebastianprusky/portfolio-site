@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 type Project = {
   title: string;
   description: string;

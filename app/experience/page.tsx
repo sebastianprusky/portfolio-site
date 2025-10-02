@@ -86,7 +86,7 @@ export default function Experience(): JSX.Element {
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-16 object-contain" />
                 <div className="flex-1">
                   <p className="font-bold text-lg">{exp.title}</p>
-                  <p className="text-gray-700">{exp.subtitle}</p>
+                  <p>{exp.subtitle}</p>
                 </div>
                 <div className="flex flex-col items-end min-w-fit">
                   <p className="text-sm whitespace-nowrap">{exp.duration}</p>

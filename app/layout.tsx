@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
   <body className="text-foreground min-h-screen">
         {/* Global Navbar */}
-        <nav className="fixed top-0 left-0 w-full bg-background shadow p-4 flex justify-center gap-6 z-50">
+  <nav className="fixed top-0 left-0 w-full bg-transparent shadow p-4 flex justify-center gap-6 z-50">
           {navItems.map((item) => (
             <Link
               key={item.href}

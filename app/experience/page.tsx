@@ -89,12 +89,12 @@ export default function Experience(): JSX.Element {
                   <p className="text-gray-700">{exp.subtitle}</p>
                 </div>
                 <div className="flex flex-col items-end min-w-fit">
-                  <p className="text-gray-500 text-sm whitespace-nowrap">{exp.duration}</p>
+                  <p className="text-sm whitespace-nowrap">{exp.duration}</p>
                   <span className="ml-2 text-xl">{openWork === index ? '▲' : '▼'}</span>
                 </div>
               </div>
               {openWork === index && (
-                <div className="mt-2 text-gray-600 border-t pt-2 text-sm">
+                <div className="mt-2 border-t pt-2 text-sm">
                   {exp.description}
                 </div>
               )}

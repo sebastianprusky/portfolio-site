@@ -2,7 +2,7 @@ import React, { JSX } from "react";
 
 export default function Home(): JSX.Element {
   return (
-    <main className="p-8 flex flex-col items-center justify-center min-h-screen">
+    <main className="p-25 flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-5xl font-bold mb-4">Sebastian Prusky</h1>
       <p className="text-lg text-center">
         IE + MMSS + CS minor @ Northwestern

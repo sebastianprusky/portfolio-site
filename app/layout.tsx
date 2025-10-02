@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-      <body className="bg-background text-foreground min-h-screen">
+  <body className="text-foreground min-h-screen">
         {/* Global Navbar */}
         <nav className="fixed top-0 left-0 w-full bg-background shadow p-4 flex justify-center gap-6 z-50">
           {navItems.map((item) => (

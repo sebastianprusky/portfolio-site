@@ -47,16 +47,30 @@ export default function Art(): JSX.Element {
   return (
     <main className="p-25 min-h-screen flex flex-col items-center justify-center">
       <h1 className="text-3xl font-bold mb-8">Art</h1>
-      <div className="flex items-center gap-8 mb-4 justify-center">
-        <button onClick={prev} aria-label="Previous" className="text-3xl px-2">&#8592;</button>
-        <div className="flex flex-col items-center justify-center">
+      <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem' }}>
+        <button
+          onClick={prev}
+          aria-label="Previous"
+          className="text-3xl px-2 absolute left-0 top-1/2 -translate-y-1/2 z-10"
+          style={{ minWidth: '48px' }}
+        >
+          &#8592;
+        </button>
+        <div className="flex flex-col items-center justify-center mx-16 w-full">
           <img src={src} alt={title} className="h-[28rem] w-auto rounded mb-4 shadow-2xl" />
           <div className="text-center">
             <div className="text-xl font-semibold">{title}</div>
             <div className="text-base mt-1">{subtitle}</div>
           </div>
         </div>
-        <button onClick={next} aria-label="Next" className="text-3xl px-2">&#8594;</button>
+        <button
+          onClick={next}
+          aria-label="Next"
+          className="text-3xl px-2 absolute right-0 top-1/2 -translate-y-1/2 z-10"
+          style={{ minWidth: '48px' }}
+        >
+          &#8594;
+        </button>
       </div>
     </main>
   );

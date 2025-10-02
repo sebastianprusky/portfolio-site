@@ -15,21 +15,21 @@ type Experience = {
 
 const workExperiences: Experience[] = [
   {
-    logo: "/vercel.svg",
+    logo: "/cc.jpeg",
     title: "Mentor",
     subtitle: "Curious Cardinals",
-    duration: "Nov 2023 - Present",
+    duration: "Nov 2024 - Present",
     description: "Mentoring K-12 students in math and entrepreneurship at an edtech startup."
   },
   {
-    logo: "/vercel.svg",
+    logo: "/p&p.png",
     title: "University Fellow",
     subtitle: "Plug and Play Tech Center",
     duration: "October 2025 - April 2026",
     description: "VC program"
   },
   {
-    logo: "/github.svg",
+    logo: "/ubs.png",
     title: "Intern",
     subtitle: "UBS International",
     duration: "June 2025 - July 2025",
@@ -39,14 +39,14 @@ const workExperiences: Experience[] = [
 
 const campusExperiences: Experience[] = [
   {
-    logo: "/next.svg",
+    logo: "/isbe.jpg",
     title: "Analyst",
     subtitle: "ISBE Analytics",
     duration: "April 2025 - Present",
     description: "Partner research for Sensify Analytics (recycling tech startup); Market sizing and competitive analysis for F&B Insights (alcoholic beverage POS data startup)."
   },
   {
-    logo: "/linkedin.svg",
+    logo: "/mayfest.png",
     title: "Promotions Committee",
     subtitle: "Mayfest Productions",
     duration: "October 2024 - Present",

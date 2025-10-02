@@ -112,15 +112,15 @@ export default function Experience(): JSX.Element {
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain" />
                 <div className="flex-1">
                   <p className="font-bold text-lg">{exp.title}</p>
-                  <p className="text-gray-700">{exp.subtitle}</p>
+                  <p>{exp.subtitle}</p>
                 </div>
                 <div className="flex flex-col items-end min-w-fit">
-                  <p className="text-gray-500 text-sm whitespace-nowrap">{exp.duration}</p>
+                  <p className="text-sm whitespace-nowrap">{exp.duration}</p>
                   <span className="ml-2 text-xl">{openCampus === index ? '▲' : '▼'}</span>
                 </div>
               </div>
               {openCampus === index && (
-                <div className="mt-2 text-gray-600 border-t pt-2 text-sm">
+                <div className="mt-2 border-t pt-2 text-sm">
                   {exp.description}
                 </div>
               )}

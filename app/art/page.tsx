@@ -57,7 +57,7 @@ export default function Art(): JSX.Element {
           &#8592;
         </button>
         <div className="flex flex-col items-center justify-center mx-16 w-full">
-          <img src={src} alt={title} className="h-[28rem] w-auto rounded mb-4 shadow-2xl" />
+          <img src={src} alt={title.replace("'", "&apos;")} className="h-[28rem] w-auto rounded mb-4 shadow-2xl" />
           <div className="text-center">
             <div className="text-xl font-semibold">{title}</div>
             <div className="text-base mt-1">{subtitle}</div>

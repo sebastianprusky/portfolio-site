@@ -24,4 +24,5 @@ body {
   background-size: cover;
   color: var(--foreground);
   font-family: 'Patrick Hand', cursive, Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }

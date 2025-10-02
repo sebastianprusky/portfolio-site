@@ -80,7 +80,7 @@ export default function Experience(): JSX.Element {
   <h2 className="text-2xl font-semibold mb-4 text-center">Work</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {workExperiences.map((exp, index) => (
-            <li key={index} style={{ height: '27%' }} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"
+            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto h-12"
                 onClick={() => setOpenWork(openWork === index ? null : index)}>
               <div className="flex items-center gap-4">
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain" />
@@ -104,7 +104,7 @@ export default function Experience(): JSX.Element {
   <h2 className="text-2xl font-semibold mb-4 text-center">Campus Involvement</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {campusExperiences.map((exp, index) => (
-            <li key={index} style={{ height: '45%' }} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"
+            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto h-12"
                 onClick={() => setOpenCampus(openCampus === index ? null : index)}>
               <div className="flex items-center gap-4">
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain" />

@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
 
         {/* Padding so content is not hidden behind navbar */}
-  <div className="pt-25">
+  <div className="pt-24">
           {children}
         </div>
       </body>

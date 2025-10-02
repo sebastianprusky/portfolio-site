@@ -80,16 +80,18 @@ export default function Experience(): JSX.Element {
   <h2 className="text-2xl font-semibold mb-4 text-center">Work</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {workExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto h-12"
+            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto h-16"
                 onClick={() => setOpenWork(openWork === index ? null : index)}>
-              <div className="flex items-center gap-4">
-                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain" />
+              <div className="flex items-center gap-4 w-full">
+                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-16 object-contain" />
                 <div className="flex-1">
                   <p className="font-bold text-lg">{exp.title}</p>
                   <p className="text-gray-700">{exp.subtitle}</p>
-                  <p className="text-gray-500 text-sm">{exp.duration}</p>
                 </div>
-                <span className="ml-2 text-xl">{openWork === index ? '▲' : '▼'}</span>
+                <div className="flex flex-col items-end min-w-fit">
+                  <p className="text-gray-500 text-sm whitespace-nowrap">{exp.duration}</p>
+                  <span className="ml-2 text-xl">{openWork === index ? '▲' : '▼'}</span>
+                </div>
               </div>
               {openWork === index && (
                 <div className="mt-2 text-gray-600 border-t pt-2 text-sm">
@@ -106,14 +108,16 @@ export default function Experience(): JSX.Element {
           {campusExperiences.map((exp, index) => (
             <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto h-12"
                 onClick={() => setOpenCampus(openCampus === index ? null : index)}>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 w-full">
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain" />
                 <div className="flex-1">
                   <p className="font-bold text-lg">{exp.title}</p>
                   <p className="text-gray-700">{exp.subtitle}</p>
-                  <p className="text-gray-500 text-sm">{exp.duration}</p>
                 </div>
-                <span className="ml-2 text-xl">{openCampus === index ? '▲' : '▼'}</span>
+                <div className="flex flex-col items-end min-w-fit">
+                  <p className="text-gray-500 text-sm whitespace-nowrap">{exp.duration}</p>
+                  <span className="ml-2 text-xl">{openCampus === index ? '▲' : '▼'}</span>
+                </div>
               </div>
               {openCampus === index && (
                 <div className="mt-2 text-gray-600 border-t pt-2 text-sm">

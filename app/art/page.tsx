@@ -28,6 +28,11 @@ const artImages = [
     src: "/rollercoaster.jpg",
     title: "pit stop",
     subtitle: "oil on canvas"
+  },
+  {
+    src: "/gate.jpg",
+    title: "gates",
+    subtitle: "colored pencil on watercolor paper"
   }
 ];
 

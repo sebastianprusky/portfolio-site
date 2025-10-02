@@ -15,7 +15,7 @@ const artImages = [
     subtitle: "oil on wood board"
   },
   {
-    src: "/car.JPEG",
+    src: "/drive.jpg",
     title: "navigator",
     subtitle: "oil on canvas"
   },

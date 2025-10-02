@@ -44,7 +44,7 @@ export default function Art(): JSX.Element {
       <h1 className="text-3xl font-bold mb-8">Art</h1>
       <div className="flex items-center gap-8 mb-4">
         <button onClick={prev} aria-label="Previous" className="text-3xl px-2">&#8592;</button>
-  <img src={src} alt={title} className="max-h-[33.6rem] max-w-xl rounded shadow-lg" />
+  <img src={src} alt={title} className="h-[28rem] w-auto rounded shadow-lg" />
         <button onClick={next} aria-label="Next" className="text-3xl px-2">&#8594;</button>
       </div>
       <div className="text-center">

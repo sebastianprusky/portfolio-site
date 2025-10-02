@@ -1,8 +1,12 @@
-export default function Home() {
+import React, { JSX } from "react";
+
+export default function Home(): JSX.Element {
   return (
-    <main style={{ padding: "2rem", fontFamily: "sans-serif" }}>
-      <h1> header </h1>
-      <p>text text </p>
+    <main className="p-8 flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-5xl font-bold mb-4">Sebastian Prusky</h1>
+      <p className="text-lg text-gray-500 text-center">
+        Welcome to my portfolio!
+      </p>
     </main>
   );
 }

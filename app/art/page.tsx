@@ -49,11 +49,11 @@ export default function Art(): JSX.Element {
       <h1 className="text-3xl font-bold mb-8">Art</h1>
       <div className="flex items-center gap-8 mb-4 justify-center">
         <button onClick={prev} aria-label="Previous" className="text-3xl px-2">&#8592;</button>
-        <div className="bg-white rounded-xl shadow-2xl flex flex-col items-center justify-center p-8 w-auto">
-          <img src={src} alt={title} className="h-[28rem] w-auto rounded mb-4" />
+        <div className="flex flex-col items-center justify-center">
+          <img src={src} alt={title} className="h-[28rem] w-auto rounded mb-4 shadow-2xl" />
           <div className="text-center">
-            <div className="text-xl font-semibold text-black">{title}</div>
-            <div className="text-base mt-1 text-black">{subtitle}</div>
+            <div className="text-xl font-semibold">{title}</div>
+            <div className="text-base mt-1">{subtitle}</div>
           </div>
         </div>
         <button onClick={next} aria-label="Next" className="text-3xl px-2">&#8594;</button>

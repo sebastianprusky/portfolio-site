@@ -7,6 +7,14 @@ export default function Home(): JSX.Element {
       <p className="text-lg text-gray-500 text-center">
         welcome
       </p>
+      <div className="flex flex-row gap-6 mt-4">
+        <a href="https://github.com/sebastianprusky" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <img src="/github.svg" alt="GitHub" className="w-8 h-8 hover:opacity-70 transition" />
+        </a>
+        <a href="https://linkedin.com/in/sebastian-prusky" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img src="/linkedin.svg" alt="LinkedIn" className="w-8 h-8 hover:opacity-70 transition" />
+        </a>
+      </div>
     </main>
   );
 }

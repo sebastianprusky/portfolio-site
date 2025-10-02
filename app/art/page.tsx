@@ -46,7 +46,7 @@ export default function Art(): JSX.Element {
 
   return (
     <main className="p-25 min-h-screen flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-8">Art</h1>
+  <h1 className="text-3xl font-bold mb-8" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Art</h1>
       <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem' }}>
         <button
           onClick={prev}

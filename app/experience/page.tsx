@@ -51,21 +51,7 @@ const campusExperiences: Experience[] = [
     subtitle: "Mayfest Productions",
     duration: "October 2024 - Present",
     description: "Promotional campaigns for Dillo Day (dilloday.com)"
-  },
-  {
-    logo: "/globe.svg",
-    title: "hold 1",
-    subtitle: "hold 1",
-    duration: "hold 1",
-    description: "hold 1"
-  },
-  {
-    logo: "/window.svg",
-    title: "hold 2",
-    subtitle: "hold 2",
-    duration: "hold 2",
-    description: "hold 2"
-  },
+  }
 ];
 
 
@@ -75,12 +61,12 @@ export default function Experience(): JSX.Element {
 
   return (
     <main className="p-25 min-h-screen">
-      <h1 className="text-3xl font-bold mb-8 text-center">Experience</h1>
+  <h1 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
       <section className="mb-12">
-  <h2 className="text-2xl font-semibold mb-4 text-center">Work</h2>
+  <h2 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {workExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"
+            <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"
                 onClick={() => setOpenWork(openWork === index ? null : index)}>
               <div className="flex items-center gap-4 w-full">
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center" />
@@ -103,10 +89,10 @@ export default function Experience(): JSX.Element {
         </ul>
       </section>
       <section>
-  <h2 className="text-2xl font-semibold mb-4 text-center">Campus Involvement</h2>
+  <h2 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Campus Involvement</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {campusExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-4 shadow flex flex-col gap-2 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"
+            <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"
                 onClick={() => setOpenCampus(openCampus === index ? null : index)}>
               <div className="flex items-center gap-4 w-full">
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center" />

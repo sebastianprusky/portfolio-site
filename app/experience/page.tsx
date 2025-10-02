@@ -21,6 +21,20 @@ const workExperiences: Experience[] = [
     duration: "Nov 2023 - Present",
     description: "Mentoring K-12 students in math and entrepreneurship at an edtech startup."
   },
+  {
+    logo: "/vercel.svg",
+    title: "University Fellow",
+    subtitle: "Plug and Play Tech Center",
+    duration: "October 2025 - April 2026",
+    description: "VC program"
+  },
+  {
+    logo: "/github.svg",
+    title: "Intern",
+    subtitle: "UBS International",
+    duration: "June 2025 - July 2025",
+    description: "Created excel projects to analyze and improve fund selection for wealth management division"
+  },
 ];
 
 const campusExperiences: Experience[] = [
@@ -29,7 +43,28 @@ const campusExperiences: Experience[] = [
     title: "Analyst",
     subtitle: "ISBE Analytics",
     duration: "April 2025 - Present",
-    description: "Partner research for Sensify Analytics (recyling tech startup); Market sizing and competitive analysis for F&B Insights (alcoholic beverage POS data startup)."
+    description: "Partner research for Sensify Analytics (recycling tech startup); Market sizing and competitive analysis for F&B Insights (alcoholic beverage POS data startup)."
+  },
+  {
+    logo: "/linkedin.svg",
+    title: "Promotions Committee",
+    subtitle: "Mayfest Productions",
+    duration: "October 2024 - Present",
+    description: "Promotional campaigns for Dillo Day (dilloday.com)"
+  },
+  {
+    logo: "/globe.svg",
+    title: "hold 1",
+    subtitle: "hold 1",
+    duration: "hold 1",
+    description: "hold 1"
+  },
+  {
+    logo: "/window.svg",
+    title: "hold 2",
+    subtitle: "hold 2",
+    duration: "hold 2",
+    description: "hold 2"
   },
 ];
 

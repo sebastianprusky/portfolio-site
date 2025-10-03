@@ -61,14 +61,14 @@ export default function Art(): JSX.Element {
   const { src, title, subtitle } = artImages[current];
 
   return (
-  <main className="min-h-screen mt-8 px-8 flex flex-col items-center justify-center">
+  <main className="min-h-screen mt-4 px-8 flex flex-col items-center justify-center">
   <h1 className="text-3xl font-bold mb-12" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Art</h1>
-  <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '700px' }}>
+  <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>
         <button
           onClick={prev}
           aria-label="Previous"
-          className="text-3xl px-2 absolute left-0 top-1/2 -translate-y-1/2 z-10"
-          style={{ minWidth: '48px' }}
+          className="text-3xl px-6 absolute left-0 top-1/2 -translate-y-1/2 z-10"
+          style={{ minWidth: '80px' }}
         >
           &#8592;
         </button>
@@ -82,8 +82,8 @@ export default function Art(): JSX.Element {
         <button
           onClick={next}
           aria-label="Next"
-          className="text-3xl px-2 absolute right-0 top-1/2 -translate-y-1/2 z-10"
-          style={{ minWidth: '48px' }}
+          className="text-3xl px-6 absolute right-0 top-1/2 -translate-y-1/2 z-10"
+          style={{ minWidth: '80px' }}
         >
           &#8594;
         </button>

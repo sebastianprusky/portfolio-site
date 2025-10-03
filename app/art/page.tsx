@@ -62,8 +62,8 @@ export default function Art(): JSX.Element {
 
   return (
   <main className="min-h-screen mt-8 px-8 flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-4" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Art</h1>
-      <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem' }}>
+  <h1 className="text-3xl font-bold mb-12" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Art</h1>
+  <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '700px' }}>
         <button
           onClick={prev}
           aria-label="Previous"
@@ -72,7 +72,7 @@ export default function Art(): JSX.Element {
         >
           &#8592;
         </button>
-        <div className="flex flex-col items-center justify-center mx-16 w-full">
+  <div className="flex flex-col items-center justify-center w-full">
           <img src={src} alt={title.replace("'", "&apos;")} className="h-[28rem] w-auto rounded mb-4 shadow-2xl" />
           <div className="text-center">
             <div className="text-xl font-semibold">{title}</div>

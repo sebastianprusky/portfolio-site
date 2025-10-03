@@ -3,7 +3,7 @@ import React, { JSX } from "react";
 export default function Home(): JSX.Element {
   return (
   <main className="min-h-screen mt-8 px-8 flex flex-col items-center justify-center">
-      <h1 className="text-5xl font-bold mb-4" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Sebastian Prusky</h1>
+  <h1 className="text-5xl font-bold mb-20" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Sebastian Prusky</h1>
       <p className="text-lg text-center">
         IE + MMSS + CS minor @ Northwestern
       </p>

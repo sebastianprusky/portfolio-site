@@ -9,14 +9,24 @@ const artImages = [
     title: "red restaurant",
     subtitle: "oil on canvas"
   },
+   {
+    src: "/drive.jpg",
+    title: "navigator",
+    subtitle: "oil on canvas"
+  },
   {
     src: "/prayingmantises.JPEG",
     title: "seaside",
     subtitle: "oil on wood board"
   },
   {
-    src: "/drive.jpg",
-    title: "navigator",
+    src: "/mantissketch.jpg",
+    title: "seaside",
+    subtitle: "planning sketch"
+  },
+  {
+    src: "/rollercoaster.jpg",
+    title: "pit stop",
     subtitle: "oil on canvas"
   },
   {
@@ -25,15 +35,21 @@ const artImages = [
     subtitle: "oil on wood board"
   },
   {
-    src: "/rollercoaster.jpg",
-    title: "pit stop",
-    subtitle: "oil on canvas"
+    src: "/desertsketch.jpg",
+    title: "deserted",
+    subtitle: "planning sketch"
   },
   {
     src: "/gate.jpg",
     title: "gates",
     subtitle: "colored pencil on watercolor paper"
-  }
+  },
+  {
+    src: "/treeman.jpg",
+    title: "rodeo",
+    subtitle: "colored pencil on black paper"
+  },
+  
 ];
 
 export default function Art(): JSX.Element {
@@ -60,7 +76,7 @@ export default function Art(): JSX.Element {
           <img src={src} alt={title.replace("'", "&apos;")} className="h-[28rem] w-auto rounded mb-4 shadow-2xl" />
           <div className="text-center">
             <div className="text-xl font-semibold">{title}</div>
-            <div className="text-base mt-1">{subtitle}</div>
+            <div className="text-base mt-1 italic">{subtitle}</div>
           </div>
         </div>
         <button

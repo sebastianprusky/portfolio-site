@@ -60,8 +60,8 @@ export default function Experience(): JSX.Element {
   const [openCampus, setOpenCampus] = useState<number | null>(null);
 
   return (
-  <main className="min-h-screen px-8 flex flex-col items-center justify-center relative">
-  <h1 className="text-3xl font-bold mb-12 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
+    <main className="min-h-screen flex flex-col items-center justify-start relative">
+      <h1 className="text-3xl font-bold mb-12 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
       <section className="mb-8">
   <h2 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
         <ul className="space-y-4 flex flex-col items-center">

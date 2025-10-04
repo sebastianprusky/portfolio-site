@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
   <body className="text-foreground min-h-screen">
     <div className="w-full">
-      <div className="flex justify-center gap-6 mt-8 mb-4">
+      <div className="flex justify-center gap-6 mt-5 mb-8">
         {navItems.map((item) => (
           <Link
             key={item.href}

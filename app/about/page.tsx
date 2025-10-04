@@ -3,7 +3,8 @@ import { JSX } from "react";
 export default function About(): JSX.Element {
   return (
   <main className="min-h-screen flex flex-col items-center justify-start relative">
-    <h1 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>About Me</h1>
+    <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>About Me</h1>
+    <div className="text-base text-gray-600 mb-4 text-center max-w-2xl">A little about my background, interests, and what drives me.</div>
       <div className="flex justify-center">
   <p className="text-base font-normal mb-4 text-left max-w-2xl">
         <br />I&apos;m from Miami, FL and currently studying Industrial Engineering, Mathematical Methods in the Social Sciences, and CS at Northwestern University.<br /><br />

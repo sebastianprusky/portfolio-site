@@ -61,13 +61,13 @@ export default function Experience(): JSX.Element {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative">
-      <h1 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
+      <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
+      <div className="text-base text-gray-600 mb-4 text-center max-w-2xl">Professional and campus roles that have shaped my journey.</div>
       <section className="mb-8">
   <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {workExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 cursor-pointer transition hover:bg-gray-50 w-full min-w-[250px] max-w-2xl mx-auto"
-                onClick={() => setOpenWork(openWork === index ? null : index)}>
+            <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 transition hover:bg-gray-50 w-full min-w-[250px] max-w-2xl mx-auto">
               <div className="flex items-center gap-4 w-full">
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center" />
                 <div className="flex-1 flex flex-col justify-center">
@@ -76,7 +76,14 @@ export default function Experience(): JSX.Element {
                 </div>
                 <div className="flex flex-col items-end min-w-fit justify-center">
                   <p className="text-sm whitespace-nowrap leading-tight">{exp.duration}</p>
-                  <span className="ml-2 text-xl">{openWork === index ? '▲' : '▼'}</span>
+                  <button
+                    onClick={() => setOpenWork(openWork === index ? null : index)}
+                    aria-label={openWork === index ? 'Collapse' : 'Expand'}
+                    className="ml-2 text-xl focus:outline-none"
+                    style={{ minWidth: '2rem', background: 'none', border: 'none', padding: 0 }}
+                  >
+                    {openWork === index ? '▲' : '▼'}
+                  </button>
                 </div>
               </div>
               {openWork === index && (
@@ -92,8 +99,7 @@ export default function Experience(): JSX.Element {
   <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Campus Involvement</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {campusExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 cursor-pointer transition hover:bg-gray-50 w-full min-w-[250px] max-w-2xl mx-auto"
-                onClick={() => setOpenCampus(openCampus === index ? null : index)}>
+            <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 transition hover:bg-gray-50 w-full min-w-[250px] max-w-2xl mx-auto">
               <div className="flex items-center gap-4 w-full">
                 <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center" />
                 <div className="flex-1 flex flex-col justify-center">
@@ -102,7 +108,14 @@ export default function Experience(): JSX.Element {
                 </div>
                 <div className="flex flex-col items-end min-w-fit justify-center">
                   <p className="text-sm whitespace-nowrap leading-tight">{exp.duration}</p>
-                  <span className="ml-2 text-xl">{openCampus === index ? '▲' : '▼'}</span>
+                  <button
+                    onClick={() => setOpenCampus(openCampus === index ? null : index)}
+                    aria-label={openCampus === index ? 'Collapse' : 'Expand'}
+                    className="ml-2 text-xl focus:outline-none"
+                    style={{ minWidth: '2rem', background: 'none', border: 'none', padding: 0 }}
+                  >
+                    {openCampus === index ? '▲' : '▼'}
+                  </button>
                 </div>
               </div>
               {openCampus === index && (

@@ -62,7 +62,8 @@ export default function Art(): JSX.Element {
 
   return (
   <main className="min-h-screen flex flex-col items-center justify-start relative">
-    <h1 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Art</h1>
+    <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Art</h1>
+    <div className="text-base text-gray-600 mb-4 text-center max-w-2xl">A selection of my paintings, sketches, and creative explorations.</div>
   <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>
         <button
           onClick={prev}

@@ -15,7 +15,8 @@ export default function Projects(): JSX.Element {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative">
-      <h1 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Projects</h1>
+      <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Projects</h1>
+      <div className="text-base text-gray-600 mb-4 text-center max-w-2xl">A showcase of my favorite technical and creative projects.</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
         {projects.map((project, index) => (
           <div

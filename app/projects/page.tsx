@@ -1,5 +1,5 @@
 
-import React, { useState, JSX } from "react";
+import React, { useState } from "react";
 
 type Project = {
   title: string;
@@ -11,7 +11,7 @@ const projects: Project[] = [
   { title: "Project Two", description: "This is my second project." },
 ];
 
-export default function Projects(): JSX.Element {
+export default function Projects() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative">

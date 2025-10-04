@@ -1,4 +1,5 @@
-import { JSX } from "react";
+
+import React, { useState, JSX } from "react";
 
 type Project = {
   title: string;
@@ -11,17 +12,33 @@ const projects: Project[] = [
 ];
 
 export default function Projects(): JSX.Element {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative">
       <h1 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Projects</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="border rounded p-4 shadow hover:shadow-lg transition"
+            className="border rounded p-4 shadow hover:shadow-lg transition w-full max-w-xl mx-auto flex flex-col"
+            style={{ minHeight: '5rem' }}
           >
-            <h2 className="text-xl font-bold mb-2">{project.title}</h2>
-            <p>{project.description}</p>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold mb-2">{project.title}</h2>
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                aria-label={openIndex === index ? 'Collapse' : 'Expand'}
+                className="ml-2 text-xl focus:outline-none"
+                style={{ minWidth: '2rem' }}
+              >
+                {openIndex === index ? '▲' : '▼'}
+              </button>
+            </div>
+            {openIndex === index && (
+              <div className="mt-2 border-t pt-2 text-sm">
+                {project.description}
+              </div>
+            )}
           </div>
         ))}
       </div>

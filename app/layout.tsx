@@ -22,9 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
       </head>
-  <body className="text-foreground min-h-screen mt-8">
+  <body className="text-foreground min-h-screen mt-6">
         {/* Global Navbar */}
-  <nav className="fixed top-0 left-0 w-full bg-transparent shadow p-4 flex justify-center gap-6 z-50">
+  <div className="flex justify-center gap-6 mt-4 mb-2">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {item.name}
             </Link>
           ))}
-        </nav>
+        </div>
 
         {/* Padding so content is not hidden behind navbar */}
   <div className="pt-24">

@@ -61,7 +61,7 @@ export default function Art(): JSX.Element {
   const { src, title, subtitle } = artImages[current];
 
   return (
-  <main className="min-h-screen px-8 flex flex-col items-center justify-center">
+  <main className="min-h-screen px-8 flex flex-col items-center justify-center relative">
   <h1 className="text-3xl font-bold mb-12" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Art</h1>
   <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>
         <button

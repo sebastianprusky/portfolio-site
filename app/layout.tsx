@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
       </head>
-  <body className="text-foreground min-h-screen mt-6">
+  <body className="text-foreground min-h-screen mt-4">
         {/* Global Navbar */}
   <div className="flex justify-center gap-6 mt-4 mb-2">
           {navItems.map((item) => (

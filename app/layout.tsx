@@ -22,23 +22,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
       </head>
-  <body className="text-foreground min-h-screen mt-8">
-        {/* Global Navbar */}
-  <div className="flex justify-center gap-6 mt-8 mb-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`text-sm font-medium hover:underline ${
-                pathname === item.href ? "text-blue-500 underline" : ""
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-
-  {children}
+  <body className="text-foreground min-h-screen">
+    <div className="w-full">
+      <div className="flex justify-center gap-6 mt-8 mb-4">
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`text-sm font-medium hover:underline ${
+              pathname === item.href ? "text-blue-500 underline" : ""
+            }`}
+          >
+            {item.name}
+          </Link>
+        ))}
+      </div>
+      {children}
+    </div>
       </body>
     </html>
   );

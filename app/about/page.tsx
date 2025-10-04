@@ -2,7 +2,7 @@ import { JSX } from "react";
 
 export default function About(): JSX.Element {
   return (
-  <main className="min-h-screen px-8" style={{ marginTop: '1rem' }}>
+  <main className="min-h-screen px-8">
   <h1 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>About Me</h1>
       <div className="flex justify-center">
   <p className="text-base font-normal mb-4 text-left max-w-2xl">

@@ -61,9 +61,9 @@ export default function Experience(): JSX.Element {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative">
-      <h1 className="text-3xl font-bold mb-12 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
+      <h1 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
       <section className="mb-8">
-  <h2 className="text-2xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
+  <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {workExperiences.map((exp, index) => (
             <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 cursor-pointer transition hover:bg-gray-50 w-1/2 min-w-[250px] max-w-xl mx-auto"

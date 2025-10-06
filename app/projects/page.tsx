@@ -18,7 +18,7 @@ export default function Projects() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative">
       <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Projects</h1>
-      <div className="text-base mb-4 text-center max-w-2xl">a collection of projects I've worked on</div>
+  <div className="text-base mb-4 text-center max-w-2xl">a collection of projects I&apos;ve worked on</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
         {projects.map((project, index) => (
           <div

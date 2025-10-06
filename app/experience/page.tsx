@@ -62,7 +62,7 @@ export default function Experience(): JSX.Element {
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative">
       <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
-      <div className="text-base text-gray-600 mb-4 text-center max-w-2xl">Professional and campus roles that have shaped my journey.</div>
+      <div className="text-base mb-4 text-center max-w-2xl">a look at my professional experience and campus involvement</div>
       <section className="mb-8">
   <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
         <ul className="space-y-4 flex flex-col items-center">

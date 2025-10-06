@@ -21,8 +21,8 @@ const artImages = [
   },
   {
     src: "/mantissketch.jpg",
-    title: "seaside",
-    subtitle: "planning sketch"
+    title: "seaside (planning sketch)",
+    subtitle: ""
   },
   {
     src: "/rollercoaster.jpg",
@@ -36,8 +36,8 @@ const artImages = [
   },
   {
     src: "/desertsketch.jpg",
-    title: "deserted",
-    subtitle: "planning sketch"
+    title: "deserted (planning sketch)",
+    subtitle: ""
   },
   {
     src: "/gate.jpg",

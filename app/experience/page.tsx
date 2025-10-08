@@ -1,9 +1,6 @@
 "use client";
-import { JSX } from "react";
 
-
-
-import React, { useState } from "react";
+import { useState } from "react";
 
 type Experience = {
   logo: string; // image path
@@ -23,7 +20,7 @@ const workExperiences: Experience[] = [
   },
   {
     logo: "/p&p.png",
-    title: "University Fellow",
+    title: "University Program Fellow",
     subtitle: "Plug and Play Tech Center",
     duration: "October 2025 - April 2026",
     description: "VC program"
@@ -54,8 +51,7 @@ const campusExperiences: Experience[] = [
   }
 ];
 
-
-export default function Experience(): JSX.Element {
+export default function Experience() {
   const [openWork, setOpenWork] = useState<number | null>(null);
   const [openCampus, setOpenCampus] = useState<number | null>(null);
 
@@ -63,13 +59,17 @@ export default function Experience(): JSX.Element {
     <main className="min-h-screen flex flex-col items-center justify-start relative">
       <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
       <div className="text-base mb-4 text-center max-w-2xl">a look at my professional experience and campus involvement</div>
+
       <section className="mb-8">
-  <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
+        <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {workExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 transition hover:bg-gray-50 w-full min-w-[250px] max-w-2xl mx-auto">
+            <li
+              key={index}
+              className="border rounded p-2.5 shadow flex flex-col gap-1 transition hover:bg-gray-50 w-full sm:w-[700px] max-w-2xl mx-auto overflow-hidden box-border"
+            >
               <div className="flex items-center gap-4 w-full">
-                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center" />
+                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center flex-shrink-0" />
                 <div className="flex-1 flex flex-col justify-center">
                   <p className="font-bold text-lg leading-tight">{exp.title}</p>
                   <p className="leading-tight">{exp.subtitle}</p>
@@ -86,8 +86,9 @@ export default function Experience(): JSX.Element {
                   </button>
                 </div>
               </div>
+
               {openWork === index && (
-                <div className="mt-2 border-t pt-2 text-sm">
+                <div className="mt-2 border-t pt-2 text-sm break-words whitespace-normal">
                   {exp.description}
                 </div>
               )}
@@ -95,13 +96,17 @@ export default function Experience(): JSX.Element {
           ))}
         </ul>
       </section>
+
       <section>
-  <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Campus Involvement</h2>
+        <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Campus Involvement</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {campusExperiences.map((exp, index) => (
-            <li key={index} className="border rounded p-2.5 shadow flex flex-col gap-1 transition hover:bg-gray-50 w-full min-w-[250px] max-w-2xl mx-auto">
+            <li
+              key={index}
+              className="border rounded p-2.5 shadow flex flex-col gap-1 transition hover:bg-gray-50 w-full sm:w-[700px] max-w-2xl mx-auto overflow-hidden box-border"
+            >
               <div className="flex items-center gap-4 w-full">
-                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center" />
+                <img src={exp.logo} alt={exp.title + ' logo'} className="w-12 h-12 object-contain self-center flex-shrink-0" />
                 <div className="flex-1 flex flex-col justify-center">
                   <p className="font-bold text-lg leading-tight">{exp.title}</p>
                   <p className="leading-tight">{exp.subtitle}</p>
@@ -118,8 +123,9 @@ export default function Experience(): JSX.Element {
                   </button>
                 </div>
               </div>
+
               {openCampus === index && (
-                <div className="mt-2 border-t pt-2 text-sm">
+                <div className="mt-2 border-t pt-2 text-sm break-words whitespace-normal">
                   {exp.description}
                 </div>
               )}

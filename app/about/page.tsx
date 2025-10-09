@@ -1,7 +1,6 @@
-import { JSX } from "react";
 "use client";
 
-export default function About(): JSX.Element {
+export default function About() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative overflow-hidden">
       <h1

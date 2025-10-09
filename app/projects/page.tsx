@@ -9,8 +9,8 @@ type Project = {
 };
 
 const projects: Project[] = [
-  { title: "Project One", description: "This is my first project." },
-  { title: "Project Two", description: "This is my second project." },
+  { title: "Portfolio Simulator", description: "Used Excel and VBA Macros to create a dashboard that allows users to compare different investment portfolios. It pulls historical and real-time data from Yahoo Finance." },
+  { title: "Sensify Recycling - Partner Research", description: "I researched and analyzed potential partner auxiliary service providers for Sensify, a sustainability tech startup." },
 ];
 
 export default function Projects() {

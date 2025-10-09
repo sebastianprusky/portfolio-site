@@ -48,13 +48,6 @@ const campusExperiences: Experience[] = [
     subtitle: "Mayfest Productions",
     duration: "Oct 2024 - Present",
     description: "Promotional campaigns for Dillo Day (dilloday.com)."
-  },
-  {
-    logo: "/file.svg",
-    title: "Volunteer",
-    subtitle: "Campus Outreach",
-    duration: "Jan 2024 - Present",
-    description: "Organized student outreach events and info sessions."
   }
 ];
 

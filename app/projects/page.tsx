@@ -1,49 +1,54 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
 type Project = {
   title: string;
+  subtitle?: string;
   description: string;
+  image?: string;
 };
 
 const projects: Project[] = [
-  { title: "Portfolio Simulator", description: "Used Excel and VBA Macros to create a dashboard that allows users to compare different investment portfolios. It pulls historical and real-time data from Yahoo Finance." },
-  { title: "Sensify Recycling - Partner Research", description: "I researched and analyzed potential partner auxiliary service providers for Sensify, a sustainability tech startup." },
+  {
+    title: "Example Project A",
+    subtitle: "Role / Tech",
+    description: "Short description always visible."
+  },
+  {
+    title: "Example Project B",
+    subtitle: "Role / Tech",
+    description: "Another always-visible description."
+  }
 ];
 
 export default function Projects() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto">
-      <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Projects</h1>
-  <div className="text-base mb-4 text-center max-w-2xl">a collection of projects I&apos;ve worked on</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="border rounded p-4 shadow hover:shadow-lg transition w-full max-w-xl mx-auto flex flex-col"
-            style={{ minHeight: '5rem' }}
-          >
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold mb-2">{project.title}</h2>
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                aria-label={openIndex === index ? 'Collapse' : 'Expand'}
-                className="ml-2 text-xl focus:outline-none"
-                style={{ minWidth: '2rem' }}
-              >
-                {openIndex === index ? '▲' : '▼'}
-              </button>
-            </div>
-            {openIndex === index && (
-              <div className="mt-2 border-t pt-2 text-sm">
-                {project.description}
+      <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+        Projects
+      </h1>
+      <div className="text-base mb-4 text-center max-w-2xl">A selection of projects</div>
+
+      <section className="mb-8 w-full">
+        <ul className="space-y-4 flex flex-col items-center">
+          {projects.map((p, idx) => (
+            <li
+              key={idx}
+              className="border rounded p-3 shadow flex gap-4 items-start w-full sm:w-[700px] max-w-2xl mx-auto overflow-hidden box-border"
+            >
+              {p.image && (
+                <img src={p.image} alt={p.title + " image"} className="w-12 h-12 object-contain flex-shrink-0" />
+              )}
+              <div className="flex-1">
+                <h3 className="text-lg font-bold leading-tight">{p.title}</h3>
+                {p.subtitle && <p className="text-sm leading-tight">{p.subtitle}</p>}
+                <div className="mt-2 text-sm break-words whitespace-normal">{p.description}</div>
               </div>
-            )}
-          </div>
-        ))}
-      </div>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }

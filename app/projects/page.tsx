@@ -11,14 +11,24 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Example Project A",
-    subtitle: "Role / Tech",
-    description: "Short description always visible."
+    title: "Portfolio Simulator",
+    subtitle: "Excel (VBA Macros)",
+    description: "Built an excel dashboard that allows users to compare portfolios over time. The dashboard pulls historical and real-time stock data from Yahoo Finance."
   },
   {
-    title: "Example Project B",
-    subtitle: "Role / Tech",
-    description: "Another always-visible description."
+    title: "Sensify Recycling",
+    subtitle: "Strategic analysis + partner research (ISBE Analytics)",
+    description: "Conducted partner research for Sensify, a sustainability tech startup. I developed an outreach strategy for 6 auxilary service providers for Sensify to reach out to in order to scale to University Campuses."
+  },
+  {
+    title: "F&B Insights (current)",
+    subtitle: "Strategic analysis + market sizing (ISBE Analytics)",
+    description: "Conducting market sizing and strategic recommendations for alcoholic beverage POS data company."
+  },
+{
+    title: "nu.match",
+    subtitle: "Social app for northwestern students",
+    description: "building social app for northwestern students to match with each other based on similarities."
   }
 ];
 

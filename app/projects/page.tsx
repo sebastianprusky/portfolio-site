@@ -38,7 +38,7 @@ export default function Projects() {
       <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
         Projects
       </h1>
-      <div className="text-base mb-4 text-center max-w-2xl">A selection of projects</div>
+      <div className="text-base mb-4 text-center max-w-2xl">a collection of projects I've worked on</div>
 
       <section className="mb-8 w-full">
         <ul className="space-y-4 flex flex-col items-center">

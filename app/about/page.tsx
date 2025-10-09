@@ -1,5 +1,6 @@
-import { JSX } from "react";react";
-"use client"; // Needed to use hooks like usePathname
+import { JSX } from "react";
+"use client";
+
 export default function About(): JSX.Element {
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative overflow-hidden">

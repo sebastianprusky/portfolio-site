@@ -11,11 +11,6 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Portfolio Simulator",
-    subtitle: "Excel (VBA Macros)",
-    description: "Built an excel dashboard that allows users to compare portfolios over time. The dashboard pulls historical and real-time stock data from Yahoo Finance."
-  },
-  {
     title: "Sensify Recycling (ISBE Analytics)",
     subtitle: "Strategic analysis + partner research",
     description: "Conducted partner research for Sensify, a sustainability tech startup. I developed an outreach strategy for 6 auxilary service providers for Sensify to reach out to in order to scale to University Campuses."
@@ -29,7 +24,12 @@ const projects: Project[] = [
     title: "nu.match (current)",
     subtitle: "Figma, Javascript",
     description: "building web app for northwestern students to match with each other based on similarities."
-  }
+  },
+  {
+    title: "Portfolio Simulator",
+    subtitle: "Excel (VBA Macros)",
+    description: "Built an excel dashboard that allows users to compare portfolios over time. The dashboard pulls historical and real-time stock data from Yahoo Finance."
+  },
 ];
 
 export default function Projects() {

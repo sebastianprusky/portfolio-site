@@ -61,7 +61,7 @@ export default function Art(): JSX.Element {
   const { src, title, subtitle } = artImages[current];
 
   return (
-  <main className="min-h-screen flex flex-col items-center justify-start relative">
+  <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto">
     <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Art</h1>
     <div className="text-base mb-4 text-center max-w-2xl">a selection of my pieces and sketches from over the years</div>
   <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>

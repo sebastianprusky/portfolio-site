@@ -64,31 +64,50 @@ export default function Art(): JSX.Element {
   <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto">
     <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>artwork</h1>
     <div className="text-base mb-4 text-center max-w-2xl">a selection of my pieces and sketches from over the years</div>
+
   <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>
+        {/* left half hit area - clicking anywhere on left side goes previous */}
+        <button
+          aria-label="Previous (left side)"
+          onClick={prev}
+          className="absolute left-0 top-0 h-full w-1/2 z-20 bg-transparent cursor-pointer"
+        />
+
+        {/* right half hit area - clicking anywhere on right side goes next */}
+        <button
+          aria-label="Next (right side)"
+          onClick={next}
+          className="absolute right-0 top-0 h-full w-1/2 z-20 bg-transparent cursor-pointer"
+        />
+
+        {/* Left arrow (visual, stays on top of hit areas) */}
         <button
           onClick={prev}
           aria-label="Previous"
-          className="text-3xl px-6 absolute left-0 top-1/2 -translate-y-1/2 z-10"
+          className="text-3xl px-6 absolute left-0 top-1/2 -translate-y-1/2 z-30"
           style={{ minWidth: '80px' }}
         >
           &#8592;
         </button>
-  <div className="flex flex-col items-center justify-center w-full">
+
+        <div className="flex flex-col items-center justify-center w-full">
           <img src={src} alt={title.replace("'", "&apos;")} className="h-[28rem] w-auto rounded mb-4 shadow-2xl" />
           <div className="text-center">
             <div className="text-xl font-semibold">{title}</div>
             <div className="text-base mt-1 italic">{subtitle}</div>
           </div>
         </div>
+
+        {/* Right arrow (visual, stays on top of hit areas) */}
         <button
           onClick={next}
           aria-label="Next"
-          className="text-3xl px-6 absolute right-0 top-1/2 -translate-y-1/2 z-10"
+          className="text-3xl px-6 absolute right-0 top-1/2 -translate-y-1/2 z-30"
           style={{ minWidth: '80px' }}
         >
           &#8594;
         </button>
-      </div>
+       </div>
     </main>
   );
 }

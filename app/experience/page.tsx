@@ -66,7 +66,7 @@ export default function Experience() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto">
-      <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Experience</h1>
+      <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>experience</h1>
       <div className="text-base mb-4 text-center max-w-2xl">a look at my professional experience and campus involvement</div>
 
       <section className="mb-8 w-full">

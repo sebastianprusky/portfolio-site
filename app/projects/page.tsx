@@ -36,7 +36,7 @@ export default function Projects() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto">
       <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
-        Projects
+        projects
       </h1>
       <div className="text-base mb-4 text-center max-w-2xl">a collection of projects I&apos;ve worked on</div>
 

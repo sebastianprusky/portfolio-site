@@ -10,11 +10,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   // Define navbar items
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About Me", href: "/about" },
-    { name: "Projects", href: "/projects" },
-    { name: "Experience", href: "/experience" },
-    { name: "Art", href: "/art" },
+    { name: "home", href: "/" },
+    { name: "about me", href: "/about" },
+    { name: "projects", href: "/projects" },
+    { name: "experience", href: "/experience" },
+    { name: "art", href: "/art" },
   ];
 
   return (

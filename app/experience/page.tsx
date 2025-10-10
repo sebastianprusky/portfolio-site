@@ -70,7 +70,7 @@ export default function Experience() {
       <div className="text-base mb-4 text-center max-w-2xl">a look at my professional experience and campus involvement</div>
 
       <section className="mb-8 w-full">
-        <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Work</h2>
+        <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>work</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {workExperiences.map((exp, index) => (
             <li
@@ -107,7 +107,7 @@ export default function Experience() {
       </section>
 
       <section className="w-full">
-        <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Campus Involvement</h2>
+        <h2 className="text-xl font-semibold mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>campus involvement</h2>
         <ul className="space-y-4 flex flex-col items-center">
           {campusExperiences.map((exp, index) => (
             <li

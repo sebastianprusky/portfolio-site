@@ -7,7 +7,7 @@ export default function About() {
         className="text-2xl font-semibold mb-1 text-center"
         style={{ fontFamily: 'Times New Roman, Times, serif' }}
       >
-        About Me
+        about me
       </h1>
 
       <p className="text-base font-normal mb-4 text-left max-w-2xl">

@@ -7,11 +7,11 @@ export default function Nav() {
   const pathname = usePathname() ?? "/";
 
   const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/projects", label: "Projects" },
-    { href: "/experience", label: "Experience" },
-    { href: "/art", label: "Art" },
+    { href: "/", label: "home" },
+    { href: "/about", label: "about" },
+    { href: "/projects", label: "projects" },
+    { href: "/experience", label: "experience" },
+    { href: "/art", label: "art" },
   ];
 
   return (
@@ -25,7 +25,8 @@ export default function Nav() {
               href={l.href}
               aria-current={isActive ? "page" : undefined}
               className={
-                "no-underline transition-colors " +
+                // reserve space so bolding doesn't shift siblings: inline-block + min width (uses ch unit)
+                "no-underline inline-block text-center px-1 min-w-[10ch] transition-colors transition-transform " +
                 "hover:font-bold " +
                 (isActive ? "font-bold text-foreground" : "text-foreground")
               }

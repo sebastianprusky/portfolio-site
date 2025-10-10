@@ -16,7 +16,7 @@ export default function Nav() {
 
   return (
     <nav>
-      <div className="flex justify-center gap-4 mt-8 mb-6">
+      <div className="flex justify-center gap-2 mt-4 mb-6">
         {links.map((l) => {
           const isActive = pathname === l.href;
           return (

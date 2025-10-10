@@ -26,7 +26,7 @@ export default function Nav() {
               href={l.href}
               aria-current={isActive ? "page" : undefined}
               className={
-                "no-underline text-center transition-colors hover:font-bold " +
+                "no-underline text-center px-2 transition-colors hover:font-bold " +
                 (isActive ? "font-bold text-foreground" : "text-foreground")
               }
             >

@@ -11,7 +11,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="text-foreground min-h-screen">
         <Nav />
-        {children}
+        {/* add top padding so section headers sit below the fixed nav */}
+        <div className="pt-16">
+          {children}
+        </div>
       </body>
     </html>
   );

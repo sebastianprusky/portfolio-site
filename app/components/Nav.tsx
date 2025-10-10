@@ -16,18 +16,17 @@ export default function Nav() {
 
   return (
     <nav>
-      {/* fixed-width container so links distribute evenly */}
-      <div className="w-full max-w-2xl mx-auto mt-8 mb-4 flex">
+      {/* fixed top-right position */}
+      <div className="fixed top-4 right-4 flex items-center gap-2 z-50">
         {links.map((l) => {
           const isActive = pathname === l.href;
           return (
-            // flex-1 gives each link an equal width; text-center keeps label centered
             <Link
               key={l.href}
               href={l.href}
               aria-current={isActive ? "page" : undefined}
               className={
-                "no-underline flex-1 text-center px-2 transition-colors " +
+                "no-underline text-center transition-colors hover:font-bold " +
                 (isActive ? "font-bold text-foreground" : "text-foreground")
               }
             >

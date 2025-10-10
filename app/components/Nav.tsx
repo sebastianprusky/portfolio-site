@@ -16,18 +16,18 @@ export default function Nav() {
 
   return (
     <nav>
-      <div className="flex justify-center gap-2 mt-4 mb-6">
+      {/* fixed-width container so links distribute evenly */}
+      <div className="w-full max-w-2xl mx-auto mt-8 mb-4 flex">
         {links.map((l) => {
           const isActive = pathname === l.href;
           return (
+            // flex-1 gives each link an equal width; text-center keeps label centered
             <Link
               key={l.href}
               href={l.href}
               aria-current={isActive ? "page" : undefined}
               className={
-                // reserve space so bolding doesn't shift siblings: inline-block + min width (uses ch unit)
-                "no-underline inline-block text-center px-1 min-w-[10ch] transition-colors transition-transform " +
-                "hover:font-bold " +
+                "no-underline flex-1 text-center px-2 transition-colors " +
                 (isActive ? "font-bold text-foreground" : "text-foreground")
               }
             >

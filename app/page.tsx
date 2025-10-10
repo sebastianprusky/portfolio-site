@@ -2,7 +2,7 @@ import React, { JSX } from "react";
 
 export default function Home(): JSX.Element {
   return (
-  <main className="min-h-screen px-8 flex flex-col items-center justify-center relative">
+  <main className="min-h-screen px-8 flex flex-col items-center justify-center relative transform -translate-y-8">
     <h1 className="text-5xl font-bold mb-2" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Sebastian Prusky</h1>
     <p className="text-lg text-center mb-2">
       IE + MMSS + CS minor @ Northwestern

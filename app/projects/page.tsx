@@ -13,12 +13,12 @@ const projects: Project[] = [
   {
     title: "Sensify Recycling (ISBE Analytics)",
     subtitle: "Strategic analysis + partner research",
-    description: "Conducted partner research for Sensify, a sustainability tech startup. I developed an outreach strategy for 6 auxilary service providers for Sensify to reach out to in order to scale to University Campuses."
+    description: "Conducted partner research for Sensify, a sustainability tech startup. I developed an outreach strategy for six auxilary service providers for Sensify to reach out to in order to scale to university campuses."
   },
   {
     title: "F&B Insights (ISBE Analytics; current)",
     subtitle: "Strategic analysis + market sizing",
-    description: "Conducting market sizing and strategic recommendations for alcoholic beverage POS data company."
+    description: "Conducting market sizing and providing strategic recommendations for alcoholic beverage POS data company."
   },
   {
     title: "nu.match (current)",
@@ -28,7 +28,7 @@ const projects: Project[] = [
   {
     title: "Portfolio Simulator",
     subtitle: "Excel (VBA Macros)",
-    description: "Built an excel dashboard that allows users to compare portfolios over time. The dashboard pulls historical and real-time stock data from Yahoo Finance."
+    description: "Built an excel dashboard that allows users to compare portfolios over time. The dashboard pulls historical and real-time stock data using Python."
   },
 ];
 

@@ -27,21 +27,39 @@ body {
   overflow: hidden;
 }
 
-/* subtle "float up" entrance animation for home elements */
+/* float-up animation (keep your existing keyframes if present) */
 @keyframes floatUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-float-up {
-  /* doubled duration for a slower float-up */
+/* base utility (same timing as your home screen) */
+.animate-float-up,
+main > *,
+main > * > * {
   animation: floatUp 1000ms cubic-bezier(.22,.9,.3,1) both;
+  will-change: transform, opacity;
 }
 
-/* doubled the small stagger delays to keep the same relative timing */
-.float-delay-100 { animation-delay: 0.16s; }
-.float-delay-200 { animation-delay: 0.32s; }
-.float-delay-300 { animation-delay: 0.48s; }
+/* ensure elements start hidden so animation runs */
+main > *,
+main > * > * {
+  opacity: 0;
+}
+
+/* light stagger for direct children of main */
+main > *:nth-child(1) { animation-delay: 0.08s; }
+main > *:nth-child(2) { animation-delay: 0.16s; }
+main > *:nth-child(3) { animation-delay: 0.24s; }
+main > *:nth-child(4) { animation-delay: 0.32s; }
+main > *:nth-child(5) { animation-delay: 0.40s; }
+main > *:nth-child(6) { animation-delay: 0.48s; }
+
+/* small additional stagger for second-level children */
+main > * > *:nth-child(1) { animation-delay: 0.14s; }
+main > * > *:nth-child(2) { animation-delay: 0.22s; }
+main > * > *:nth-child(3) { animation-delay: 0.30s; }
+main > * > *:nth-child(4) { animation-delay: 0.38s; }
 
 /* carousel helpers */
 .no-scrollbar::-webkit-scrollbar { display: none; }

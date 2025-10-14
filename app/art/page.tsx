@@ -19,13 +19,17 @@ const artImages: ArtItem[] = [
 export default function Art() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // repeat the sequence 5 times (linear, not infinite)
-  const REPEAT = 5;
+  // repeat sequence 10 times total (5 cycles left + 5 cycles right visible)
+  const REPEAT = 10;
   const repeated: ArtItem[] = Array.from({ length: REPEAT }, () => artImages).flat();
+  const count = artImages.length;
   const total = repeated.length;
 
-  // current index in the repeated array (0 .. total-1)
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // start on first painting of the 6th cycle -> cycle index 6 => zero-based element = (6-1)*count
+  const START_CYCLE = 6;
+  const initialIndex = (START_CYCLE - 1) * count; // 5 * count
+
+  const [currentIndex, setCurrentIndex] = useState<number>(initialIndex);
 
   const computeTargetLeft = (container: HTMLElement, child: HTMLElement) => {
     const childCenter = child.offsetLeft + child.offsetWidth / 2;
@@ -56,11 +60,11 @@ export default function Art() {
     scrollToIndex(nextIndex, true);
   };
 
-  // initial snap to the first item (first repetition) so it is centered on load
   useEffect(() => {
+    // initial snap to the chosen start (non-animated) after layout
     const id = window.setTimeout(() => {
-      scrollToIndex(0, false);
-      setCurrentIndex(0);
+      scrollToIndex(initialIndex, false);
+      setCurrentIndex(initialIndex);
     }, 50);
     return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps

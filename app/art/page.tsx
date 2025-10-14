@@ -1,62 +1,24 @@
 "use client";
 
-import React, { JSX, useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 type ArtItem = { src: string; title: string; subtitle?: string; };
 
 const artImages: ArtItem[] = [
-  {
-    src: "/restaurant.jpg",
-    title: "red restaurant",
-    subtitle: "oil on canvas"
-  },
-   {
-    src: "/drive.jpg",
-    title: "navigator",
-    subtitle: "oil on canvas"
-  },
-  {
-    src: "/prayingmantises.JPEG",
-    title: "seaside",
-    subtitle: "oil on wood board"
-  },
-  {
-    src: "/mantissketch.jpg",
-    title: "seaside (planning sketch)",
-    subtitle: ""
-  },
-  {
-    src: "/rollercoaster.jpg",
-    title: "pit stop",
-    subtitle: "oil on canvas"
-  },
-  {
-    src: "/deserthaircut.jpg",
-    title: "deserted",
-    subtitle: "oil on wood board"
-  },
-  {
-    src: "/desertsketch.jpg",
-    title: "deserted (planning sketch)",
-    subtitle: ""
-  },
-  {
-    src: "/gate.jpg",
-    title: "gates",
-    subtitle: "colored pencil on watercolor paper"
-  },
-  {
-    src: "/treeman.jpg",
-    title: "rodeo",
-    subtitle: "colored pencil on black paper"
-  },
-  
+  { src: "/restaurant.jpg", title: "red restaurant", subtitle: "oil on canvas" },
+  { src: "/drive.jpg", title: "navigator", subtitle: "oil on canvas" },
+  { src: "/prayingmantises.JPEG", title: "seaside", subtitle: "oil on wood board" },
+  { src: "/mantissketch.jpg", title: "seaside (planning sketch)", subtitle: "" },
+  { src: "/rollercoaster.jpg", title: "pit stop", subtitle: "oil on canvas" },
+  { src: "/deserthaircut.jpg", title: "deserted", subtitle: "oil on wood board" },
+  { src: "/desertsketch.jpg", title: "deserted (planning sketch)", subtitle: "" },
+  { src: "/gate.jpg", title: "gates", subtitle: "colored pencil on watercolor paper" },
+  { src: "/treeman.jpg", title: "rodeo", subtitle: "colored pencil on black paper" },
 ];
 
-export default function Art(): JSX.Element {
+export default function Art() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
-  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -73,18 +35,15 @@ export default function Art(): JSX.Element {
           }
         });
       },
-      {
-        root: container,
-        threshold: [0.6] // when ~60% visible within container
-      }
+      { root: container, threshold: [0.6] }
     );
 
-    itemRefs.current.forEach((el) => el && observer.observe(el));
+    itemRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
     return () => observer.disconnect();
   }, []);
-
-  const prev = () => setCurrent((c) => (c - 1 + artImages.length) % artImages.length);
-  const next = () => setCurrent((c) => (c + 1) % artImages.length);
 
   const scrollByWidth = (direction: "left" | "right") => {
     const el = containerRef.current;
@@ -93,14 +52,15 @@ export default function Art(): JSX.Element {
     el.scrollBy({ left: direction === "right" ? amount : -amount, behavior: "smooth" });
   };
 
-  const { src, title, subtitle } = artImages[current];
+  const prev = () => scrollByWidth("left");
+  const next = () => scrollByWidth("right");
 
   return (
-  <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto px-4">
-    <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: "Times New Roman, Times, serif" }}>artwork</h1>
-    <div className="text-base mb-4 text-center max-w-2xl">a selection of my pieces and sketches from over the years</div>
+    <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto px-4">
+      <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: "Times New Roman, Times, serif" }}>artwork</h1>
+      <div className="text-base mb-4 text-center max-w-2xl">a selection of my pieces and sketches from over the years</div>
 
-  <div className="relative w-full flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>
+      <div className="relative w-full flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>
         {/* left half hit area - clicking anywhere on left side goes previous */}
         <button
           aria-label="Previous (left side)"
@@ -138,7 +98,7 @@ export default function Art(): JSX.Element {
           {artImages.map((item, i) => (
             <figure
               key={i}
-              ref={(el) => (itemRefs.current[i] = el)}
+              ref={(el) => { itemRefs.current[i] = el; }}
               className="art-item snap-center flex-shrink-0 flex flex-col items-center"
               style={{ transitionDelay: `${i * 30}ms` }}
             >
@@ -171,7 +131,7 @@ export default function Art(): JSX.Element {
         >
           &#8594;
         </button>
-       </div>
+      </div>
     </main>
   );
 }

@@ -23,7 +23,7 @@ const workExperiences: Experience[] = [
     title: "University Program Fellow",
     subtitle: "Plug and Play Tech Center",
     duration: "Oct 2025 - Apr 2026",
-    description: "VC program"
+    description: "VC program - evaluating dozens of startup pitches weekly."
   },
   {
     logo: "/ubs.png",

@@ -55,8 +55,8 @@ const artImages = [
 export default function Art(): JSX.Element {
   const [current, setCurrent] = useState(0);
 
-  const prev = () => setCurrent((current - 1 + artImages.length) % artImages.length);
-  const next = () => setCurrent((current + 1) % artImages.length);
+  const prev = () => setCurrent((c) => (c - 1 + artImages.length) % artImages.length);
+  const next = () => setCurrent((c) => (c + 1) % artImages.length);
 
   const { src, title, subtitle } = artImages[current];
 
@@ -80,12 +80,18 @@ export default function Art(): JSX.Element {
           className="absolute right-0 top-0 h-full w-1/2 z-20 bg-transparent cursor-pointer"
         />
 
-        {/* Left arrow (visual, stays on top of hit areas) */}
+        {/* Left arrow (visual) - fixed in viewport, wider apart */}
         <button
           onClick={prev}
           aria-label="Previous"
-          className="text-3xl px-6 absolute left-0 top-1/2 -translate-y-1/2 z-30"
-          style={{ minWidth: '80px' }}
+          className="text-3xl px-6 z-50 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/50"
+          style={{
+            minWidth: '80px',
+            position: 'fixed',
+            left: 'calc(50% - 450px)',
+            top: '50%',
+            transform: 'translateY(-50%)'
+          }}
         >
           &#8592;
         </button>
@@ -98,12 +104,18 @@ export default function Art(): JSX.Element {
           </div>
         </div>
 
-        {/* Right arrow (visual, stays on top of hit areas) */}
+        {/* Right arrow (visual) - fixed in viewport, wider apart */}
         <button
           onClick={next}
           aria-label="Next"
-          className="text-3xl px-6 absolute right-0 top-1/2 -translate-y-1/2 z-30"
-          style={{ minWidth: '80px' }}
+          className="text-3xl px-6 z-50 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/50"
+          style={{
+            minWidth: '80px',
+            position: 'fixed',
+            left: 'calc(50% + 450px)',
+            top: '50%',
+            transform: 'translateY(-50%)'
+          }}
         >
           &#8594;
         </button>

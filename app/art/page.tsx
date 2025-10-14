@@ -19,15 +19,14 @@ const artImages: ArtItem[] = [
 export default function Art() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // repeat sequence 10 times total (5 cycles left + 5 cycles right visible)
-  const REPEAT = 10;
+  const REPEAT = 10; // 5 cycles left + 5 right
   const repeated: ArtItem[] = Array.from({ length: REPEAT }, () => artImages).flat();
   const count = artImages.length;
   const total = repeated.length;
 
-  // start on first painting of the 6th cycle -> cycle index 6 => zero-based element = (6-1)*count
+  // start on first painting of the 6th cycle (zero-based index = 5 * count)
   const START_CYCLE = 6;
-  const initialIndex = (START_CYCLE - 1) * count; // 5 * count
+  const initialIndex = (START_CYCLE - 1) * count;
 
   const [currentIndex, setCurrentIndex] = useState<number>(initialIndex);
 
@@ -43,7 +42,8 @@ export default function Art() {
     const el = container.children[clamped] as HTMLElement | undefined;
     if (!el) return;
     const left = computeTargetLeft(container, el);
-    container.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
+    if (smooth) container.scrollTo({ left, behavior: "smooth" });
+    else container.scrollLeft = left;
   };
 
   const prev = () => {
@@ -60,16 +60,29 @@ export default function Art() {
     scrollToIndex(nextIndex, true);
   };
 
+  // set initial scroll position synchronously before paint to avoid any visible jump
   useLayoutEffect(() => {
-    // set scroll position synchronously before paint to avoid visible jump
     const container = containerRef.current;
     if (!container) return;
+
     const el = container.children[initialIndex] as HTMLElement | undefined;
     if (el) {
       const left = computeTargetLeft(container, el);
-      container.scrollLeft = left; // instant, before paint
+      container.scrollLeft = left; // instant positioning before paint
+      setCurrentIndex(initialIndex);
+      return;
     }
-    setCurrentIndex(initialIndex);
+
+    // fallback: if children not ready, try once on next frame
+    const id = window.requestAnimationFrame(() => {
+      const el2 = container.children[initialIndex] as HTMLElement | undefined;
+      if (el2) {
+        const left2 = computeTargetLeft(container, el2);
+        container.scrollLeft = left2;
+        setCurrentIndex(initialIndex);
+      }
+    });
+    return () => window.cancelAnimationFrame(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -84,7 +97,6 @@ export default function Art() {
         className="relative w-full flex items-center justify-center mb-4"
         style={{ minHeight: "32rem", width: "820px" }}
       >
-        {/* clickable halves */}
         <button
           aria-label="Previous (left side)"
           onClick={prev}
@@ -96,7 +108,6 @@ export default function Art() {
           className="absolute right-0 top-0 h-full w-1/2 z-20 bg-transparent cursor-pointer"
         />
 
-        {/* left arrow positioned relative to carousel for symmetry */}
         <div
           style={{
             position: "absolute",
@@ -120,27 +131,25 @@ export default function Art() {
           ref={containerRef}
           className="w-full max-w-5xl mx-auto overflow-x-auto art-carousel no-scrollbar px-6 py-4 flex gap-6 snap-x snap-mandatory"
         >
-          {repeated.map((item, i) => {
-            return (
-              <figure
-                key={i}
-                style={{ boxShadow: "none" }}
-                className={`art-item snap-center flex-shrink-0 flex flex-col items-center ${i === currentIndex ? "active" : ""}`}
-              >
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="h-[28rem] w-auto object-contain shadow-none"
-                  style={{ filter: "none", boxShadow: "none" }}
-                  loading="lazy"
-                />
-                <figcaption className="mt-3 text-center">
-                  <div className="font-semibold">{item.title}</div>
-                  {item.subtitle && <div className="italic text-sm">{item.subtitle}</div>}
-                </figcaption>
-              </figure>
-            );
-          })}
+          {repeated.map((item, i) => (
+            <figure
+              key={i}
+              style={{ boxShadow: "none" }}
+              className={`art-item snap-center flex-shrink-0 flex flex-col items-center ${i === currentIndex ? "active" : ""}`}
+            >
+              <img
+                src={item.src}
+                alt={item.title}
+                className="h-[28rem] w-auto object-contain shadow-none"
+                style={{ filter: "none", boxShadow: "none" }}
+                loading="lazy"
+              />
+              <figcaption className="mt-3 text-center">
+                <div className="font-semibold">{item.title}</div>
+                {item.subtitle && <div className="italic text-sm">{item.subtitle}</div>}
+              </figcaption>
+            </figure>
+          ))}
         </div>
 
         <div

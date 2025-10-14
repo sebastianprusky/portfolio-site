@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 type ArtItem = { src: string; title: string; subtitle?: string; };
 
@@ -18,42 +18,28 @@ const artImages: ArtItem[] = [
 
 export default function Art() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const itemRefs = useRef<(HTMLElement | null)[]>([]);
+  const [current, setCurrent] = useState(0);
+  const count = artImages.length;
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const el = entry.target as HTMLElement;
-          if (entry.intersectionRatio > 0.6) {
-            el.classList.add("active");
-          } else {
-            el.classList.remove("active");
-          }
-        });
-      },
-      { root: container, threshold: [0.6] }
-    );
-
-    itemRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollByWidth = (direction: "left" | "right") => {
-    const el = containerRef.current;
-    if (!el) return;
-    const amount = Math.round(el.clientWidth * 0.75);
-    el.scrollBy({ left: direction === "right" ? amount : -amount, behavior: "smooth" });
+  // goTo handles wrapping (looping) and centers the selected item
+  const goTo = (index: number) => {
+    const idx = ((index % count) + count) % count; // safe positive modulo
+    setCurrent(idx);
+    const el = containerRef.current?.children[idx] as HTMLElement | undefined;
+    if (el) {
+      // center the chosen item in the scroll container
+      el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
   };
 
-  const prev = () => scrollByWidth("left");
-  const next = () => scrollByWidth("right");
+  const prev = () => goTo(current - 1);
+  const next = () => goTo(current + 1);
+
+  // center the initial item on mount
+  useEffect(() => {
+    goTo(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto px-4">
@@ -93,19 +79,21 @@ export default function Art() {
 
         <div
           ref={containerRef}
-          className="w-full max-w-5xl mx-auto overflow-x-auto art-carousel no-scrollbar px-6 py-4 flex gap-6"
+          className="w-full max-w-5xl mx-auto overflow-x-auto art-carousel no-scrollbar px-6 py-4 flex gap-6 snap-x snap-mandatory"
         >
           {artImages.map((item, i) => (
             <figure
               key={i}
-              ref={(el) => { itemRefs.current[i] = el; }}
-              className="art-item snap-center flex-shrink-0 flex flex-col items-center"
-              style={{ transitionDelay: `${i * 30}ms` }}
+              // avoid any shadows from global .active rules by forcing no boxShadow inline
+              style={{ boxShadow: "none" }}
+              className={`art-item snap-center flex-shrink-0 flex flex-col items-center ${current === i ? "active" : ""}`}
             >
               <img
                 src={item.src}
                 alt={item.title}
-                className="h-[28rem] w-auto object-contain"
+                // ensure images have no shadow or filter applied
+                className="h-[28rem] w-auto object-contain shadow-none"
+                style={{ filter: "none", boxShadow: "none" }}
                 loading="lazy"
               />
               <figcaption className="mt-3 text-center">

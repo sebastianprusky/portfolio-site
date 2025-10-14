@@ -1,9 +1,10 @@
 "use client";
 
-import React, { JSX, useState } from "react";
+import React, { JSX, useState, useRef, useEffect } from "react";
 
+type ArtItem = { src: string; title: string; subtitle?: string; };
 
-const artImages = [
+const artImages: ArtItem[] = [
   {
     src: "/restaurant.jpg",
     title: "red restaurant",
@@ -53,19 +54,53 @@ const artImages = [
 ];
 
 export default function Art(): JSX.Element {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const itemRefs = useRef<(HTMLElement | null)[]>([]);
   const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.intersectionRatio > 0.6) {
+            el.classList.add("active");
+          } else {
+            el.classList.remove("active");
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: [0.6] // when ~60% visible within container
+      }
+    );
+
+    itemRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const prev = () => setCurrent((c) => (c - 1 + artImages.length) % artImages.length);
   const next = () => setCurrent((c) => (c + 1) % artImages.length);
 
+  const scrollByWidth = (direction: "left" | "right") => {
+    const el = containerRef.current;
+    if (!el) return;
+    const amount = Math.round(el.clientWidth * 0.75);
+    el.scrollBy({ left: direction === "right" ? amount : -amount, behavior: "smooth" });
+  };
+
   const { src, title, subtitle } = artImages[current];
 
   return (
-  <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto">
-    <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>artwork</h1>
+  <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto px-4">
+    <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: "Times New Roman, Times, serif" }}>artwork</h1>
     <div className="text-base mb-4 text-center max-w-2xl">a selection of my pieces and sketches from over the years</div>
 
-  <div className="relative flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>
+  <div className="relative w-full flex items-center justify-center mb-4" style={{ minHeight: '32rem', width: '820px' }}>
         {/* left half hit area - clicking anywhere on left side goes previous */}
         <button
           aria-label="Previous (left side)"
@@ -96,12 +131,29 @@ export default function Art(): JSX.Element {
           &#8592;
         </button>
 
-        <div className="flex flex-col items-center justify-center w-full">
-          <img src={src} alt={title.replace("'", "&apos;")} className="h-[28rem] w-auto rounded mb-4 shadow-2xl" />
-          <div className="text-center">
-            <div className="text-xl font-semibold">{title}</div>
-            <div className="text-base mt-1 italic">{subtitle}</div>
-          </div>
+        <div
+          ref={containerRef}
+          className="w-full max-w-5xl mx-auto overflow-x-auto art-carousel no-scrollbar px-6 py-4 flex gap-6"
+        >
+          {artImages.map((item, i) => (
+            <figure
+              key={i}
+              ref={(el) => (itemRefs.current[i] = el)}
+              className="art-item snap-center flex-shrink-0 flex flex-col items-center"
+              style={{ transitionDelay: `${i * 30}ms` }}
+            >
+              <img
+                src={item.src}
+                alt={item.title}
+                className="h-[28rem] w-auto object-contain"
+                loading="lazy"
+              />
+              <figcaption className="mt-3 text-center">
+                <div className="font-semibold">{item.title}</div>
+                {item.subtitle && <div className="italic text-sm">{item.subtitle}</div>}
+              </figcaption>
+            </figure>
+          ))}
         </div>
 
         {/* Right arrow (visual) - fixed in viewport, wider apart */}

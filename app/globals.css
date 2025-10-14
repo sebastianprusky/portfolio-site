@@ -34,10 +34,42 @@ body {
 }
 
 .animate-float-up {
-  animation: floatUp 500ms cubic-bezier(.22,.9,.3,1) both;
+  /* doubled duration for a slower float-up */
+  animation: floatUp 1000ms cubic-bezier(.22,.9,.3,1) both;
 }
 
-/* small stagger utility classes */
-.float-delay-100 { animation-delay: 0.08s; }
-.float-delay-200 { animation-delay: 0.16s; }
-.float-delay-300 { animation-delay: 0.24s; }
+/* doubled the small stagger delays to keep the same relative timing */
+.float-delay-100 { animation-delay: 0.16s; }
+.float-delay-200 { animation-delay: 0.32s; }
+.float-delay-300 { animation-delay: 0.48s; }
+
+/* carousel helpers */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* each item base + animated active state */
+.art-item {
+  transform: translateY(6px) scale(0.995);
+  opacity: 0.92;
+  transition: transform 360ms cubic-bezier(.22,.9,.3,1), opacity 360ms;
+  will-change: transform, opacity;
+}
+.art-item.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  transition-duration: 420ms;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* smooth scroll snapping */
+.art-carousel {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+.art-carousel > .snap-center { scroll-snap-align: center; }
+
+/* optional subtle hover zoom for pointer users */
+.art-item img:hover {
+  transform: scale(1.02);
+  transition: transform 260ms;
+}

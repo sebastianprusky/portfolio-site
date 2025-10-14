@@ -21,13 +21,16 @@ export default function Art() {
   const [current, setCurrent] = useState(0);
   const count = artImages.length;
 
+  // create display array with clones at both ends so carousel looks continuous
+  const display = [artImages[count - 1], ...artImages, artImages[0]];
+
   // goTo handles wrapping (looping) and centers the selected item
   const goTo = (index: number) => {
     const idx = ((index % count) + count) % count; // safe positive modulo
     setCurrent(idx);
-    const el = containerRef.current?.children[idx] as HTMLElement | undefined;
+    const childIndex = idx + 1; // offset because of the leading clone
+    const el = containerRef.current?.children[childIndex] as HTMLElement | undefined;
     if (el) {
-      // center the chosen item in the scroll container
       el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
   };
@@ -37,7 +40,8 @@ export default function Art() {
 
   // center the initial item on mount
   useEffect(() => {
-    goTo(0);
+    // small timeout to allow layout; scroll to the real first (display index 1)
+    setTimeout(() => goTo(0), 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -61,7 +65,7 @@ export default function Art() {
           className="absolute right-0 top-0 h-full w-1/2 z-20 bg-transparent cursor-pointer"
         />
 
-        {/* Left arrow (visual) - fixed in viewport, wider apart */}
+        {/* Left arrow (visual) - moved further left so it's not too close to center */}
         <button
           onClick={prev}
           aria-label="Previous"
@@ -69,7 +73,7 @@ export default function Art() {
           style={{
             minWidth: '80px',
             position: 'fixed',
-            left: 'calc(50% - 450px)',
+            left: 'calc(50% - 520px)', // moved further left
             top: '50%',
             transform: 'translateY(-50%)'
           }}
@@ -81,30 +85,33 @@ export default function Art() {
           ref={containerRef}
           className="w-full max-w-5xl mx-auto overflow-x-auto art-carousel no-scrollbar px-6 py-4 flex gap-6 snap-x snap-mandatory"
         >
-          {artImages.map((item, i) => (
-            <figure
-              key={i}
-              // avoid any shadows from global .active rules by forcing no boxShadow inline
-              style={{ boxShadow: "none" }}
-              className={`art-item snap-center flex-shrink-0 flex flex-col items-center ${current === i ? "active" : ""}`}
-            >
-              <img
-                src={item.src}
-                alt={item.title}
-                // ensure images have no shadow or filter applied
-                className="h-[28rem] w-auto object-contain shadow-none"
-                style={{ filter: "none", boxShadow: "none" }}
-                loading="lazy"
-              />
-              <figcaption className="mt-3 text-center">
-                <div className="font-semibold">{item.title}</div>
-                {item.subtitle && <div className="italic text-sm">{item.subtitle}</div>}
-              </figcaption>
-            </figure>
-          ))}
+          {display.map((item, i) => {
+            // map display index back to logical index for 'active' state
+            const logicalIndex = (i - 1 + count) % count;
+            return (
+              <figure
+                key={i}
+                // ensure no shadows
+                style={{ boxShadow: "none" }}
+                className={`art-item snap-center flex-shrink-0 flex flex-col items-center ${current === logicalIndex ? "active" : ""}`}
+              >
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="h-[28rem] w-auto object-contain shadow-none"
+                  style={{ filter: "none", boxShadow: "none" }}
+                  loading="lazy"
+                />
+                <figcaption className="mt-3 text-center">
+                  <div className="font-semibold">{item.title}</div>
+                  {item.subtitle && <div className="italic text-sm">{item.subtitle}</div>}
+                </figcaption>
+              </figure>
+            );
+          })}
         </div>
 
-        {/* Right arrow (visual) - fixed in viewport, wider apart */}
+        {/* Right arrow (visual) - symmetric placement */}
         <button
           onClick={next}
           aria-label="Next"
@@ -112,7 +119,7 @@ export default function Art() {
           style={{
             minWidth: '80px',
             position: 'fixed',
-            left: 'calc(50% + 450px)',
+            left: 'calc(50% + 520px)', // symmetric to left
             top: '50%',
             transform: 'translateY(-50%)'
           }}

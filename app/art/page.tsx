@@ -21,33 +21,47 @@ export default function Art() {
   const [current, setCurrent] = useState(0);
   const count = artImages.length;
 
-  // clones at both ends to make the carousel appear continuous
+  // clones at both ends so we can show last on the left of first, etc.
   const display = [artImages[count - 1], ...artImages, artImages[0]];
 
-  // scroll to a display index; if we land on a clone, snap to the real item after the animation
+  // compute target left position to center a child element
+  const computeTargetLeft = (container: HTMLElement, child: HTMLElement) => {
+    const childCenter = child.offsetLeft + child.offsetWidth / 2;
+    const target = Math.max(0, childCenter - container.clientWidth / 2);
+    return target;
+  };
+
+  // scroll container to displayIndex (index in the display[] array)
+  // if smooth=true we animate; if we land on a clone, snap to real after animation
   const scrollToDisplay = (displayIndex: number, smooth = true) => {
     const container = containerRef.current;
     if (!container) return;
     const el = container.children[displayIndex] as HTMLElement | undefined;
     if (!el) return;
 
-    el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", inline: "center", block: "nearest" });
+    const left = computeTargetLeft(container, el);
+    container.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
 
-    // if target is a cloned end, after smooth scroll finish, snap (instant) to the corresponding real item
+    // handle clone snapping: when we target the leading (0) or trailing (count+1) clone
     if (smooth && (displayIndex === 0 || displayIndex === count + 1)) {
-      const snapTo = displayIndex === 0 ? count : 1; // 0 -> last real (display index count), count+1 -> first real (display index 1)
-      // wait for the smooth scroll to finish, then snap instantly
+      const snapTo = displayIndex === 0 ? count : 1; // map to real display index
+      // wait for the smooth animation to complete, then snap instantly
+      const SNAP_DELAY = 420; // matches smooth timing used elsewhere
       window.setTimeout(() => {
         const snapEl = container.children[snapTo] as HTMLElement | undefined;
-        if (snapEl) snapEl.scrollIntoView({ behavior: "auto", inline: "center", block: "nearest" });
-      }, 420); // match typical smooth duration
+        if (snapEl) {
+          const snapLeft = computeTargetLeft(container, snapEl);
+          container.scrollTo({ left: snapLeft, behavior: "auto" });
+        }
+      }, SNAP_DELAY);
     }
   };
 
   const prev = () => {
     const nextLogical = (current - 1 + count) % count;
     setCurrent(nextLogical);
-    const currentDisplay = current + 1;
+
+    const currentDisplay = current + 1; // account for leading clone
     const targetDisplay = currentDisplay - 1;
     scrollToDisplay(targetDisplay, true);
   };
@@ -55,18 +69,20 @@ export default function Art() {
   const next = () => {
     const nextLogical = (current + 1) % count;
     setCurrent(nextLogical);
-    const currentDisplay = current + 1;
+
+    const currentDisplay = current + 1; // account for leading clone
     const targetDisplay = currentDisplay + 1;
     scrollToDisplay(targetDisplay, true);
   };
 
-  // center on the first real item on mount without animation
+  // on mount, wait a tick for layout then snap (non-animated) to the first real item
   useEffect(() => {
-    // allow layout to settle
-    setTimeout(() => {
-      scrollToDisplay(1, false); // display index 1 is the first real item
+    const id = window.setTimeout(() => {
+      // display index 1 is the first real item
+      scrollToDisplay(1, false);
       setCurrent(0);
-    }, 0);
+    }, 50); // short delay lets browser compute sizes
+    return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -93,11 +109,11 @@ export default function Art() {
           className="absolute right-0 top-0 h-full w-1/2 z-20 bg-transparent cursor-pointer"
         />
 
-        {/* arrows positioned relative to the carousel container for perfect symmetry */}
+        {/* left arrow positioned relative to carousel for symmetry */}
         <div
           style={{
             position: "absolute",
-            left: "-60px", // distance from the left edge of the carousel container
+            left: "-60px",
             top: "50%",
             transform: "translateY(-50%)",
             zIndex: 50,
@@ -146,7 +162,7 @@ export default function Art() {
         <div
           style={{
             position: "absolute",
-            right: "-60px", // symmetric distance from the right edge of the carousel container
+            right: "-60px",
             top: "50%",
             transform: "translateY(-50%)",
             zIndex: 50,

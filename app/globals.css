@@ -26,3 +26,18 @@ body {
   font-family: 'times new roman', sans-serif; font-style: italic;
   overflow: hidden;
 }
+
+/* subtle "float up" entrance animation for home elements */
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float-up {
+  animation: floatUp 500ms cubic-bezier(.22,.9,.3,1) both;
+}
+
+/* small stagger utility classes */
+.float-delay-100 { animation-delay: 0.08s; }
+.float-delay-200 { animation-delay: 0.16s; }
+.float-delay-300 { animation-delay: 0.24s; }

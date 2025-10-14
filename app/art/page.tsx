@@ -31,22 +31,24 @@ export default function Art() {
     return target;
   };
 
-  // scroll container to displayIndex (index in the display[] array)
-  // if smooth=true we animate; if we land on a clone, snap to real after animation
-  const scrollToDisplay = (displayIndex: number, smooth = true) => {
+  // Scroll relative from the currently centered child to the target display index.
+  // Using a delta (target.offsetLeft - current.offsetLeft) guarantees the animation moves
+  // in the intended direction (one item forward/back) even when wrapping via clones.
+  const scrollToDisplayRelative = (targetDisplay: number, smooth = true) => {
     const container = containerRef.current;
     if (!container) return;
-    const el = container.children[displayIndex] as HTMLElement | undefined;
-    if (!el) return;
+    const currentDisplay = current + 1; // account for leading clone
+    const currentChild = container.children[currentDisplay] as HTMLElement | undefined;
+    const targetChild = container.children[targetDisplay] as HTMLElement | undefined;
+    if (!currentChild || !targetChild) return;
 
-    const left = computeTargetLeft(container, el);
-    container.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
+    const delta = targetChild.offsetLeft - currentChild.offsetLeft;
+    container.scrollTo({ left: container.scrollLeft + delta, behavior: smooth ? "smooth" : "auto" });
 
-    // handle clone snapping: when we target the leading (0) or trailing (count+1) clone
-    if (smooth && (displayIndex === 0 || displayIndex === count + 1)) {
-      const snapTo = displayIndex === 0 ? count : 1; // map to real display index
-      // wait for the smooth animation to complete, then snap instantly
-      const SNAP_DELAY = 420; // matches smooth timing used elsewhere
+    // if we moved onto a clone, snap to the corresponding real item after the smooth scroll
+    if (smooth && (targetDisplay === 0 || targetDisplay === count + 1)) {
+      const snapTo = targetDisplay === 0 ? count : 1;
+      const SNAP_DELAY = 420;
       window.setTimeout(() => {
         const snapEl = container.children[snapTo] as HTMLElement | undefined;
         if (snapEl) {
@@ -60,26 +62,32 @@ export default function Art() {
   const prev = () => {
     const nextLogical = (current - 1 + count) % count;
     setCurrent(nextLogical);
-
-    const currentDisplay = current + 1; // account for leading clone
+    const currentDisplay = current + 1;
     const targetDisplay = currentDisplay - 1;
-    scrollToDisplay(targetDisplay, true);
+    scrollToDisplayRelative(targetDisplay, true);
   };
 
   const next = () => {
     const nextLogical = (current + 1) % count;
     setCurrent(nextLogical);
-
-    const currentDisplay = current + 1; // account for leading clone
+    const currentDisplay = current + 1;
     const targetDisplay = currentDisplay + 1;
-    scrollToDisplay(targetDisplay, true);
+    scrollToDisplayRelative(targetDisplay, true);
   };
 
   // on mount, wait a tick for layout then snap (non-animated) to the first real item
   useEffect(() => {
     const id = window.setTimeout(() => {
       // display index 1 is the first real item
-      scrollToDisplay(1, false);
+      // center using computeTargetLeft so initial view is exactly on the first item
+      const container = containerRef.current;
+      if (container) {
+        const first = container.children[1] as HTMLElement | undefined;
+        if (first) {
+          const left = computeTargetLeft(container, first);
+          container.scrollTo({ left, behavior: "auto" });
+        }
+      }
       setCurrent(0);
     }, 50); // short delay lets browser compute sizes
     return () => window.clearTimeout(id);

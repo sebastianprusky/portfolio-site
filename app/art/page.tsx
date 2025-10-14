@@ -19,6 +19,9 @@ const artImages: ArtItem[] = [
 export default function Art() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  // add ready flag
+  const [ready, setReady] = useState(false);
+
   const REPEAT = 10; // 5 cycles left + 5 right
   const repeated: ArtItem[] = Array.from({ length: REPEAT }, () => artImages).flat();
   const count = artImages.length;
@@ -47,42 +50,51 @@ export default function Art() {
   };
 
   const prev = () => {
-    if (currentIndex <= 0) return;
+    if (!ready || currentIndex <= 0) return; // guard until images decoded
     const nextIndex = currentIndex - 1;
     setCurrentIndex(nextIndex);
     scrollToIndex(nextIndex, true);
   };
 
   const next = () => {
-    if (currentIndex >= total - 1) return;
+    if (!ready || currentIndex >= total - 1) return; // guard until images decoded
     const nextIndex = currentIndex + 1;
     setCurrentIndex(nextIndex);
     scrollToIndex(nextIndex, true);
   };
 
-  // set initial scroll position synchronously before paint to avoid any visible jump
+  // set initial scroll position synchronously before paint, but only after images decode
   useLayoutEffect(() => {
+    let mounted = true;
     const container = containerRef.current;
     if (!container) return;
 
-    const el = container.children[initialIndex] as HTMLElement | undefined;
-    if (el) {
-      const left = computeTargetLeft(container, el);
-      container.scrollLeft = left; // instant positioning before paint
-      setCurrentIndex(initialIndex);
-      return;
-    }
+    (async () => {
+      // wait for all images inside the carousel to decode (stable sizes)
+      const imgs = Array.from(container.querySelectorAll("img")) as HTMLImageElement[];
+      try {
+        await Promise.all(
+          imgs.map((img) =>
+            img.decode ? img.decode() : new Promise<void>((res) => (img.complete ? res() : (img.onload = () => res())))
+          )
+        );
+      } catch {
+        /* ignore decode errors and continue */
+      }
 
-    // fallback: if children not ready, try once on next frame
-    const id = window.requestAnimationFrame(() => {
-      const el2 = container.children[initialIndex] as HTMLElement | undefined;
-      if (el2) {
-        const left2 = computeTargetLeft(container, el2);
-        container.scrollLeft = left2;
+      if (!mounted) return;
+      const el = container.children[initialIndex] as HTMLElement | undefined;
+      if (el) {
+        const left = computeTargetLeft(container, el);
+        container.scrollLeft = left; // instant positioning before paint
         setCurrentIndex(initialIndex);
       }
-    });
-    return () => window.cancelAnimationFrame(id);
+      setReady(true);
+    })();
+
+    return () => {
+      mounted = false;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

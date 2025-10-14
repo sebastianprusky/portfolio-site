@@ -21,9 +21,9 @@ const projects: Project[] = [
     description: "Conducting market sizing and providing strategic recommendations for alcoholic beverage POS data company."
   },
   {
-    title: "Engineered Display Case",
+    title: "Tail Trail Panel",
     subtitle: "iterative testing, prototyping, design report",
-    description: "Designed and built a display case for a Chicago Museum as part of a 10-week engineering project course."
+    description: "Designed and built an interactive display case for a Chicago Museum as part of a 10-week engineering project course."
   },
   {
     title: "Portfolio Simulator",

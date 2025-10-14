@@ -18,78 +18,50 @@ const artImages: ArtItem[] = [
 
 export default function Art() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [current, setCurrent] = useState(0);
-  const count = artImages.length;
 
-  // clones at both ends so we can show last on the left of first, etc.
-  const display = [artImages[count - 1], ...artImages, artImages[0]];
+  // repeat the sequence 5 times (linear, not infinite)
+  const REPEAT = 5;
+  const repeated: ArtItem[] = Array.from({ length: REPEAT }, () => artImages).flat();
+  const total = repeated.length;
 
-  // compute target left position to center a child element
+  // current index in the repeated array (0 .. total-1)
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const computeTargetLeft = (container: HTMLElement, child: HTMLElement) => {
     const childCenter = child.offsetLeft + child.offsetWidth / 2;
-    const target = Math.max(0, childCenter - container.clientWidth / 2);
-    return target;
+    return Math.max(0, childCenter - container.clientWidth / 2);
   };
 
-  // Scroll relative from the currently centered child to the target display index.
-  // Using a delta (target.offsetLeft - current.offsetLeft) guarantees the animation moves
-  // in the intended direction (one item forward/back) even when wrapping via clones.
-  const scrollToDisplayRelative = (targetDisplay: number, smooth = true) => {
+  const scrollToIndex = (index: number, smooth = true) => {
     const container = containerRef.current;
     if (!container) return;
-    const currentDisplay = current + 1; // account for leading clone
-    const currentChild = container.children[currentDisplay] as HTMLElement | undefined;
-    const targetChild = container.children[targetDisplay] as HTMLElement | undefined;
-    if (!currentChild || !targetChild) return;
-
-    const delta = targetChild.offsetLeft - currentChild.offsetLeft;
-    container.scrollTo({ left: container.scrollLeft + delta, behavior: smooth ? "smooth" : "auto" });
-
-    // if we moved onto a clone, snap to the corresponding real item after the smooth scroll
-    if (smooth && (targetDisplay === 0 || targetDisplay === count + 1)) {
-      const snapTo = targetDisplay === 0 ? count : 1;
-      const SNAP_DELAY = 420;
-      window.setTimeout(() => {
-        const snapEl = container.children[snapTo] as HTMLElement | undefined;
-        if (snapEl) {
-          const snapLeft = computeTargetLeft(container, snapEl);
-          container.scrollTo({ left: snapLeft, behavior: "auto" });
-        }
-      }, SNAP_DELAY);
-    }
+    const clamped = Math.max(0, Math.min(total - 1, index));
+    const el = container.children[clamped] as HTMLElement | undefined;
+    if (!el) return;
+    const left = computeTargetLeft(container, el);
+    container.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
   };
 
   const prev = () => {
-    const nextLogical = (current - 1 + count) % count;
-    setCurrent(nextLogical);
-    const currentDisplay = current + 1;
-    const targetDisplay = currentDisplay - 1;
-    scrollToDisplayRelative(targetDisplay, true);
+    if (currentIndex <= 0) return;
+    const nextIndex = currentIndex - 1;
+    setCurrentIndex(nextIndex);
+    scrollToIndex(nextIndex, true);
   };
 
   const next = () => {
-    const nextLogical = (current + 1) % count;
-    setCurrent(nextLogical);
-    const currentDisplay = current + 1;
-    const targetDisplay = currentDisplay + 1;
-    scrollToDisplayRelative(targetDisplay, true);
+    if (currentIndex >= total - 1) return;
+    const nextIndex = currentIndex + 1;
+    setCurrentIndex(nextIndex);
+    scrollToIndex(nextIndex, true);
   };
 
-  // on mount, wait a tick for layout then snap (non-animated) to the first real item
+  // initial snap to the first item (first repetition) so it is centered on load
   useEffect(() => {
     const id = window.setTimeout(() => {
-      // display index 1 is the first real item
-      // center using computeTargetLeft so initial view is exactly on the first item
-      const container = containerRef.current;
-      if (container) {
-        const first = container.children[1] as HTMLElement | undefined;
-        if (first) {
-          const left = computeTargetLeft(container, first);
-          container.scrollTo({ left, behavior: "auto" });
-        }
-      }
-      setCurrent(0);
-    }, 50); // short delay lets browser compute sizes
+      scrollToIndex(0, false);
+      setCurrentIndex(0);
+    }, 50);
     return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -141,15 +113,12 @@ export default function Art() {
           ref={containerRef}
           className="w-full max-w-5xl mx-auto overflow-x-auto art-carousel no-scrollbar px-6 py-4 flex gap-6 snap-x snap-mandatory"
         >
-          {display.map((item, i) => {
-            const logicalIndex = (i - 1 + count) % count;
+          {repeated.map((item, i) => {
             return (
               <figure
                 key={i}
                 style={{ boxShadow: "none" }}
-                className={`art-item snap-center flex-shrink-0 flex flex-col items-center ${
-                  current === logicalIndex ? "active" : ""
-                }`}
+                className={`art-item snap-center flex-shrink-0 flex flex-col items-center ${i === currentIndex ? "active" : ""}`}
               >
                 <img
                   src={item.src}

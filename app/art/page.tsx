@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 
 type ArtItem = { src: string; title: string; subtitle?: string; };
 
@@ -60,13 +60,16 @@ export default function Art() {
     scrollToIndex(nextIndex, true);
   };
 
-  useEffect(() => {
-    // initial snap to the chosen start (non-animated) after layout
-    const id = window.setTimeout(() => {
-      scrollToIndex(initialIndex, false);
-      setCurrentIndex(initialIndex);
-    }, 50);
-    return () => window.clearTimeout(id);
+  useLayoutEffect(() => {
+    // set scroll position synchronously before paint to avoid visible jump
+    const container = containerRef.current;
+    if (!container) return;
+    const el = container.children[initialIndex] as HTMLElement | undefined;
+    if (el) {
+      const left = computeTargetLeft(container, el);
+      container.scrollLeft = left; // instant, before paint
+    }
+    setCurrentIndex(initialIndex);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

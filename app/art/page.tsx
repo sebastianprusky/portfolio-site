@@ -181,6 +181,13 @@ export default function Art() {
           </button>
         </div>
       </div>
+
+      <a
+        href="https://www.linkedin.com/in/sebastian-prusky"
+        aria-label="LinkedIn"
+        target="_blank"
+        rel="noopener noreferrer"
+      ></a>
     </main>
   );
-}<a href="www.linkedin.com/in/sebastian-prusky" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"></a>
+}

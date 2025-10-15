@@ -19,19 +19,17 @@ const artImages: ArtItem[] = [
 export default function Art() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // add ready flag
-  const [ready, setReady] = useState(false);
-
-  const REPEAT = 10; // 5 cycles left + 5 right
+  const REPEAT = 10; // total repetitions
   const repeated: ArtItem[] = Array.from({ length: REPEAT }, () => artImages).flat();
   const count = artImages.length;
   const total = repeated.length;
 
-  // start on first painting of the 6th cycle (zero-based index = 5 * count)
+  // desired start: first painting of 6th cycle -> zero-based index = 5 * count
   const START_CYCLE = 6;
   const initialIndex = (START_CYCLE - 1) * count;
 
   const [currentIndex, setCurrentIndex] = useState<number>(initialIndex);
+  const [ready, setReady] = useState(false); // block nav until initialized
 
   const computeTargetLeft = (container: HTMLElement, child: HTMLElement) => {
     const childCenter = child.offsetLeft + child.offsetWidth / 2;
@@ -50,51 +48,64 @@ export default function Art() {
   };
 
   const prev = () => {
-    if (!ready || currentIndex <= 0) return; // guard until images decoded
+    if (!ready) return;
+    if (currentIndex <= 0) return;
     const nextIndex = currentIndex - 1;
     setCurrentIndex(nextIndex);
     scrollToIndex(nextIndex, true);
   };
 
   const next = () => {
-    if (!ready || currentIndex >= total - 1) return; // guard until images decoded
+    if (!ready) return;
+    if (currentIndex >= total - 1) return;
     const nextIndex = currentIndex + 1;
     setCurrentIndex(nextIndex);
     scrollToIndex(nextIndex, true);
   };
 
-  // set initial scroll position synchronously before paint, but only after images decode
+  // Synchronously set initial scrollLeft before paint to avoid any visible jump.
   useLayoutEffect(() => {
-    let mounted = true;
     const container = containerRef.current;
     if (!container) return;
 
-    (async () => {
-      // wait for all images inside the carousel to decode (stable sizes)
-      const imgs = Array.from(container.querySelectorAll("img")) as HTMLImageElement[];
-      try {
-        await Promise.all(
-          imgs.map((img) =>
-            img.decode ? img.decode() : new Promise<void>((res) => (img.complete ? res() : (img.onload = () => res())))
-          )
-        );
-      } catch {
-        /* ignore decode errors and continue */
-      }
+    // If children aren't present yet, try one animation frame synchronously.
+    if (container.children.length <= initialIndex) {
+      const id = window.requestAnimationFrame(() => {
+        const el = container.children[initialIndex] as HTMLElement | undefined;
+        if (el) {
+          // temporarily disable smooth behavior, set position, force reflow, then re-enable
+          const prevBehavior = container.style.scrollBehavior;
+          container.style.scrollBehavior = "auto";
+          container.scrollLeft = computeTargetLeft(container, el);
+          // force reflow so the browser paints the position immediately
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          container.getBoundingClientRect();
+          container.style.scrollBehavior = prevBehavior || "";
+          setCurrentIndex(initialIndex);
+          setReady(true);
+        } else {
+          // fallback: mark ready so user can interact (no jump prevention)
+          setReady(true);
+        }
+      });
+      return () => window.cancelAnimationFrame(id);
+    }
 
-      if (!mounted) return;
-      const el = container.children[initialIndex] as HTMLElement | undefined;
-      if (el) {
-        const left = computeTargetLeft(container, el);
-        container.scrollLeft = left; // instant positioning before paint
-        setCurrentIndex(initialIndex);
-      }
+    // children present: set position synchronously
+    const el = container.children[initialIndex] as HTMLElement | undefined;
+    if (el) {
+      const prevBehavior = container.style.scrollBehavior;
+      container.style.scrollBehavior = "auto";
+      container.scrollLeft = computeTargetLeft(container, el);
+      // force reflow then restore behavior
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      container.getBoundingClientRect();
+      container.style.scrollBehavior = prevBehavior || "";
+      setCurrentIndex(initialIndex);
       setReady(true);
-    })();
-
-    return () => {
-      mounted = false;
-    };
+    } else {
+      setReady(true);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

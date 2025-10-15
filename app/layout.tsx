@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
 
         {/* fixed, consistent top padding so every page's section header starts the same */}
-        <div className="px-4 sm:px-0 w-full min-h-screen overflow-auto pt-20">
+        <div className="app-content px-4 sm:px-0 w-full min-h-screen overflow-auto pt-20 md:pt-28">
           {children}
         </div>
       </body>

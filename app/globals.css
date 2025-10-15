@@ -91,3 +91,20 @@ main > * > *:nth-child(4) { animation-delay: 0.38s; }
   transform: scale(1.02);
   transition: transform 260ms;
 }
+
+/* Normalize header spacing so every page's section header sits the same distance
+   below the navbar regardless of page-specific transforms or margins. */
+.app-content main {
+  transform: none !important; /* neutralize per-page translate offsets */
+}
+
+/* force section headers to have no extra top margin so wrapper padding controls spacing */
+.app-content main h1,
+.app-content main .section-header {
+  margin-top: 0 !important;
+}
+
+/* ensure content flow uses the layout's padding (defensive) */
+.app-content > * {
+  box-sizing: border-box;
+}

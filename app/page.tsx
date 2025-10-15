@@ -16,7 +16,7 @@ export default function Home() {
 
       <div className="flex gap-6 animate-float-up float-delay-300 justify-center mt-2">
         <a
-          href="https://www.linkedin.com/in/your-profile"
+          href="https://www.linkedin.com/in/sebastian-prusky"
           aria-label="LinkedIn"
           target="_blank"
           rel="noopener noreferrer"

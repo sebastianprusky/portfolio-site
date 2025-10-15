@@ -182,12 +182,7 @@ export default function Art() {
         </div>
       </div>
 
-      <a
-        href="https://www.linkedin.com/in/sebastian-prusky"
-        aria-label="LinkedIn"
-        target="_blank"
-        rel="noopener noreferrer"
-      ></a>
+      {/* removed stray LinkedIn anchor from art page */}
     </main>
   );
 }

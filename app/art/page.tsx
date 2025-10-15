@@ -118,7 +118,6 @@ export default function Art() {
 
       <div
         className="relative w-full flex items-center justify-center mb-4"
-        style={{ minHeight: "32rem", width: "820px" }}
       >
         <button
           aria-label="Previous (left side)"
@@ -131,20 +130,13 @@ export default function Art() {
           className="absolute right-0 top-0 h-full w-1/2 z-20 bg-transparent cursor-pointer"
         />
 
-        <div
-          style={{
-            position: "absolute",
-            left: "-60px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 50,
-          }}
-        >
+        {/* responsive arrow wrappers: closer on small screens, wider on desktop */}
+        <div className="absolute top-1/2 -translate-y-1/2 -left-[16px] sm:-left-[60px] z-50">
           <button
             onClick={prev}
             aria-label="Previous"
-            className="text-3xl px-6 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/50"
-            style={{ minWidth: "80px" }}
+            className="text-3xl px-4 sm:px-6 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/50"
+            style={{ minWidth: "56px" }} // slightly smaller on mobile
           >
             &#8592;
           </button>
@@ -152,7 +144,7 @@ export default function Art() {
 
         <div
           ref={containerRef}
-          className="w-full max-w-5xl mx-auto overflow-x-auto art-carousel no-scrollbar px-6 py-4 flex gap-6 snap-x snap-mandatory"
+          className="w-full max-w-[820px] mx-auto overflow-x-auto art-carousel no-scrollbar px-4 sm:px-6 py-4 flex gap-4 sm:gap-6 snap-x snap-mandatory"
         >
           {repeated.map((item, i) => (
             <figure
@@ -163,32 +155,24 @@ export default function Art() {
               <img
                 src={item.src}
                 alt={item.title}
-                className="h-[28rem] w-auto object-contain shadow-none"
+                className="w-full max-w-[28rem] sm:max-w-none h-44 sm:h-[28rem] object-contain shadow-none"
                 style={{ filter: "none", boxShadow: "none" }}
                 loading="lazy"
               />
-              <figcaption className="mt-3 text-center">
-                <div className="font-semibold">{item.title}</div>
-                {item.subtitle && <div className="italic text-sm">{item.subtitle}</div>}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+               <figcaption className="mt-3 text-center">
+                 <div className="font-semibold">{item.title}</div>
+                 {item.subtitle && <div className="italic text-sm">{item.subtitle}</div>}
+               </figcaption>
+             </figure>
+           ))}
+         </div>
 
-        <div
-          style={{
-            position: "absolute",
-            right: "-60px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 50,
-          }}
-        >
+        <div className="absolute top-1/2 -translate-y-1/2 -right-[16px] sm:-right-[60px] z-50">
           <button
             onClick={next}
             aria-label="Next"
-            className="text-3xl px-6 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/50"
-            style={{ minWidth: "80px" }}
+            className="text-3xl px-4 sm:px-6 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/50"
+            style={{ minWidth: "56px" }}
           >
             &#8594;
           </button>

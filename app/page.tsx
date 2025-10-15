@@ -2,7 +2,7 @@ import React, { JSX } from "react";
 
 export default function Home(): JSX.Element {
   return (
-    <main className="min-h-screen px-8 flex flex-col items-center justify-center relative -translate-y-6">
+    <main className="min-h-screen px-8 flex flex-col items-center justify-center relative -translate-y-12">
       <h1
         className="text-center text-3xl sm:text-5xl font-bold mb-2 animate-float-up float-delay-100 whitespace-nowrap"
         style={{ fontFamily: "Times New Roman, Times, serif" }}
@@ -14,7 +14,6 @@ export default function Home(): JSX.Element {
         IE + MMSS + CS minor @ Northwestern
       </p>
 
-      {/* LinkedIn icon centered under subtitle */}
       <div className="flex gap-6 animate-float-up float-delay-300 justify-center mt-2">
         <a
           href="https://www.linkedin.com/in/your-profile"

@@ -5,10 +5,10 @@ import { useRef, useLayoutEffect, useState } from "react";
 type ArtItem = { src: string; title: string; subtitle?: string; };
 
 const artImages: ArtItem[] = [
-  { src: "/restaurant.jpg", title: "red restaurant", subtitle: "oil on canvas" },
-  { src: "/drive.jpg", title: "navigator", subtitle: "oil on canvas" },
   { src: "/prayingmantises.JPEG", title: "seaside", subtitle: "oil on wood board" },
   { src: "/mantissketch.jpg", title: "seaside (planning sketch)", subtitle: "" },
+  { src: "/restaurant.jpg", title: "red restaurant", subtitle: "oil on canvas" },
+  { src: "/drive.jpg", title: "navigator", subtitle: "oil on canvas" },
   { src: "/rollercoaster.jpg", title: "pit stop", subtitle: "oil on canvas" },
   { src: "/deserthaircut.jpg", title: "deserted", subtitle: "oil on wood board" },
   { src: "/desertsketch.jpg", title: "deserted (planning sketch)", subtitle: "" },

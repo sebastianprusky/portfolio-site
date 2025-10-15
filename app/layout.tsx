@@ -9,6 +9,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" href="/vercel.svg" />
         <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap" rel="stylesheet" />
+        {/* ensure proper mobile scaling */}
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
       </head>
       <body className="text-foreground min-h-screen">
         <Nav />

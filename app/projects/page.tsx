@@ -40,7 +40,7 @@ export default function Projects() {
       </h1>
       <div className="text-base mb-4 text-center max-w-2xl">a collection of projects I&apos;ve worked on</div>
 
-      <section className="mb-8 w-full">
+      <section className="mb-8 w-full px-4 sm:px-0">
         <ul className="space-y-4 flex flex-col items-center">
           {projects.map((p, idx) => (
             <li

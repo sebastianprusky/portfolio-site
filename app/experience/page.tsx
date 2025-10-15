@@ -30,7 +30,7 @@ const workExperiences: Experience[] = [
     title: "Intern",
     subtitle: "UBS International",
     duration: "June 2025 - July 2025",
-    description: "Created excel projects to analyze and improve fund selection for wealth management division"
+    description: "Created excel projects to analyze and improve fund selection for wealth management division; delivered pitch on healthtech sector in LATAM."
   },
 ];
 
@@ -40,7 +40,7 @@ const campusExperiences: Experience[] = [
     title: "Analyst",
     subtitle: "ISBE Analytics",
     duration: "April 2025 - Present",
-    description: "Partner research for Sensify Analytics; market sizing and competitive analysis for F&B Insights."
+    description: "Partner research for Sensify Recycling; market sizing and competitive analysis for F&B Insights."
   },
   {
     logo: "/mayfest.png",

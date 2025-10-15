@@ -78,7 +78,6 @@ export default function Art() {
           container.style.scrollBehavior = "auto";
           container.scrollLeft = computeTargetLeft(container, el);
           // force reflow so the browser paints the position immediately
-          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           container.getBoundingClientRect();
           container.style.scrollBehavior = prevBehavior || "";
           setCurrentIndex(initialIndex);
@@ -98,7 +97,6 @@ export default function Art() {
       container.style.scrollBehavior = "auto";
       container.scrollLeft = computeTargetLeft(container, el);
       // force reflow then restore behavior
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       container.getBoundingClientRect();
       container.style.scrollBehavior = prevBehavior || "";
       setCurrentIndex(initialIndex);

@@ -7,15 +7,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/vercel.svg" />
-        <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap" rel="stylesheet" />
-        {/* ensure proper mobile scaling */}
         <meta name="viewport" content="width=device-width,initial-scale=1" />
       </head>
       <body className="text-foreground min-h-screen">
-        <Nav />
-        {/* add top padding so section headers sit below the fixed nav */}
-        <div className="pt-16">
+        {/* mobile margins (px-4) that disappear at sm+ so desktop unchanged.
+            wrapper is scrollable so pages scroll on mobile if content overflows */}
+        <div className="px-4 sm:px-0 w-full min-h-screen overflow-auto">
           {children}
         </div>
       </body>

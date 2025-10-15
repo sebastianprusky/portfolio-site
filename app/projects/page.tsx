@@ -22,7 +22,7 @@ const projects: Project[] = [
   },
   {
     title: "Tail Trail Panel",
-    subtitle: "iterative testing, prototyping, design report",
+    subtitle: "iterative testing + prototyping + design report",
     description: "Designed and built an interactive display case for a Chicago Museum as part of a 10-week engineering project course."
   },
   {

@@ -183,4 +183,4 @@ export default function Art() {
       </div>
     </main>
   );
-}
+}<a href="www.linkedin.com/in/sebastian-prusky" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"></a>

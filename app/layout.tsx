@@ -10,12 +10,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width,initial-scale=1" />
       </head>
       <body className="text-foreground min-h-screen">
-        {/* keep nav visible on mobile by rendering it as a sibling (fixed positioning inside Nav keeps it on-screen) */}
+        {/* fixed nav stays visible; content is pushed down so nav does not overlap */}
         <Nav />
 
-        {/* mobile margins (px-4) that disappear at sm+ so desktop unchanged.
-            wrapper is scrollable so pages scroll on mobile if content overflows */}
-        <div className="px-4 sm:px-0 w-full min-h-screen overflow-auto">
+        {/* page content gets top padding to clear the fixed nav.
+            smaller padding on very small screens if you want: adjust pt-16/pt-20 */}
+        <div className="px-4 sm:px-0 w-full min-h-screen overflow-auto pt-20">
           {children}
         </div>
       </body>

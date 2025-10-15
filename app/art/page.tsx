@@ -108,7 +108,7 @@ export default function Art() {
   }, []);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto px-4">
+    <main className="min-h-screen flex flex-col items-center justify-start relative px-4">
       {/* section header — use the same spacing as other pages */}
       <h1
         className="text-2xl font-semibold mt-0 mb-1 text-center"

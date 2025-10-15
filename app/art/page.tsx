@@ -111,7 +111,11 @@ export default function Art() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start relative overflow-auto px-4">
-      <h1 className="text-2xl font-semibold mb-1 text-center" style={{ fontFamily: "Times New Roman, Times, serif" }}>
+      {/* section header — use the same spacing as other pages */}
+      <h1
+        className="text-2xl font-semibold mt-0 mb-1 text-center"
+        style={{ fontFamily: "Times New Roman, Times, serif" }}
+      >
         artwork
       </h1>
       <div className="text-base mb-4 text-center max-w-2xl">a selection of my pieces and sketches from over the years</div>

@@ -20,7 +20,7 @@
 }
 
 body {
-  background: var(--background) url('/mountainsbackground.png') no-repeat center center fixed;
+  background: var(--background) url('/blackbackground.jpg') no-repeat center center fixed;
   background-size: cover;
   color: var(--foreground);
   font-family: 'times new roman', sans-serif; font-style: italic;

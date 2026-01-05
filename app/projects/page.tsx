@@ -13,22 +13,27 @@ const projects: Project[] = [
   {
     title: "Sensify Recycling (ISBE Analytics)",
     subtitle: "Strategic analysis + partner research",
-    description: "Conducted partner research for Sensify, a sustainability tech startup. I developed an outreach strategy for six auxilary service providers for Sensify to reach out to in order to scale to university campuses."
+    description: "Conducted partner research for Sensify, a sustainability tech startup. I developed an outreach strategy for six auxiliary service providers for Sensify to reach out to in order to scale to university campuses."
   },
   {
-    title: "F&B Insights (ISBE Analytics; current)",
+    title: "F&B Insights (ISBE Analytics)",
     subtitle: "Strategic analysis + market sizing",
-    description: "Conducting market sizing and providing strategic recommendations for alcoholic beverage POS data company."
+    description: "Conducting market sizing and providing strategic recommendations for an alcoholic beverage POS data company."
+  },
+  {
+    title: "Hometown Coffee and Juice (ISBE Analytics)",
+    subtitle: "Data analysis + linear regression",
+    description: "Analyzing customer and sales data for a multi-venue cafe and evaluating potential new locations for expansion."
   },
   {
     title: "Tail Trail Panel",
-    subtitle: "iterative testing + prototyping + design report",
+    subtitle: "Iterative testing + prototyping + design report",
     description: "Designed and built an interactive display case for a Chicago Museum as part of a 10-week engineering project course."
   },
   {
     title: "Portfolio Simulator",
     subtitle: "Excel (VBA Macros)",
-    description: "Built an excel dashboard that allows users to compare portfolios over time. The dashboard pulls historical and real-time stock data using Python."
+    description: "Built an Excel dashboard that allows users to compare portfolios over time. The dashboard pulls historical and real-time stock data using Python."
   },
 ];
 

@@ -1,47 +1,33 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteHeader } from "../site-header";
-import { categoryDetails } from "./artworks";
+import { artworks } from "./artworks";
 
 export const metadata: Metadata = {
-  title: "Art | Sebastian Prusky",
+  title: "Sketches & Paintings | Sebastian Prusky",
 };
-
-const categoryPreviews = [
-  {
-    slug: "sketches",
-    image: "/art/sketch-09-blueberries.png",
-  },
-  {
-    slug: "paintings",
-    image: "/art/painting-01-desert-haircut.jpg",
-  },
-  {
-    slug: "photography",
-    image: null,
-  },
-] as const;
 
 export default function ArtPage() {
   return (
-    <main className="section-page">
+    <main className="gallery-page">
       <SiteHeader current="art" />
-      <header className="page-title">
-        <p>Selected work</p>
-        <h1>Art</h1>
+      <header className="gallery-header">
+        <p className="page-kicker">Art</p>
+        <h1>Sketches &amp; Paintings</h1>
+        <p>{artworks.length} works</p>
       </header>
-      <nav className="category-grid" aria-label="Art categories">
-        {categoryPreviews.map(({ slug, image }, index) => {
-          const category = categoryDetails[slug];
-          return (
-            <a className="category-link" href={`/art/${slug}`} key={slug}>
-              {image ? <img src={image} alt="" /> : <span className="empty-image" />}
-              <span className="category-index">0{index + 1}</span>
-              <span className="category-name">{category.title}</span>
-              <span className="category-description">{category.description}</span>
-            </a>
-          );
-        })}
-      </nav>
+      <div className="artwork-grid">
+        {artworks.map((work) => (
+          <Link
+            className="artwork-link"
+            href={`/art/${work.category}/${work.slug}`}
+            key={work.slug}
+          >
+            <img src={work.src} alt={work.title} />
+            <span>{work.title}</span>
+          </Link>
+        ))}
+      </div>
     </main>
   );
 }

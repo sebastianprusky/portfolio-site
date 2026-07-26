@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Sebastian Prusky | Art & Technology",
+  title: "Sebastian Prusky Portfolio",
   description:
-    "A gallery-clean portfolio for visual art and technical projects.",
+    "Artist and developer exploring observation, imagination, and craft.",
   openGraph: {
-    title: "Sebastian Prusky | Art & Technology",
+    title: "Sebastian Prusky Portfolio",
     description:
-      "A gallery-clean portfolio for visual art and technical projects.",
+      "Artist and developer exploring observation, imagination, and craft.",
     type: "website",
   },
   icons: {
@@ -36,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${manrope.variable} ${cormorant.variable} antialiased`}
       >
         {children}
       </body>

@@ -1,43 +1,25 @@
-export type ArtCategory = "sketches" | "paintings" | "photography";
+export type ArtCategory = "sketches" | "paintings";
 
 export type Artwork = {
   slug: string;
   title: string;
-  category: Exclude<ArtCategory, "photography">;
+  category: ArtCategory;
   year: string;
   medium: string;
   src: string;
   note: string;
 };
 
-export const categoryDetails: Record<
-  ArtCategory,
-  { title: string; description: string }
-> = {
+export const categoryDetails: Record<ArtCategory, { title: string }> = {
   sketches: {
     title: "Sketches",
-    description: "Studies, references, and exploratory drawing.",
   },
   paintings: {
     title: "Paintings",
-    description: "Finished narrative and observational work.",
-  },
-  photography: {
-    title: "Photography",
-    description: "A new collection is being prepared.",
   },
 };
 
 export const artworks: Artwork[] = [
-  {
-    slug: "skeleton-study",
-    title: "Skeleton Study",
-    category: "sketches",
-    year: "2022",
-    medium: "Graphite study",
-    src: "/art/sketch-01-skeleton.jpg",
-    note: "An observational anatomy study focused on proportion and structure.",
-  },
   {
     slug: "bridge-cyclist",
     title: "Bridge Cyclist",
@@ -55,15 +37,6 @@ export const artworks: Artwork[] = [
     medium: "Figurative drawing",
     src: "/art/sketch-03-room.jpg",
     note: "A domestic scene exploring overlapping figures and warm interior light.",
-  },
-  {
-    slug: "space-figure",
-    title: "Space Figure",
-    category: "sketches",
-    year: "2022",
-    medium: "Colored drawing",
-    src: "/art/sketch-04-space.jpg",
-    note: "A character study combining pop imagery with a cosmic setting.",
   },
   {
     slug: "spirit-landscape",

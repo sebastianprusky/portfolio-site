@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "../../../site-header";
 import { artworks, isArtCategory } from "../../artworks";
@@ -31,9 +32,9 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
   return (
     <main className="artwork-page">
       <SiteHeader current="art" />
-      <a className="back-link" href={`/art/${category}`}>
-        Back to {category}
-      </a>
+      <Link className="back-link" href="/art">
+        Back to Sketches &amp; Paintings
+      </Link>
       <article className="artwork-detail">
         <div className="detail-image">
           <img src={work.src} alt={work.title} />

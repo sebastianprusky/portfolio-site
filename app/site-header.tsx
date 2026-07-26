@@ -1,29 +1,35 @@
+import Link from "next/link";
+
 type SiteHeaderProps = {
-  current?: "art" | "projects" | "about";
+  current?: "home" | "art" | "projects" | "about";
 };
 
 export function SiteHeader({ current }: SiteHeaderProps) {
   return (
     <header className="site-header">
-      <a className="brand" href="/" aria-label="Sebastian Prusky home">
-        Sebastian Prusky
-      </a>
+      <Link
+        className="home-link"
+        aria-current={current === "home" ? "page" : undefined}
+        href="/"
+      >
+        Home
+      </Link>
       <nav aria-label="Primary navigation">
-        <a aria-current={current === "art" ? "page" : undefined} href="/art">
-          Art
-        </a>
-        <a
+        <Link aria-current={current === "art" ? "page" : undefined} href="/art">
+          Sketches &amp; Paintings
+        </Link>
+        <Link
           aria-current={current === "projects" ? "page" : undefined}
           href="/projects"
         >
           Projects
-        </a>
-        <a
+        </Link>
+        <Link
           aria-current={current === "about" ? "page" : undefined}
           href="/about"
         >
           About
-        </a>
+        </Link>
       </nav>
     </header>
   );

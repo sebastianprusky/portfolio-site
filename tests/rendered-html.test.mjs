@@ -63,10 +63,15 @@ test("gallery and artwork detail routes render", async () => {
   assert.match(detail, /Back to Sketches &amp; Paintings/);
 });
 
-test("projects route remains intentionally empty", async () => {
+test("projects route presents BetterBoxd without external navigation", async () => {
   const response = await render("/projects");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Work will be added here/);
+  assert.match(html, /BetterBoxd/);
+  assert.match(html, /Brief description/);
+  assert.match(html, /Tools \/ Software/);
+  assert.match(html, /Placeholder content pending/);
+  assert.match(html, /type="button"/);
+  assert.doesNotMatch(html, /href="https?:\/\/[^"]*betterboxd/i);
   assert.doesNotMatch(html, /Spatial Inventory System/);
 });

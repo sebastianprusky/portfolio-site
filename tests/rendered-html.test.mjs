@@ -71,7 +71,10 @@ test("projects route presents BetterBoxd without external navigation", async () 
   assert.match(html, /Brief description/);
   assert.match(html, /Tools \/ Software/);
   assert.match(html, /Placeholder content pending/);
-  assert.match(html, /type="button"/);
+  assert.match(html, /role="button"/);
+  assert.match(html, /Live BetterBoxd home screen preview/);
+  assert.match(html, /href="https:\/\/i-want-to-make-a-better\.vercel\.app"/);
+  assert.match(html, /target="_blank"/);
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*betterboxd/i);
   assert.doesNotMatch(html, /Spatial Inventory System/);
 });

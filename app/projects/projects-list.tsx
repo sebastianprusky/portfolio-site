@@ -1,7 +1,9 @@
 "use client";
 
-import type { MouseEvent } from "react";
+import type { KeyboardEvent, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
+
+const betterBoxdUrl = "https://i-want-to-make-a-better.vercel.app";
 
 const betterBoxdSections = [
   "Brief description",
@@ -32,6 +34,17 @@ export function ProjectsList() {
     lastActiveElementRef.current?.focus();
   }, [isBetterBoxdOpen]);
 
+  useEffect(() => {
+    if (!isBetterBoxdOpen) return;
+
+    function handleEscape(event: globalThis.KeyboardEvent) {
+      if (event.key === "Escape") closeProject();
+    }
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isBetterBoxdOpen]);
+
   function closeProject() {
     setIsBetterBoxdOpen(false);
   }
@@ -40,26 +53,41 @@ export function ProjectsList() {
     if (event.target === event.currentTarget) closeProject();
   }
 
+  function handleCardKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key !== "Enter" && event.key !== " ") return;
+
+    event.preventDefault();
+    setIsBetterBoxdOpen(true);
+  }
+
   return (
     <>
       <section className="projects-layout" aria-label="Projects">
-        <button
+        <div
+          aria-label="Open BetterBoxd project details"
           className="project-card"
           onClick={() => setIsBetterBoxdOpen(true)}
-          type="button"
+          onKeyDown={handleCardKeyDown}
+          role="button"
+          tabIndex={0}
         >
           <div className="project-card-visual" aria-hidden="true">
-            <span>B</span>
-            <span>B</span>
+            <iframe
+              loading="lazy"
+              src={betterBoxdUrl}
+              tabIndex={-1}
+              title="Live BetterBoxd home screen preview"
+            />
           </div>
           <span className="project-card-title">BetterBoxd</span>
-        </button>
+        </div>
       </section>
 
       <dialog
         aria-labelledby="betterboxd-title"
         className="project-modal"
         onCancel={closeProject}
+        onClose={closeProject}
         onClick={handleBackdropClick}
         ref={dialogRef}
       >
@@ -76,6 +104,14 @@ export function ProjectsList() {
           <header className="project-modal-header">
             <p className="page-kicker">Project</p>
             <h2 id="betterboxd-title">BetterBoxd</h2>
+            <a
+              className="project-live-link"
+              href={betterBoxdUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Open BetterBoxd
+            </a>
           </header>
           <div className="project-modal-sections">
             {betterBoxdSections.map((section) => (

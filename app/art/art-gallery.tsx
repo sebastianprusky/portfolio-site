@@ -69,6 +69,17 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
     lastActiveElementRef.current?.focus();
   }, [selectedWork]);
 
+  useEffect(() => {
+    if (!selectedWork) return;
+
+    function handleEscape(event: globalThis.KeyboardEvent) {
+      if (event.key === "Escape") closeLightbox();
+    }
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [selectedWork]);
+
   function closeLightbox() {
     setSelectedWork(null);
   }
@@ -142,6 +153,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
         aria-labelledby={selectedWork ? "artwork-lightbox-title" : undefined}
         className="artwork-lightbox"
         onCancel={closeLightbox}
+        onClose={closeLightbox}
         onClick={handleBackdropClick}
         ref={dialogRef}
       >

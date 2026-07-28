@@ -191,17 +191,21 @@ dl {
 
 .artwork-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr) minmax(0, 1.12fr);
   align-items: start;
-  gap: clamp(18px, 3vw, 48px) clamp(16px, 2.6vw, 42px);
+  gap: clamp(18px, 2.4vw, 36px);
   padding: clamp(24px, 4vw, 56px) clamp(16px, 3vw, 54px) clamp(80px, 11vw, 160px);
+}
+
+.artwork-column {
+  display: grid;
+  gap: clamp(18px, 2.4vw, 36px);
 }
 
 .artwork-link {
   position: relative;
   display: block;
   order: var(--gallery-order);
-  grid-column: span 4;
   min-width: 0;
   overflow: hidden;
   border-radius: 22px;
@@ -212,36 +216,6 @@ dl {
   font: inherit;
   padding: 0;
   text-align: inherit;
-}
-
-.artwork-link[data-slug="desert-haircut"] {
-  grid-column: span 7;
-}
-
-.artwork-link[data-slug="night-drive"] {
-  grid-column: span 7;
-}
-
-.artwork-link[data-slug="praying-mantises"],
-.artwork-link[data-slug="restaurant"] {
-  grid-column: span 6;
-}
-
-.artwork-link[data-slug="rollercoaster"] {
-  grid-column: span 7;
-}
-
-.artwork-link[data-slug="bridge-cyclist"],
-.artwork-link[data-slug="room-study"],
-.artwork-link[data-slug="spirit-landscape"] {
-  grid-column: span 5;
-}
-
-.artwork-link[data-slug="palm-portrait"],
-.artwork-link[data-slug="mantis-study"],
-.artwork-link[data-slug="drake-study"],
-.artwork-link[data-slug="blueberry-study"] {
-  grid-column: span 6;
 }
 
 .artwork-link img {
@@ -305,8 +279,8 @@ dl {
 .lightbox-panel {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.36fr);
-  gap: clamp(28px, 4vw, 68px);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.44fr);
+  gap: clamp(28px, 3.4vw, 58px);
   align-items: center;
   width: 100%;
   height: 100%;
@@ -351,7 +325,17 @@ dl {
 
 .lightbox-copy {
   align-self: center;
+  min-width: 0;
   padding-right: clamp(0px, 3vw, 26px);
+}
+
+.detail-copy.lightbox-copy h1 {
+  max-width: 100%;
+  margin-bottom: clamp(28px, 4vw, 38px);
+  font-size: clamp(2.45rem, 3.4vw, 3.8rem);
+  line-height: 0.96;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .back-link {
@@ -489,20 +473,18 @@ dl {
   }
 
   .artwork-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: clamp(20px, 5vw, 42px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(20px, 4.5vw, 38px);
   }
 
-  .artwork-link,
-  .artwork-link[data-featured="true"],
-  .artwork-link[data-slug] {
-    grid-column: span 3;
+  .artwork-column {
+    gap: clamp(20px, 4.5vw, 38px);
   }
 
-  .artwork-link[data-featured="true"],
-  .artwork-link[data-slug="bridge-cyclist"],
-  .artwork-link[data-slug="spirit-landscape"] {
-    grid-column: span 6;
+  .artwork-column:nth-child(3) {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
   }
 
   .artwork-detail {
@@ -523,6 +505,10 @@ dl {
     grid-template-columns: 1fr;
     align-items: start;
     gap: 26px;
+  }
+
+  .detail-copy.lightbox-copy h1 {
+    font-size: clamp(2.3rem, 8vw, 3.6rem);
   }
 
   .lightbox-image img {
@@ -567,11 +553,16 @@ dl {
     grid-template-columns: 1fr;
   }
 
-  .artwork-link,
-  .artwork-link[data-featured="true"],
-  .artwork-link[data-slug] {
-    grid-column: 1;
+  .artwork-column {
+    display: contents;
+  }
+
+  .artwork-link {
     margin-top: 0;
+  }
+
+  .detail-copy.lightbox-copy h1 {
+    font-size: clamp(2.05rem, 11vw, 3.1rem);
   }
 }
 

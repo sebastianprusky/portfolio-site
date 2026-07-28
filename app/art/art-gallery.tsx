@@ -12,20 +12,26 @@ const featuredArtworks = new Set([
   "rollercoaster",
 ]);
 
-const galleryOrder = new Map([
-  ["bridge-cyclist", 1],
-  ["desert-haircut", 2],
-  ["night-drive", 3],
-  ["room-study", 4],
-  ["praying-mantises", 5],
-  ["restaurant", 6],
-  ["spirit-landscape", 7],
-  ["rollercoaster", 8],
-  ["drake-study", 9],
-  ["mantis-study", 10],
-  ["palm-portrait", 11],
-  ["blueberry-study", 12],
-]);
+const galleryOrder = [
+  "bridge-cyclist",
+  "desert-haircut",
+  "night-drive",
+  "room-study",
+  "praying-mantises",
+  "restaurant",
+  "spirit-landscape",
+  "rollercoaster",
+  "drake-study",
+  "mantis-study",
+  "palm-portrait",
+  "blueberry-study",
+];
+
+const galleryColumns = [
+  ["desert-haircut", "room-study", "praying-mantises", "drake-study"],
+  ["bridge-cyclist", "restaurant", "mantis-study", "blueberry-study"],
+  ["night-drive", "rollercoaster", "spirit-landscape", "palm-portrait"],
+];
 
 type ArtGalleryProps = {
   artworks: Artwork[];
@@ -40,6 +46,13 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
+  const artworksBySlug = new Map(artworks.map((work) => [work.slug, work]));
+  const orderedWorks = [
+    ...galleryOrder
+      .map((slug) => artworksBySlug.get(slug))
+      .filter((work): work is Artwork => Boolean(work)),
+    ...artworks.filter((work) => !galleryOrder.includes(work.slug)),
+  ];
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -67,21 +80,61 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
   return (
     <>
       <div className="artwork-grid">
-        {artworks.map((work) => (
-          <button
-            className="artwork-link"
-            data-featured={featuredArtworks.has(work.slug) ? "true" : undefined}
-            data-slug={work.slug}
-            key={work.slug}
-            onClick={() => setSelectedWork(work)}
-            style={
-              { "--gallery-order": galleryOrder.get(work.slug) } as GalleryItemStyle
-            }
-            type="button"
-          >
-            <img src={work.src} alt={work.title} />
-            <span>{work.title}</span>
-          </button>
+        {galleryColumns.map((column, columnIndex) => (
+          <div className="artwork-column" key={column.join("-")}>
+            {column.map((slug) => {
+              const work = artworksBySlug.get(slug);
+              if (!work) return null;
+
+              return (
+                <button
+                  className="artwork-link"
+                  data-featured={featuredArtworks.has(work.slug) ? "true" : undefined}
+                  data-slug={work.slug}
+                  key={work.slug}
+                  onClick={() => setSelectedWork(work)}
+                  style={
+                    {
+                      "--gallery-order": orderedWorks.indexOf(work) + 1,
+                    } as GalleryItemStyle
+                  }
+                  type="button"
+                >
+                  <img src={work.src} alt={work.title} />
+                  <span>{work.title}</span>
+                </button>
+              );
+            })}
+            {columnIndex === galleryColumns.length - 1
+              ? orderedWorks
+                  .filter(
+                    (work) =>
+                      !galleryColumns.some((galleryColumn) =>
+                        galleryColumn.includes(work.slug),
+                      ),
+                  )
+                  .map((work) => (
+                    <button
+                      className="artwork-link"
+                      data-featured={
+                        featuredArtworks.has(work.slug) ? "true" : undefined
+                      }
+                      data-slug={work.slug}
+                      key={work.slug}
+                      onClick={() => setSelectedWork(work)}
+                      style={
+                        {
+                          "--gallery-order": orderedWorks.indexOf(work) + 1,
+                        } as GalleryItemStyle
+                      }
+                      type="button"
+                    >
+                      <img src={work.src} alt={work.title} />
+                      <span>{work.title}</span>
+                    </button>
+                  ))
+              : null}
+          </div>
         ))}
       </div>
 

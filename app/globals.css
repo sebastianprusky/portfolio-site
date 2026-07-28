@@ -205,7 +205,13 @@ dl {
   min-width: 0;
   overflow: hidden;
   border-radius: 22px;
+  border: 0;
   background: var(--surface);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  text-align: inherit;
 }
 
 .artwork-link[data-slug="desert-haircut"] {
@@ -231,14 +237,11 @@ dl {
   grid-column: span 5;
 }
 
-.artwork-link[data-slug="palm-portrait"] {
-  grid-column: span 3;
-}
-
+.artwork-link[data-slug="palm-portrait"],
 .artwork-link[data-slug="mantis-study"],
 .artwork-link[data-slug="drake-study"],
 .artwork-link[data-slug="blueberry-study"] {
-  grid-column: span 3;
+  grid-column: span 6;
 }
 
 .artwork-link img {
@@ -273,6 +276,82 @@ dl {
 .artwork-link:hover > span,
 .artwork-link:focus-visible > span {
   opacity: 1;
+}
+
+.artwork-link:focus-visible,
+.lightbox-close:focus-visible {
+  outline: 2px solid var(--blue-bright);
+  outline-offset: 4px;
+}
+
+.artwork-lightbox {
+  width: min(92vw, 1320px);
+  max-width: none;
+  height: min(88svh, 900px);
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.artwork-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.lightbox-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.36fr);
+  gap: clamp(28px, 4vw, 68px);
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: clamp(24px, 4vw, 58px);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: clamp(14px, 2vw, 24px);
+  right: clamp(14px, 2vw, 24px);
+  z-index: 2;
+  border: 1px solid rgba(245, 243, 239, 0.34);
+  border-radius: 999px;
+  background: rgba(12, 12, 13, 0.72);
+  color: var(--foreground);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 10px 16px;
+}
+
+.lightbox-close:hover {
+  border-color: var(--blue-bright);
+}
+
+.lightbox-image {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+.lightbox-image img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(88svh - clamp(48px, 8vw, 116px));
+  border-radius: 18px;
+  object-fit: contain;
+}
+
+.lightbox-copy {
+  align-self: center;
+  padding-right: clamp(0px, 3vw, 26px);
 }
 
 .back-link {
@@ -432,6 +511,22 @@ dl {
 
   .detail-copy {
     max-width: 660px;
+  }
+
+  .artwork-lightbox {
+    width: min(94vw, 760px);
+    height: min(90svh, 920px);
+    overflow-y: auto;
+  }
+
+  .lightbox-panel {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 26px;
+  }
+
+  .lightbox-image img {
+    max-height: 52svh;
   }
 }
 

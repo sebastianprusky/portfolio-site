@@ -43,7 +43,9 @@ test("art presents one combined gallery", async () => {
   const html = await response.text();
   assert.match(html, /Sketches &amp; Paintings/);
   assert.match(html, /12(?:<!-- -->)? works/);
-  assert.match(html, /href="\/art\/paintings\/desert-haircut"/);
+  assert.match(html, /data-slug="desert-haircut"/);
+  assert.match(html, /data-featured="true"/);
+  assert.match(html, /type="button"/);
   assert.doesNotMatch(html, /Photography|Skeleton Study|Space Figure/);
 });
 
@@ -51,7 +53,7 @@ test("gallery and artwork detail routes render", async () => {
   const galleryResponse = await render("/art");
   assert.equal(galleryResponse.status, 200);
   const gallery = await galleryResponse.text();
-  assert.match(gallery, /\/art\/paintings\/desert-haircut/);
+  assert.match(gallery, /data-slug="desert-haircut"/);
   assert.match(gallery, /\/art\/painting-05-rollercoaster\.jpg/);
 
   const detailResponse = await render("/art/paintings/praying-mantises");

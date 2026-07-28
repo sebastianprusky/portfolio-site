@@ -44,6 +44,11 @@ test("art presents one combined gallery", async () => {
   assert.match(html, /Sketches &amp; Paintings/);
   assert.match(html, /12(?:<!-- -->)? works/);
   assert.match(html, /data-slug="desert-haircut"/);
+  assert.match(html, /data-slug="room-study"/);
+  assert.match(html, /alt="mr morale &amp; the big steppers"/);
+  assert.match(html, />mr morale &amp; the big steppers<\/span>/);
+  assert.doesNotMatch(html, /mr morale &amp;amp; the big steppers/);
+  assert.doesNotMatch(html, /mr morale &amp;amp;amp; the big steppers/);
   assert.match(html, /data-featured="true"/);
   assert.match(html, /type="button"/);
   assert.doesNotMatch(html, /Photography|Skeleton Study|Space Figure/);
@@ -61,6 +66,15 @@ test("gallery and artwork detail routes render", async () => {
   const detail = await detailResponse.text();
   assert.match(detail, /seaside/);
   assert.match(detail, /Back to Sketches &amp; Paintings/);
+
+  const roomResponse = await render("/art/sketches/room-study");
+  assert.equal(roomResponse.status, 200);
+  const room = await roomResponse.text();
+  assert.match(room, /<title>mr morale &amp; the big steppers \| Sebastian Prusky<\/title>/);
+  assert.match(room, /alt="mr morale &amp; the big steppers"/);
+  assert.match(room, /<h1>mr morale &amp; the big steppers<\/h1>/);
+  assert.doesNotMatch(room, /mr morale &amp;amp; the big steppers/);
+  assert.doesNotMatch(room, /mr morale &amp;amp;amp; the big steppers/);
 });
 
 test("projects route presents project cards without direct card navigation", async () => {

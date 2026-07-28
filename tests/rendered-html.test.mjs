@@ -72,7 +72,7 @@ test("projects route presents BetterBoxd without external navigation", async () 
   assert.match(html, /Tools \/ Software/);
   assert.match(html, /Placeholder content pending/);
   assert.match(html, /role="button"/);
-  assert.match(html, /Live BetterBoxd home screen preview/);
+  assert.match(html, /\/projects\/betterboxd-dark-preview\.png/);
   assert.match(html, /href="https:\/\/i-want-to-make-a-better\.vercel\.app"/);
   assert.match(html, /target="_blank"/);
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*betterboxd/i);

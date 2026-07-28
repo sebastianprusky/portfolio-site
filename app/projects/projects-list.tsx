@@ -4,6 +4,7 @@ import type { KeyboardEvent, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
 const betterBoxdUrl = "https://i-want-to-make-a-better.vercel.app";
+const betterBoxdPreviewSrc = "/projects/betterboxd-dark-preview.png";
 
 const betterBoxdSections = [
   "Brief description",
@@ -72,11 +73,9 @@ export function ProjectsList() {
           tabIndex={0}
         >
           <div className="project-card-visual" aria-hidden="true">
-            <iframe
-              loading="lazy"
-              src={betterBoxdUrl}
-              tabIndex={-1}
-              title="Live BetterBoxd home screen preview"
+            <img
+              alt=""
+              src={betterBoxdPreviewSrc}
             />
           </div>
           <span className="project-card-title">BetterBoxd</span>

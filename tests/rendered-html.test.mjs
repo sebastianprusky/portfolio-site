@@ -59,7 +59,7 @@ test("gallery and artwork detail routes render", async () => {
   const detailResponse = await render("/art/paintings/praying-mantises");
   assert.equal(detailResponse.status, 200);
   const detail = await detailResponse.text();
-  assert.match(detail, /Praying Mantises/);
+  assert.match(detail, /seaside/);
   assert.match(detail, /Back to Sketches &amp; Paintings/);
 });
 

@@ -160,6 +160,10 @@ dl {
   line-height: 0.82;
 }
 
+.home-intro h1 span {
+  color: var(--blue-bright);
+}
+
 .home-intro p {
   max-width: 620px;
   margin-bottom: 0;

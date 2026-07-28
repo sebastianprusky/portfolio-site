@@ -146,16 +146,21 @@ dl {
   min-height: 100svh;
 }
 
+.home-page {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
 .home-intro {
   display: grid;
   align-content: center;
-  min-height: calc(100svh - 78px);
-  padding: clamp(60px, 10vw, 150px) clamp(20px, 7vw, 110px);
+  min-height: 0;
+  padding: clamp(24px, 7svh, 96px) clamp(20px, 7vw, 110px);
 }
 
 .home-intro h1 {
   max-width: 1100px;
-  margin-bottom: 24px;
+  margin-bottom: clamp(14px, 2.4svh, 24px);
   font-size: clamp(4.5rem, 12vw, 11rem);
   line-height: 0.82;
 }
@@ -836,7 +841,8 @@ dl {
   }
 
   .home-intro {
-    min-height: calc(100svh - 112px);
+    min-height: 0;
+    padding-block: clamp(20px, 5svh, 56px);
   }
 
   .home-intro h1 {

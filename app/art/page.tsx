@@ -12,9 +12,8 @@ export default function ArtPage() {
     <main className="gallery-page">
       <SiteHeader current="art" />
       <header className="gallery-header">
-        <p className="page-kicker">Art</p>
         <h1>Sketches &amp; Paintings</h1>
-        <p>{artworks.length} works</p>
+        <p className="works-count">{artworks.length} works</p>
       </header>
       <div className="artwork-grid">
         {artworks.map((work) => (

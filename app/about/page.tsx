@@ -12,7 +12,10 @@ export default function AboutPage() {
       <section className="about-layout">
         <div>
           <p className="page-kicker">About</p>
-          <h1 className="about-heading">Sebastian Prusky</h1>
+          <h1 className="about-heading">
+            <span>Sebastian</span>
+            <span>Prusky</span>
+          </h1>
         </div>
         <div className="about-copy">
           <p>

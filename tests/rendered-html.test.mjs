@@ -63,18 +63,19 @@ test("gallery and artwork detail routes render", async () => {
   assert.match(detail, /Back to Sketches &amp; Paintings/);
 });
 
-test("projects route presents BetterBoxd without external navigation", async () => {
+test("projects route presents project cards without direct card navigation", async () => {
   const response = await render("/projects");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /BetterBoxd/);
+  assert.match(html, /betterboxd/);
+  assert.match(html, /HomeMemory/);
   assert.match(html, /Brief description/);
   assert.match(html, /Tools \/ Software/);
   assert.match(html, /Placeholder content pending/);
   assert.match(html, /role="button"/);
   assert.match(html, /\/projects\/betterboxd-dark-preview\.png/);
-  assert.match(html, /href="https:\/\/i-want-to-make-a-better\.vercel\.app"/);
-  assert.match(html, /target="_blank"/);
+  assert.match(html, /\/projects\/homememory-dark-preview\.png/);
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*betterboxd/i);
+  assert.doesNotMatch(html, /href="https?:\/\/[^"]*homememory/i);
   assert.doesNotMatch(html, /Spatial Inventory System/);
 });

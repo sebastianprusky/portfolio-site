@@ -31,7 +31,7 @@ export const artworks: Artwork[] = [
   },
   {
     slug: "room-study",
-    title: "mr morale and the big steppers",
+    title: "mr morale & the big steppers",
     category: "sketches",
     year: "2022",
     medium: "colored pencil",

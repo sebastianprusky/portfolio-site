@@ -33,7 +33,7 @@ test("home presents a minimal portfolio introduction", async () => {
   assert.match(html, /Sebastian Prusky Portfolio/);
   assert.match(html, /href="\/art"/);
   assert.match(html, /href="\/projects"/);
-  assert.match(html, /Artist and developer exploring observation/);
+  assert.match(html, /exploring tech, product design, and art/);
   assert.doesNotMatch(html, /portfolio-paths|Selected practice|Spatial Inventory System/);
 });
 

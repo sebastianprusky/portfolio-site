@@ -724,6 +724,11 @@ dl {
   margin-top: 24px;
 }
 
+.about-layout .about-heading {
+  font-size: clamp(3.8rem, 8vw, 8rem);
+  line-height: 0.84;
+}
+
 .about-copy > p {
   color: var(--foreground);
   font-size: clamp(1.05rem, 1.7vw, 1.28rem);
@@ -843,6 +848,10 @@ dl {
   .projects-empty h1,
   .about-layout h1 {
     font-size: clamp(4.6rem, 22vw, 8rem);
+  }
+
+  .about-layout .about-heading {
+    font-size: clamp(3.8rem, 17vw, 6rem);
   }
 
   .projects-layout {

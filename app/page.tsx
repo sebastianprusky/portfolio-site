@@ -8,7 +8,7 @@ export default function Home() {
         <h1 id="home-heading">
           Sebastian Prusky <span>Portfolio</span>
         </h1>
-        <p>Artist and developer exploring observation, imagination, and craft.</p>
+        <p>exploring tech, product design, and art</p>
       </section>
     </main>
   );

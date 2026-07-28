@@ -31,7 +31,7 @@ export const artworks: Artwork[] = [
   },
   {
     slug: "room-study",
-    title: "mr morale",
+    title: "mr morale and the big steppers",
     category: "sketches",
     year: "2022",
     medium: "colored pencil",
@@ -67,7 +67,7 @@ export const artworks: Artwork[] = [
   },
   {
     slug: "palm-portrait",
-    title: "girl",
+    title: "girl sketch",
     category: "sketches",
     year: "2024",
     medium: "watercolor, colored pencil",
@@ -85,7 +85,7 @@ export const artworks: Artwork[] = [
   },
   {
     slug: "desert-haircut",
-    title: "Deserted",
+    title: "deserted",
     category: "paintings",
     year: "2023",
     medium: "oil on wood",

@@ -1,0 +1,53 @@
+BETTERBOXD
+===========
+
+Brief description
+-----------------
+Work in progress - case study on the weaknesses of Letterboxd's UX and lack of recommendation engine. I built a site that I consider to be a more-user friendly and intelligent version of Letterboxd, designed more for personal use versus Letterboxd's social media strenth. It features AI semantic search and a left vs. right swipe UI to help users easily pick their next watch.
+
+Inspiration
+-----------
+Letterboxd's visual organization frustrates me - specifically how viewing your own ratings is buried deep in your profile, and the most important functions of the app often carry the same visual weight as functions that are likely never used by most users. Also, despite the large amount of data it collects, it has no reccomendation engine, leading to users aimlessly scrolling streaming services for something to watch.
+
+Goals
+-----
+Create a more versatile movie search and ranking app.
+
+Tools / Software
+----------------
+React + Vite
+TypeScript
+Supabase Auth and database sync
+TMDB API
+localStorage
+Local semantic embeddings and recommendation engine
+
+
+HOMEMEMORY
+==========
+
+Brief description
+-----------------
+HomeMemory is a visual memory for your belongings. It helps you remember what you own and where everything is, whether it lives in a cabinet, moving box, or storage unit. It features semantic AI-powered search allowing users to ask HomeMemory questions about what they own.
+
+The beta version for iOS is currently pending for App Store release.
+
+Inspiration
+-----------
+Moving in and out of college dorms for the past few years showed me how quickly we forget where our belongings are stored. I frequently found myself wondering if I left a certain belonging in my storage unit at school, or if it was buried in a drawer or closet at home. HomeMemory aims provide answers to those questions.
+
+Goals
+-----
+Create an app to help people avoid duplicate purchases, facilitate packing and moving, and remember what they own, with a potential smart glasses application in the future.
+
+Tools / Software
+----------------
+SwiftUI
+SwiftData
+AVFoundation
+PhotosUI
+Speech framework
+Google Gemini API
+OpenAI API
+Firebase Analytics
+Xcode

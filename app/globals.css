@@ -728,6 +728,7 @@ dl {
 .project-modal-section p {
   max-width: 420px;
   color: var(--muted);
+  white-space: pre-line;
   line-height: 1.65;
 }
 

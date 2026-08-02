@@ -3,28 +3,55 @@
 import type { KeyboardEvent, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
-const projectSections = [
-  "Brief description",
-  "Demo",
-  "Inspiration",
-  "Goals",
-  "Tools / Software",
+type ProjectSectionKey = "briefDescription" | "inspiration" | "goals" | "tools";
+
+const projectSections: Array<{ key: ProjectSectionKey; label: string }> = [
+  { key: "briefDescription", label: "Brief description" },
+  { key: "inspiration", label: "Inspiration" },
+  { key: "goals", label: "Goals" },
+  { key: "tools", label: "Tools / Software" },
 ];
 
-const projects = [
+type Project = {
+  slug: string;
+  title: string;
+  previewSrc: string;
+  briefDescription: string;
+  inspiration: string;
+  goals: string;
+  tools: string;
+  liveUrl: string | null;
+  liveLabel?: string;
+};
+
+const projects: Project[] = [
   {
     slug: "betterboxd",
     title: "betterboxd",
     previewSrc: "/projects/betterboxd-dark-preview.png",
-    briefDescription: "A work in progress.",
+    briefDescription:
+      "Work in progress - case study on the weaknesses of Letterboxd's UX and lack of recommendation engine. I built a site that I consider to be a more-user friendly and intelligent version of Letterboxd, designed more for personal use versus Letterboxd's social media strenth. It features AI semantic search and a left vs. right swipe UI to help users easily pick their next watch.",
+    inspiration:
+      "Letterboxd's visual organization frustrates me - specifically how viewing your own ratings is buried deep in your profile, and the most important functions of the app often carry the same visual weight as functions that are likely never used by most users. Also, despite the large amount of data it collects, it has no reccomendation engine, leading to users aimlessly scrolling streaming services for something to watch.",
+    goals: "Create a more versatile movie search and ranking app.",
+    tools:
+      "React + Vite, TypeScript, Supabase Auth and database sync, TMDB API, localStorage, and local semantic embeddings and recommendation engine.",
     liveUrl: null,
   },
   {
     slug: "homememory",
     title: "HomeMemory",
     previewSrc: "/projects/homememory-dark-preview.png",
-    briefDescription: "Placeholder content pending.",
+    briefDescription:
+      "HomeMemory is a visual memory for your belongings. It helps you remember what you own and where everything is, whether it lives in a cabinet, moving box, or storage unit. It features semantic AI-powered search allowing users to ask HomeMemory questions about what they own.\n\nThe beta version for iOS is currently pending for App Store release.",
+    inspiration:
+      "Moving in and out of college dorms for the past few years showed me how quickly we forget where our belongings are stored. I frequently found myself wondering if I left a certain belonging in my storage unit at school, or if it was buried in a drawer or closet at home. HomeMemory aims provide answers to those questions.",
+    goals:
+      "Create an app to help people avoid duplicate purchases, facilitate packing and moving, and remember what they own, with a potential smart glasses application in the future.",
+    tools:
+      "SwiftUI, SwiftData, AVFoundation, PhotosUI, Speech framework, Google Gemini API, OpenAI API, Firebase Analytics, and Xcode.",
     liveUrl: "https://www.33labs.org/homememory/",
+    liveLabel: "Visit Site",
   },
 ];
 
@@ -130,18 +157,16 @@ export function ProjectsList() {
                 rel="noreferrer"
                 target="_blank"
               >
-                Open {activeProject.title}
+                {activeProject.liveLabel ?? `Open ${activeProject.title}`}
               </a>
             ) : null}
           </header>
           <div className="project-modal-sections">
             {projectSections.map((section) => (
-              <section className="project-modal-section" key={section}>
-                <h3>{section}</h3>
+              <section className="project-modal-section" key={section.key}>
+                <h3>{section.label}</h3>
                 <p>
-                  {section === "Brief description"
-                    ? activeProject?.briefDescription
-                    : "Placeholder content pending."}
+                  {activeProject?.[section.key]}
                 </p>
               </section>
             ))}

@@ -102,7 +102,6 @@ test("projects route presents cards and connects HomeMemory to its live site", a
   assert.match(html, /HomeMemory/);
   assert.match(html, /Brief description/);
   assert.match(html, /Tools \/ Software/);
-  assert.match(html, /Placeholder content pending/);
   assert.match(html, /role="button"/);
   assert.match(html, /\/projects\/betterboxd-dark-preview\.png/);
   assert.match(html, /\/projects\/homememory-dark-preview\.png/);
@@ -114,7 +113,9 @@ test("projects route presents cards and connects HomeMemory to its live site", a
     new URL("../app/projects/projects-list.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(projectsSource, /A work in progress\./);
+  assert.match(projectsSource, /Work in progress - case study/);
+  assert.match(projectsSource, /Visit Site/);
+  assert.doesNotMatch(projectsSource, /"Demo"/);
   assert.match(projectsSource, /https:\/\/www\.33labs\.org\/homememory\//);
   assert.doesNotMatch(projectsSource, /i-want-to-make-a-better\.vercel\.app/);
 });

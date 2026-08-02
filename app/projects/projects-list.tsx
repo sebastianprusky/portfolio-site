@@ -3,8 +3,6 @@
 import type { KeyboardEvent, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
-const betterBoxdUrl = "https://i-want-to-make-a-better.vercel.app";
-
 const projectSections = [
   "Brief description",
   "Demo",
@@ -18,14 +16,14 @@ const projects = [
     slug: "betterboxd",
     title: "betterboxd",
     previewSrc: "/projects/betterboxd-dark-preview.png",
-    previewClassName: "",
-    liveUrl: betterBoxdUrl,
+    briefDescription: "A work in progress.",
+    liveUrl: null,
   },
   {
     slug: "homememory",
     title: "HomeMemory",
     previewSrc: "/projects/homememory-dark-preview.png",
-    previewClassName: "project-card-visual-contained",
+    briefDescription: "Placeholder content pending.",
     liveUrl: "https://www.33labs.org/homememory/",
   },
 ];
@@ -91,13 +89,7 @@ export function ProjectsList() {
             role="button"
             tabIndex={0}
           >
-            <div
-              aria-hidden="true"
-              className={[
-                "project-card-visual",
-                project.previewClassName,
-              ].filter(Boolean).join(" ")}
-            >
+            <div aria-hidden="true" className="project-card-visual">
               <img
                 alt=""
                 src={project.previewSrc}
@@ -146,7 +138,11 @@ export function ProjectsList() {
             {projectSections.map((section) => (
               <section className="project-modal-section" key={section}>
                 <h3>{section}</h3>
-                <p>Placeholder content pending.</p>
+                <p>
+                  {section === "Brief description"
+                    ? activeProject?.briefDescription
+                    : "Placeholder content pending."}
+                </p>
               </section>
             ))}
           </div>

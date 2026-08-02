@@ -98,5 +98,7 @@ test("projects route presents cards and connects HomeMemory to its live site", a
     new URL("../app/projects/projects-list.tsx", import.meta.url),
     "utf8",
   );
+  assert.match(projectsSource, /A work in progress\./);
   assert.match(projectsSource, /https:\/\/www\.33labs\.org\/homememory\//);
+  assert.doesNotMatch(projectsSource, /i-want-to-make-a-better\.vercel\.app/);
 });

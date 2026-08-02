@@ -35,7 +35,23 @@ test("home presents a minimal portfolio introduction", async () => {
   assert.match(html, /href="\/art"/);
   assert.match(html, /href="\/projects"/);
   assert.match(html, /exploring tech, product design, and art/);
+  assert.doesNotMatch(html, /<a[^>]+href="\/"[^>]*>Home<\/a>/);
   assert.doesNotMatch(html, /portfolio-paths|Selected practice|Spatial Inventory System/);
+});
+
+test("inner pages include Home navigation without underline hover rules", async () => {
+  const response = await render("/projects");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /<a[^>]+href="\/"[^>]*>Home<\/a>/);
+
+  const styles = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+  assert.doesNotMatch(styles, /\.home-link::after/);
+  assert.doesNotMatch(styles, /\.home-section-nav a::after/);
+  assert.match(styles, /\.home-section-nav a[\s\S]*color: var\(--foreground\)/);
 });
 
 test("art presents one combined gallery", async () => {

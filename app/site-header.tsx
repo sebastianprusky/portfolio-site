@@ -17,13 +17,11 @@ export function SectionNav({ className }: { className?: string }) {
 export function SiteHeader({ current }: SiteHeaderProps) {
   return (
     <header className="site-header">
-      <Link
-        className="home-link"
-        aria-current={current === "home" ? "page" : undefined}
-        href="/"
-      >
-        Home
-      </Link>
+      {current !== "home" && (
+        <Link className="home-link" href="/">
+          Home
+        </Link>
+      )}
       {current !== "home" && (
         <nav aria-label="Primary navigation">
           <Link

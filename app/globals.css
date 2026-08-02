@@ -69,66 +69,38 @@ dl {
 
 .home-link,
 .site-header nav a {
-  position: relative;
   display: inline-block;
   padding: 12px 0;
   color: var(--muted);
   font-size: 0.88rem;
   font-weight: 400;
+  transform-origin: center;
   transition:
     color 160ms ease,
     font-weight 160ms ease,
     transform 180ms ease;
 }
 
-.home-link::after,
-.site-header nav a::after {
-  position: absolute;
-  right: 0;
-  bottom: 6px;
-  left: 0;
-  height: 1px;
-  background: currentColor;
-  content: "";
-  opacity: 0;
-  transform: scaleX(0.45);
-  transform-origin: center;
-  transition:
-    opacity 160ms ease,
-    transform 160ms ease;
-}
-
 .home-link:hover,
 .site-header nav a:hover {
-  color: var(--blue-bright);
-  transform: translateY(-1px) scale(1.025);
+  color: var(--foreground);
+  font-weight: 500;
+  transform: scale(1.045);
 }
 
 .home-link:focus-visible,
 .site-header nav a:focus-visible {
-  color: var(--blue-bright);
+  color: var(--foreground);
+  font-weight: 500;
   outline: 2px solid var(--blue-bright);
   outline-offset: 6px;
-  transform: translateY(-1px) scale(1.025);
-}
-
-.home-link:hover::after,
-.site-header nav a:hover::after {
-  opacity: 1;
-  transform: scaleX(1);
+  transform: scale(1.045);
 }
 
 .home-link[aria-current="page"],
 .site-header nav a[aria-current="page"] {
   color: var(--foreground);
   font-weight: 500;
-}
-
-.home-link[aria-current="page"]::after,
-.site-header nav a[aria-current="page"]::after {
-  background: var(--blue-bright);
-  opacity: 1;
-  transform: scaleX(1);
 }
 
 .site-header nav {
@@ -192,42 +164,23 @@ dl {
 }
 
 .home-section-nav a {
-  position: relative;
   display: inline-block;
-  color: var(--muted);
+  color: var(--foreground);
   font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  font-weight: 400;
   line-height: 1.25;
+  transform-origin: left center;
   transition:
     color 160ms ease,
+    font-weight 160ms ease,
     transform 180ms ease;
-}
-
-.home-section-nav a::after {
-  position: absolute;
-  right: 0;
-  bottom: -7px;
-  left: 0;
-  height: 1px;
-  background: currentColor;
-  content: "";
-  opacity: 0;
-  transform: scaleX(0.45);
-  transform-origin: left;
-  transition:
-    opacity 160ms ease,
-    transform 160ms ease;
 }
 
 .home-section-nav a:hover,
 .home-section-nav a:focus-visible {
-  color: var(--blue-bright);
-  transform: translateX(3px);
-}
-
-.home-section-nav a:hover::after,
-.home-section-nav a:focus-visible::after {
-  opacity: 1;
-  transform: scaleX(1);
+  color: #fff;
+  font-weight: 500;
+  transform: scale(1.055);
 }
 
 .home-section-nav a:focus-visible {
@@ -735,10 +688,12 @@ dl {
   padding: 12px 18px;
   color: var(--foreground);
   font-size: 0.88rem;
+  font-weight: 400;
   transition:
     background 180ms ease,
     border-color 180ms ease,
     color 180ms ease,
+    font-weight 160ms ease,
     transform 180ms ease;
 }
 
@@ -746,6 +701,7 @@ dl {
   background: rgba(155, 196, 255, 0.12);
   border-color: var(--blue-bright);
   color: var(--blue-bright);
+  font-weight: 500;
   transform: scale(1.025);
 }
 
@@ -815,13 +771,26 @@ dl {
 }
 
 .contact-links a {
-  border-bottom: 1px solid var(--blue);
-  padding-bottom: 4px;
+  display: inline-block;
   font-size: 0.86rem;
+  font-weight: 400;
+  transform-origin: left center;
+  transition:
+    color 160ms ease,
+    font-weight 160ms ease,
+    transform 180ms ease;
 }
 
-.contact-links a:hover {
-  color: var(--blue-bright);
+.contact-links a:hover,
+.contact-links a:focus-visible {
+  color: var(--foreground);
+  font-weight: 500;
+  transform: scale(1.045);
+}
+
+.contact-links a:focus-visible {
+  outline: 2px solid var(--blue-bright);
+  outline-offset: 6px;
 }
 
 @media (max-width: 900px) {

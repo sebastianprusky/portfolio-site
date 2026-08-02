@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function getWorker() {
@@ -77,7 +78,7 @@ test("gallery and artwork detail routes render", async () => {
   assert.doesNotMatch(room, /mr morale &amp;amp;amp; the big steppers/);
 });
 
-test("projects route presents project cards without direct card navigation", async () => {
+test("projects route presents cards and connects HomeMemory to its live site", async () => {
   const response = await render("/projects");
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -92,4 +93,10 @@ test("projects route presents project cards without direct card navigation", asy
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*betterboxd/i);
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*homememory/i);
   assert.doesNotMatch(html, /Spatial Inventory System/);
+
+  const projectsSource = await readFile(
+    new URL("../app/projects/projects-list.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(projectsSource, /https:\/\/www\.33labs\.org\/homememory\//);
 });

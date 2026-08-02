@@ -26,7 +26,7 @@ const projects = [
     title: "HomeMemory",
     previewSrc: "/projects/homememory-dark-preview.png",
     previewClassName: "project-card-visual-contained",
-    liveUrl: "",
+    liveUrl: "https://www.33labs.org/homememory/",
   },
 ];
 

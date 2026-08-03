@@ -25,7 +25,7 @@ export const artworks: Artwork[] = [
     title: "on the way home",
     category: "sketches",
     year: "2022",
-    medium: "pencil, colored pencil",
+    medium: "watercolor, colored pencil, pen",
     src: "/art/sketch-02-bridge.jpg",
     note: "An exercise in multi-media art, capturing the dreaminess of a memory with friends by adding a surreal element",
   },
@@ -117,7 +117,7 @@ export const artworks: Artwork[] = [
     year: "2023",
     medium: "oil on canvas",
     src: "/art/painting-04-restaurant.jpg",
-    note: "A couple waits for their food at a restaurant while staring down at their phones. This piece keeps the viewer's eye moving using lines in varying direction, including the restaurant walls and ceiling, the checkered cloth, and positioning of the subjects' arms. Experiment in depth and foreshortening.",
+    note: "A couple waits for their food at a restaurant while staring down at their phones. This piece keeps the viewer's eye moving using lines in varying directions, including the restaurant walls and ceiling, the checkered cloth, and positioning of the subjects' arms. Experiment in depth and foreshortening.",
   },
   {
     slug: "rollercoaster",

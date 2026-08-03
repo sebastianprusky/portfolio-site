@@ -1,12 +1,19 @@
 import Link from "next/link";
+import { ThemeToggle } from "./theme";
 
 type SiteHeaderProps = {
   current?: "home" | "art" | "projects" | "about";
 };
 
-export function SectionNav({ className }: { className?: string }) {
+export function SectionNav({
+  className,
+  pageEnter,
+}: {
+  className?: string;
+  pageEnter?: "content" | "title";
+}) {
   return (
-    <nav className={className} aria-label="Portfolio sections">
+    <nav className={className} aria-label="Portfolio sections" data-page-enter={pageEnter}>
       <Link href="/projects">Projects</Link>
       <Link href="/art">Sketches &amp; Paintings</Link>
       <Link href="/about">About</Link>
@@ -16,7 +23,7 @@ export function SectionNav({ className }: { className?: string }) {
 
 export function SiteHeader({ current }: SiteHeaderProps) {
   return (
-    <header className="site-header">
+    <header className={current === "home" ? "site-header site-header-home" : "site-header"}>
       {current !== "home" && (
         <Link className="home-link" href="/">
           Home
@@ -41,6 +48,7 @@ export function SiteHeader({ current }: SiteHeaderProps) {
           </Link>
         </nav>
       )}
+      <ThemeToggle />
     </header>
   );
 }

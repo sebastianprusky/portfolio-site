@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { AboutClock } from "../about-clock";
+import { AboutEmail } from "../about-email";
+import { ScrambleHeading } from "../scramble-heading";
 import { SiteHeader } from "../site-header";
 
 export const metadata: Metadata = {
@@ -9,15 +12,18 @@ export default function AboutPage() {
   return (
     <main className="about-page">
       <SiteHeader current="about" />
-      <section className="about-layout">
-        <div>
-          <p className="page-kicker">About</p>
-          <h1 className="about-heading">
-            <span>Sebastian</span>
-            <span>Prusky</span>
-          </h1>
+      <section className="about-layout" aria-labelledby="about-heading">
+        <div className="about-identity" data-page-enter="title">
+          <ScrambleHeading
+            className="about-heading"
+            id="about-heading"
+            key="about-heading"
+          >
+            Sebastian Prusky
+          </ScrambleHeading>
+          <AboutClock />
         </div>
-        <div className="about-copy">
+        <div className="about-copy" data-page-enter="content">
           <p>
             I&apos;m an artist and designer from Miami, FL. My work focuses on
             projects that bring beauty and functionality to the user
@@ -26,22 +32,24 @@ export default function AboutPage() {
             Northwestern University.
           </p>
           <p className="about-note">
-            You can reach me at sebastianprusky2028@u.northwestern.edu.
+            You can reach me at <AboutEmail />.
           </p>
           <div className="contact-links" aria-label="Contact links">
             <a
+              aria-label="GitHub"
               href="https://github.com/sebastianprusky"
               rel="noreferrer"
               target="_blank"
             >
-              GitHub
+              <span aria-hidden="true" className="contact-icon contact-icon-github" />
             </a>
             <a
+              aria-label="LinkedIn"
               href="https://www.linkedin.com/in/sebastian-prusky"
               rel="noreferrer"
               target="_blank"
             >
-              LinkedIn
+              <span aria-hidden="true" className="contact-icon contact-icon-linkedin" />
             </a>
           </div>
         </div>

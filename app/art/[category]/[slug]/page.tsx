@@ -36,10 +36,10 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
         Back to Sketches &amp; Paintings
       </Link>
       <article className="artwork-detail">
-        <div className="detail-image">
+        <div className="detail-image" data-page-enter="content">
           <img src={work.src} alt={work.title} />
         </div>
-        <div className="detail-copy">
+        <div className="detail-copy" data-page-enter="title">
           <p className="detail-category">{work.category}</p>
           <h1>{work.title}</h1>
           <dl>

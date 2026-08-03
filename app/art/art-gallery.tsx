@@ -90,7 +90,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
 
   return (
     <>
-      <div className="artwork-grid">
+      <div className="artwork-grid" data-page-enter="content">
         {galleryColumns.map((column, columnIndex) => (
           <div className="artwork-column" key={column.join("-")}>
             {column.map((slug) => {

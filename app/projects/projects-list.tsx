@@ -104,7 +104,7 @@ export function ProjectsList() {
 
   return (
     <>
-      <section className="projects-layout" aria-label="Projects">
+      <section className="projects-layout" aria-label="Projects" data-page-enter="content">
         {projects.map((project) => (
           <div
             aria-label={`Open ${project.title} project details`}

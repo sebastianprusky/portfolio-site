@@ -6,19 +6,25 @@ import type { Artwork } from "./artworks";
 
 const featuredArtworks = new Set([
   "desert-haircut",
+  "blue-figure",
   "night-drive",
+  "ribbon-figure",
   "praying-mantises",
   "restaurant",
+  "red-flowers",
   "rollercoaster",
 ]);
 
 const galleryOrder = [
   "bridge-cyclist",
   "desert-haircut",
+  "blue-figure",
   "night-drive",
   "room-study",
+  "ribbon-figure",
   "praying-mantises",
   "restaurant",
+  "red-flowers",
   "spirit-landscape",
   "rollercoaster",
   "drake-study",
@@ -28,9 +34,9 @@ const galleryOrder = [
 ];
 
 const galleryColumns = [
-  ["desert-haircut", "room-study", "praying-mantises", "drake-study"],
-  ["bridge-cyclist", "restaurant", "mantis-study", "blueberry-study"],
-  ["night-drive", "rollercoaster", "spirit-landscape", "palm-portrait"],
+  ["desert-haircut", "blue-figure", "room-study", "praying-mantises", "drake-study"],
+  ["bridge-cyclist", "ribbon-figure", "restaurant", "mantis-study", "blueberry-study"],
+  ["night-drive", "red-flowers", "rollercoaster", "spirit-landscape", "palm-portrait"],
 ];
 
 type ArtGalleryProps = {

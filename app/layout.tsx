@@ -17,11 +17,11 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Sebastian Prusky Portfolio",
   description:
-    "Artist and developer exploring observation, imagination, and craft.",
+    "Artist and developer exploring tech, product design, and art",
   openGraph: {
     title: "Sebastian Prusky Portfolio",
     description:
-      "Artist and developer exploring observation, imagination, and craft.",
+      "Artist and developer exploring tech, product design, and art",
     type: "website",
   },
   icons: {

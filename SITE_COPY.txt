@@ -1,0 +1,344 @@
+SITE COPY — SEBASTIAN PRUSKY PORTFOLIO
+
+This file contains the current user-facing text across the site. Edit the wording here as a reference when updating the site.
+
+
+GLOBAL NAVIGATION
+
+Home
+Projects
+Sketches & Paintings
+About
+
+Site description:
+Artist and developer exploring tech, product design, and art
+
+HOME PAGE
+
+Browser title:
+Sebastian Prusky Portfolio
+
+Main heading:
+Sebastian Prusky Portfolio
+
+Intro:
+exploring tech, product design, and art
+
+Section links:
+Projects
+Sketches & Paintings
+About
+
+
+ABOUT PAGE
+
+Browser title:
+About | Sebastian Prusky
+
+Page label:
+About
+
+Heading:
+Sebastian
+Prusky
+
+Bio:
+I'm an artist and designer from Miami, FL. My work focuses on projects that bring beauty and functionality to the user experience, across both visual art and tech. I'm currently studying Industrial Engineering, MMSS, and Computer Science at Northwestern University.
+
+Contact note:
+You can reach me at sebastianprusky2028@u.northwestern.edu.
+
+Contact links:
+GitHub
+LinkedIn
+
+PROJECTS PAGE
+
+Browser title:
+Projects | Sebastian Prusky
+
+Page heading:
+Projects
+
+Project interface labels:
+Project
+Brief description
+Inspiration
+Goal
+Tools / Software
+Close
+Visit Site
+
+PROJECT: BETTERBOXD
+
+Title:
+Betterboxd
+
+Brief description:
+Work in progress - case study on the weaknesses of Letterboxd's UX and lack of recommendation engine. I built a site that I consider to be a more-user friendly and intelligent version of Letterboxd, designed more for personal use versus Letterboxd's social media strenth. It features AI semantic search and a left vs. right swipe UI to help users easily pick their next watch.
+
+Inspiration:
+Letterboxd's visual organization frustrates me - specifically how viewing your own ratings is buried deep in your profile, and the most important functions of the app often carry the same visual weight as functions that are likely never used by most users. Also, despite the large amount of data it collects, it has no reccomendation engine, leading to users aimlessly scrolling streaming services for something to watch.
+
+Goal:
+Create a more versatile movie search and ranking app.
+
+Tools / Software:
+React + Vite, TypeScript, Supabase Auth and database sync, TMDB API
+
+
+PROJECT: HOMEMEMORY
+
+Title:
+HomeMemory
+
+Brief description:
+HomeMemory is a visual memory for your belongings. It helps you remember what you own and where everything is, whether it lives in a cabinet, moving box, or storage unit. It features semantic AI-powered search allowing users to ask HomeMemory questions about what they own.
+
+The beta version for iOS is currently pending for App Store release.
+
+Inspiration:
+Moving in and out of college dorms for the past few years showed me how quickly we forget where our belongings are stored. I frequently found myself wondering if I left a certain belonging in my storage unit at school, or if it was buried in a drawer or closet at home. HomeMemory aims to provide answers to those questions.
+
+Goal:
+Create an app to help people avoid duplicate purchases, move into a new home, and remember what they own, with potential smart glasses applications in the future.
+
+Tools / Software:
+Swift / SwiftUI, SwiftData, Gemini API, OpenAI API, Firebase Analytics, Xcode
+
+Live link label:
+Visit Site
+
+
+ART PAGE
+
+Browser title:
+Sketches & Paintings | Sebastian Prusky
+
+Page heading:
+Sketches & Paintings
+
+Gallery count:
+12 works
+
+Artwork interface labels:
+Close
+Year
+Medium
+Back to Sketches & Paintings
+
+
+ARTWORK: ON THE WAY HOME
+
+Title:
+on the way home
+
+Category:
+sketches
+
+Year:
+2022
+
+Medium:
+pencil, colored pencil
+
+Description:
+An exercise in multi-media art, capturing the dreaminess of a memory with friends by adding a surreal element
+
+
+ARTWORK: MR MORALE & THE BIG STEPPERS
+
+Title:
+mr morale & the big steppers
+
+Category:
+sketches
+
+Year:
+2022
+
+Medium:
+colored pencil
+
+Description:
+An exercise in fine details and shadow (reference: Mr. Morale & the Big Steppers, 2022)
+
+
+ARTWORK: KIDS SEE GHOSTS
+
+Title:
+kids see ghosts
+
+Category:
+sketches
+
+Year:
+2022
+
+Medium:
+colored pencil
+
+Description:
+An exercise in color blending (reference: Kids See Ghosts, 2018)
+
+
+ARTWORK: NOTHING WAS THE SAME
+
+Title:
+nothing was the same
+
+Category:
+sketches
+
+Year:
+2022
+
+Medium:
+colored pencil
+
+Description:
+An exercise in creating perceived texture (reference: Nothing Was the Same, 2011)
+
+
+ARTWORK: "SEASIDE" PLANNING
+
+Title:
+"seaside" planning
+
+Category:
+sketches
+
+Year:
+2024
+
+Medium:
+pencil, colored pencil
+
+Description:
+Planning page for painting "seaside," experimenting with composition, color palette, and subject detail
+
+
+ARTWORK: GIRL SKETCH
+
+Title:
+girl sketch
+
+Category:
+sketches
+
+Year:
+2024
+
+Medium:
+watercolor, colored pencil
+
+Description:
+A portrait study focusing on conveying emotion through facial expression and depth of colors
+
+
+ARTWORK: BLUE SKETCH
+
+Title:
+blue sketch
+
+Category:
+sketches
+
+Year:
+2024
+
+Medium:
+watercolor, colored pencil
+
+Description:
+An exercise in abstract composition
+
+
+ARTWORK: DESERTED
+
+Title:
+deserted
+
+Category:
+paintings
+
+Year:
+2023
+
+Medium:
+oil on wood
+
+Description:
+The headless barber and unusual setting aim to create an eerie mood. The warped perspective and rounded, far-away horizon line add to the empty and surreal feel of the scene.
+
+
+ARTWORK: GPS
+
+Title:
+gps
+
+Category:
+paintings
+
+Year:
+2025
+
+Medium:
+oil on canvas
+
+Description:
+A nighttime adventure with friends, mirrored by the chaos of shouting out navigation cues to a driver. Experiment in point-of-view perspective.
+
+
+ARTWORK: SEASIDE
+
+Title:
+seaside
+
+Category:
+paintings
+
+Year:
+2024
+
+Medium:
+oil on wood
+
+Description:
+A trio of praying mantises sit at a seaside steakhouse. This piece draws attention using the contrast of the praying mantises with a lavish setting, utilizing the visual similarity in anatomical features between the mantises and humans.
+
+
+ARTWORK: RED RESTAURANT
+
+Title:
+red restaurant
+
+Category:
+paintings
+
+Year:
+2023
+
+Medium:
+oil on canvas
+
+Description:
+A couple waits for their food at a restaurant while staring down at their phones. This piece keeps the viewer's eye moving using lines in varying direction, including the restaurant walls and ceiling, the checkered cloth, and positioning of the subjects' arms. Experiment in depth and foreshortening.
+
+
+ARTWORK: SNACK BREAK
+
+Title:
+snack break
+
+Category:
+paintings
+
+Year:
+2023
+
+Medium:
+oil on canvas
+
+Description:
+A rollercoaster rider with a menu looks up at a waiter taking his order. This piece merges opposing scenes and uses a foreshortened perspective to engage the viewer.

@@ -19,14 +19,14 @@ export default function AboutPage() {
         </div>
         <div className="about-copy">
           <p>
-            I&apos;m an artist and designer, passionate about introducing simple
-            beauty and functionality to the user experience across both visual
-            art and tech. I&apos;m originally from Miami, FL, and currently
-            studying Industrial Engineering, MMSS, and CS at Northwestern
-            University.
+            I&apos;m an artist and designer from Miami, FL. My work focuses on
+            projects that bring beauty and functionality to the user
+            experience, across both visual art and tech. I&apos;m currently
+            studying Industrial Engineering, MMSS, and Computer Science at
+            Northwestern University.
           </p>
           <p className="about-note">
-            You can reach me at sebastianprusky2028@u.northwestern.edu
+            You can reach me at sebastianprusky2028@u.northwestern.edu.
           </p>
           <div className="contact-links" aria-label="Contact links">
             <a
@@ -43,7 +43,6 @@ export default function AboutPage() {
             >
               LinkedIn
             </a>
-            <a href="mailto:sebastianprusky2028@u.northwestern.edu">Email</a>
           </div>
         </div>
       </section>

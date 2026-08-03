@@ -59,12 +59,9 @@ test("art presents one combined gallery", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Sketches &amp; Paintings/);
-  assert.match(html, /15(?:<!-- -->)? works/);
+  assert.match(html, /12(?:<!-- -->)? works/);
   assert.match(html, /data-slug="desert-haircut"/);
   assert.match(html, /data-slug="room-study"/);
-  assert.match(html, /data-slug="blue-figure"/);
-  assert.match(html, /data-slug="ribbon-figure"/);
-  assert.match(html, /data-slug="red-flowers"/);
   assert.match(html, /alt="mr morale &amp; the big steppers"/);
   assert.match(html, />mr morale &amp; the big steppers<\/span>/);
   assert.doesNotMatch(html, /mr morale &amp;amp; the big steppers/);

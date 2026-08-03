@@ -93,15 +93,6 @@ export const artworks: Artwork[] = [
     note: "The headless barber and unusual setting aim to create an eerie mood. The warped perspective and rounded, far-away horizon line add to the empty and surreal feel of the scene",
   },
   {
-    slug: "blue-figure",
-    title: "untitled figure",
-    category: "paintings",
-    year: "—",
-    medium: "mixed media",
-    src: "/art/painting-06-blue-figure.jpg",
-    note: "A blue figure leans into the branches of a flowering tree, set against bold black-and-white curves and a vivid green ground.",
-  },
-  {
     slug: "night-drive",
     title: "gps",
     category: "paintings",
@@ -111,15 +102,6 @@ export const artworks: Artwork[] = [
     note: "A nighttime adventure with friends, mirrored by the chaos of shouting out navigation cues to a driver. Experiment in point-of-view perspective",
   },
   {
-    slug: "ribbon-figure",
-    title: "untitled ribbon figure",
-    category: "paintings",
-    year: "—",
-    medium: "acrylic on canvas",
-    src: "/art/painting-07-ribbon-figure.jpg",
-    note: "A figure stands within looping blue forms, pairing a cropped pose with a tightly controlled palette of blue, gray, black, and white.",
-  },
-  {
     slug: "praying-mantises",
     title: "seaside",
     category: "paintings",
@@ -127,15 +109,6 @@ export const artworks: Artwork[] = [
     medium: "oil on wood",
     src: "/art/painting-03-praying-mantises.jpeg",
     note: "A trio of praying mantises sit at a seaside steakhouse. This piece draws attention using the contrast of the praying mantises with a lavish setting, utilizing the visual similarity in anatomical features between the mantises and humans",
-  },
-  {
-    slug: "red-flowers",
-    title: "red flowers",
-    category: "paintings",
-    year: "—",
-    medium: "mixed media",
-    src: "/art/painting-08-red-flowers.jpg",
-    note: "A close-up study of red flowers and layered green leaves, emphasizing texture through dense marks and high-contrast color.",
   },
   {
     slug: "restaurant",

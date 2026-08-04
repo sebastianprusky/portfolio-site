@@ -3,9 +3,10 @@
 import { Fragment, useEffect, useState } from "react";
 
 const SYMBOLS = "#%&*+/<=>?@[]^_{}";
-const FRAME_DURATION = 52;
-const REVEAL_DELAY = 58;
-const SCRAMBLE_LEAD_IN = 420;
+const ANIMATION_SPEED = 1.5;
+const FRAME_DURATION = Math.round(52 / ANIMATION_SPEED);
+const REVEAL_DELAY = Math.round(58 / ANIMATION_SPEED);
+const SCRAMBLE_LEAD_IN = Math.round(420 / ANIMATION_SPEED);
 
 function symbolFor(index: number, frame: number) {
   const step = 5 + (index % 3);

@@ -10,7 +10,9 @@ export default function Home() {
           <ScrambleHeading accentLastWord autoPlay id="home-heading" key="home-heading">
             Sebastian Prusky Portfolio
           </ScrambleHeading>
-          <p className="home-description">exploring tech, product design, and art</p>
+          <p className="home-description">
+            exploring engineering, product design, and art
+          </p>
         </div>
         <SectionNav className="home-section-nav" pageEnter="content" />
       </section>

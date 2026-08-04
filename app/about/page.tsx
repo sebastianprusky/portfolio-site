@@ -25,7 +25,7 @@ export default function AboutPage() {
         </div>
         <div className="about-copy" data-page-enter="content">
           <p>
-            I&apos;m an artist and designer from Miami, FL. My work focuses on
+            I&apos;m an engineer and artist from Miami, FL. My work focuses on
             projects that bring beauty and functionality to the user
             experience, across both visual art and tech. I&apos;m currently
             studying Industrial Engineering, MMSS, and Computer Science at

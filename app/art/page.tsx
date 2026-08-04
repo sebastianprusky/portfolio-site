@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ScrambleHeading } from "../scramble-heading";
 import { SiteHeader } from "../site-header";
 import { ArtGallery } from "./art-gallery";
 import { artworks } from "./artworks";
@@ -13,14 +12,9 @@ export default function ArtPage() {
     <main className="gallery-page">
       <SiteHeader current="art" />
       <header className="gallery-header" data-page-enter="title">
-        <ScrambleHeading
-          className="gallery-title"
-          id="art-heading"
-          key="art-heading"
-          stacked={false}
-        >
+        <h1 className="gallery-title" id="art-heading">
           Sketches &amp; Paintings
-        </ScrambleHeading>
+        </h1>
       </header>
       <ArtGallery artworks={artworks} />
     </main>

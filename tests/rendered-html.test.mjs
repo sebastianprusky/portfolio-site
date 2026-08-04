@@ -125,7 +125,7 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.match(styles, /\.scramble-word-name[\s\S]*color: var\(--foreground\)/);
   assert.match(styles, /\.scramble-character \{\s*position: relative;\s*display: inline-block/);
   assert.match(styles, /\.scramble-glyph \{\s*position: absolute;\s*inset: 0;/);
-  assert.match(styles, /\.home-intro h1 \{[\s\S]*?font-size: clamp\(5\.5rem, 10\.6vw, 10\.75rem\)/);
+  assert.match(styles, /\.home-intro h1 \{[\s\S]*?font-size: clamp\(7rem, min\(28svh, 18vw\), 21rem\)/);
   assert.match(styles, /\.home-intro h1 \.scramble-trigger \{[\s\S]*?margin-left: -0\.028em/);
   assert.match(styles, /\.home-description[\s\S]*color: var\(--foreground\)/);
   assert.doesNotMatch(styles, /\.works-count/);
@@ -133,6 +133,7 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.match(styles, /\.artwork-link > span[\s\S]*?color: #fff/);
   assert.match(styles, /\.artwork-grid \{[\s\S]*?gap: clamp\(8px, 0\.8vw, 12px\)/);
   assert.match(styles, /\.gallery-header \{[\s\S]*?padding: clamp\(68px, 10vw, 150px\) clamp\(20px, 5vw, 76px\) clamp\(34px, 5vw, 72px\)/);
+  assert.match(styles, /\.gallery-header h1,\s*\.projects-header h1,\s*\.about-layout h1 \{\s*text-transform: none;/);
   assert.match(styles, /\.artwork-grid \{[\s\S]*?padding: clamp\(16px, 2\.4vw, 36px\)/);
   assert.match(styles, /\.artwork-column \{[\s\S]*?gap: clamp\(8px, 0\.8vw, 12px\)/);
   assert.match(styles, /\.artwork-link \{[\s\S]*?border-radius: 0/);
@@ -175,9 +176,12 @@ test("inner pages include Home navigation without underline hover rules", async 
     new URL("../app/about/page.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(projectsSource, /key="projects-heading"/);
-  assert.match(artSource, /key="art-heading"/);
-  assert.match(aboutSource, /key="about-heading"/);
+  assert.doesNotMatch(projectsSource, /ScrambleHeading/);
+  assert.doesNotMatch(artSource, /ScrambleHeading/);
+  assert.doesNotMatch(aboutSource, /ScrambleHeading/);
+  assert.match(projectsSource, /<h1 id="projects-heading">Projects<\/h1>/);
+  assert.match(artSource, /<h1 className="gallery-title" id="art-heading">/);
+  assert.match(aboutSource, /<h1 className="about-heading" id="about-heading">/);
 });
 
 test("about centers the name without a redundant eyebrow", async () => {
@@ -185,7 +189,11 @@ test("about centers the name without a redundant eyebrow", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /class="about-heading"/);
-  assert.match(html, /aria-label="Replay Sebastian Prusky animation"/);
+  assert.doesNotMatch(html, /Replay Sebastian Prusky animation/);
+  assert.match(html, /class="about-northwestern-trigger"/);
+  assert.match(html, /Northwestern University/);
+  assert.match(html, /class="about-miami-trigger"/);
+  assert.match(html, /class="about-chicago-trigger"/);
   assert.doesNotMatch(html, /class="scramble-character"/);
   assert.match(html, /miami, fl/);
   assert.match(html, /chicago, il/);
@@ -216,11 +224,60 @@ test("about centers the name without a redundant eyebrow", async () => {
   assert.match(emailSource, /event\.clientY/);
   assert.match(emailSource, /style=\{\{ left: statusPosition\.x, top: statusPosition\.y \}\}/);
 
+  const northwesternSource = await readFile(
+    new URL("../app/about-northwestern-easter-egg.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(northwesternSource, /const NORTHWESTERN_HOLD_DURATION = 5000/);
+  assert.match(northwesternSource, /classList\.add\("is-northwestern"\)/);
+  assert.match(northwesternSource, /classList\.remove\("is-northwestern"\)/);
+  assert.match(northwesternSource, /classList\.contains\("is-northwestern"\)/);
+  assert.match(northwesternSource, /window\.clearTimeout\(restoreTimerRef\.current\)/);
+
+  const miamiSource = await readFile(
+    new URL("../app/about-miami-easter-egg.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(miamiSource, /const PALM_HOLD_DURATION = 3570/);
+  assert.match(miamiSource, /setAnimationRun\(\(currentRun\) => currentRun \+ 1\)/);
+  assert.match(miamiSource, /createTreeWalker\(document\.body, NodeFilter\.SHOW_TEXT\)/);
+  assert.match(miamiSource, /viewportHeight - contactLinksRect\.bottom - 24/);
+  assert.match(miamiSource, /safeHeight \* aspect \* heightFactor/);
+  assert.match(miamiSource, /animations\.forEach\(\(animation\) => animation\.reverse\(\)\)/);
+  assert.match(miamiSource, /Promise\.all\(animations\.map\(\(animation\) => animation\.finished\)\)/);
+  assert.match(miamiSource, /safeHeight \* aspect/);
+  assert.match(miamiSource, /miami-palm miami-palm-1/);
+  assert.match(miamiSource, /miami-palm miami-palm-4/);
+  assert.match(miamiSource, /<NorthwesternEasterEgg \/> in <ChicagoEasterEgg \/>\./);
+
+  const chicagoSource = await readFile(
+    new URL("../app/about-chicago-easter-egg.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(chicagoSource, /className="chicago-train-track"/);
+  assert.match(chicagoSource, /contentTop - headerBottom/);
+  assert.match(chicagoSource, /animation\.reverse\(\)/);
+  assert.match(chicagoSource, /animation\.finished/);
+  assert.match(chicagoSource, /Chicago, IL/);
+
   const styles = await readFile(
     new URL("../app/globals.css", import.meta.url),
     "utf8",
   );
   assert.match(styles, /\.about-layout h1 \{\s*margin-top: 0;/);
+  assert.match(styles, /\.about-heading\.is-northwestern \{\s*color: #4e2a84/);
+  assert.match(styles, /\.about-northwestern-trigger:hover,[\s\S]*?color: inherit;[\s\S]*?text-decoration-color: currentColor/);
+  assert.doesNotMatch(styles, /\.about-northwestern-trigger:hover,[^}]*#4e2a84/);
+  assert.doesNotMatch(styles, /\.about-northwestern-trigger:hover,[^}]*transform: scale/);
+  assert.match(styles, /\.miami-palms \{[\s\S]*?color: var\(--foreground\)/);
+  assert.match(styles, /aspect-ratio: var\(--palm-aspect\)/);
+  assert.match(styles, /--palm-height-factor: 0\.62/);
+  assert.match(styles, /--palm-height-factor: 1/);
+  assert.match(styles, /mask-image: url\("\/miami-palm-1\.png"\)/);
+  assert.match(styles, /mask-image: url\("\/miami-palm-4\.png"\)/);
+  assert.match(styles, /mask-image: url\("\/chicago-train\.png"\)/);
+  assert.match(styles, /@keyframes chicago-train-drive/);
+  assert.match(styles, /@keyframes chicago-train-bounce/);
   assert.doesNotMatch(styles, /\.about-last-name[\s\S]{0,80}color: var\(--accent\)/);
   assert.match(styles, /\.about-locations \{[\s\S]*?color: var\(--accent\)/);
   assert.match(styles, /\.about-clock \{[\s\S]*?color: var\(--foreground\)/);
@@ -238,7 +295,7 @@ test("art presents one combined gallery", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Sketches &amp; Paintings/);
-  assert.match(html, /aria-label="Replay Sketches &amp; Paintings animation"/);
+  assert.doesNotMatch(html, /Replay Sketches &amp; Paintings animation/);
   assert.doesNotMatch(html, /class="scramble-character"/);
   assert.doesNotMatch(html, /12(?:<!-- -->)? works/);
   assert.match(html, /data-slug="desert-haircut"/);
@@ -290,7 +347,7 @@ test("projects route presents cards and connects HomeMemory to its live site", a
   const response = await render("/projects");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /aria-label="Replay Projects animation"/);
+  assert.doesNotMatch(html, /Replay Projects animation/);
   assert.doesNotMatch(html, /class="scramble-character"/);
   assert.match(html, /betterboxd/);
   assert.match(html, /HomeMemory/);

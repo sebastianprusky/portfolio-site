@@ -12,6 +12,12 @@ const featuredArtworks = new Set([
   "rollercoaster",
 ]);
 
+const firstRowArtworks = new Set([
+  "desert-haircut",
+  "bridge-cyclist",
+  "night-drive",
+]);
+
 const galleryOrder = [
   "bridge-cyclist",
   "desert-haircut",
@@ -40,6 +46,22 @@ type ArtGalleryProps = {
 type GalleryItemStyle = CSSProperties & {
   "--gallery-order"?: number;
 };
+
+function GalleryArtworkImage({ work }: { work: Artwork }) {
+  const isFirstRow = firstRowArtworks.has(work.slug);
+
+  return (
+    <img
+      alt={work.title}
+      decoding="async"
+      fetchPriority={isFirstRow ? "high" : "auto"}
+      height={work.height}
+      loading={isFirstRow ? "eager" : "lazy"}
+      src={work.thumbnailSrc}
+      width={work.width}
+    />
+  );
+}
 
 export function ArtGallery({ artworks }: ArtGalleryProps) {
   const [selectedWork, setSelectedWork] = useState<Artwork | null>(null);
@@ -111,7 +133,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
                   }
                   type="button"
                 >
-                  <img src={work.src} alt={work.title} />
+                  <GalleryArtworkImage work={work} />
                   <span>{work.title}</span>
                 </button>
               );
@@ -140,7 +162,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
                       }
                       type="button"
                     >
-                      <img src={work.src} alt={work.title} />
+                      <GalleryArtworkImage work={work} />
                       <span>{work.title}</span>
                     </button>
                   ))
@@ -169,7 +191,13 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
               Close
             </button>
             <div className="lightbox-image">
-              <img src={selectedWork.src} alt={selectedWork.title} />
+              <img
+                src={selectedWork.src}
+                alt={selectedWork.title}
+                decoding="async"
+                height={selectedWork.height}
+                width={selectedWork.width}
+              />
             </div>
             <div className="detail-copy lightbox-copy">
               <p className="detail-category">{selectedWork.category}</p>

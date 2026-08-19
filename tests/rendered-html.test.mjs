@@ -34,6 +34,9 @@ test("home presents a minimal portfolio introduction", async () => {
   assert.match(html, /Sebastian Prusky Portfolio/);
   assert.match(html, /href="\/art"/);
   assert.match(html, /href="\/projects"/);
+  assert.equal((html.match(/rel="prefetch"/g) ?? []).length, 12);
+  assert.match(html, /\/art\/painting-01-desert-haircut-thumb\.webp/);
+  assert.match(html, /\/art\/sketch-09-blueberries-thumb\.webp/);
   assert.match(html, /exploring tech, product design, and art/);
   assert.doesNotMatch(html, /Hello, I(?:&#x27;|&apos;)m|Rearrange|Reset/);
   assert.doesNotMatch(html, /<a[^>]+href="\/"[^>]*>Home<\/a>/);
@@ -317,7 +320,9 @@ test("gallery and artwork detail routes render", async () => {
   assert.equal(galleryResponse.status, 200);
   const gallery = await galleryResponse.text();
   assert.match(gallery, /data-slug="desert-haircut"/);
-  assert.match(gallery, /\/art\/painting-05-rollercoaster\.jpg/);
+  assert.match(gallery, /\/art\/painting-05-rollercoaster-thumb\.webp/);
+  assert.match(gallery, /loading="lazy"/);
+  assert.doesNotMatch(gallery, /\/art\/painting-05-rollercoaster\.jpg/);
 
   const bridgeResponse = await render("/art/sketches/bridge-cyclist");
   assert.equal(bridgeResponse.status, 200);
@@ -335,6 +340,8 @@ test("gallery and artwork detail routes render", async () => {
   const detail = await detailResponse.text();
   assert.match(detail, /seaside/);
   assert.match(detail, /Back to Sketches &amp; Paintings/);
+  assert.match(detail, /\/art\/painting-03-praying-mantises-display\.webp/);
+  assert.match(detail, /width="2200" height="1696"|height="1696" width="2200"/);
 
   const roomResponse = await render("/art/sketches/room-study");
   assert.equal(roomResponse.status, 200);

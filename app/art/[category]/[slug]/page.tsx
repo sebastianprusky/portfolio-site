@@ -37,7 +37,13 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
       </Link>
       <article className="artwork-detail">
         <div className="detail-image" data-page-enter="content">
-          <img src={work.src} alt={work.title} />
+          <img
+            src={work.src}
+            alt={work.title}
+            decoding="async"
+            height={work.height}
+            width={work.width}
+          />
         </div>
         <div className="detail-copy" data-page-enter="title">
           <p className="detail-category">{work.category}</p>

@@ -69,6 +69,29 @@ Tools / Software
 Close
 Visit Site
 
+PROJECT: RANK YOUR MEAL EXCHANGES
+
+Title:
+Rank Your Meal Exchanges
+
+Brief description:
+A mobile-first, no-login app for Northwestern students to rank campus dining spots in under two minutes. Students sort places into preference groups, resolve close calls through head-to-head choices, add their go-to order, and export a shareable result.
+
+Independent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.
+
+Inspiration:
+Northwestern meal exchanges are discussed constantly, but rankings are usually scattered across group chats and informal conversations. I wanted to turn those opinions into a fast, visual experience that is easy to complete and share.
+
+Goal:
+Create a frictionless ranking flow that produces a personal list while also contributing to an aggregate campus leaderboard.
+
+Tools / Software:
+Next.js, TypeScript, Supabase, Vercel
+
+Live link label:
+Visit Site
+
+
 PROJECT: BETTERBOXD
 
 Title:

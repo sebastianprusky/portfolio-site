@@ -353,7 +353,7 @@ test("gallery and artwork detail routes render", async () => {
   assert.doesNotMatch(room, /mr morale &amp;amp;amp; the big steppers/);
 });
 
-test("projects route presents cards and connects HomeMemory to its live site", async () => {
+test("projects route presents cards and connects live projects to their sites", async () => {
   const response = await render("/projects");
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -361,11 +361,13 @@ test("projects route presents cards and connects HomeMemory to its live site", a
   assert.doesNotMatch(html, /class="scramble-character"/);
   assert.match(html, /betterboxd/);
   assert.match(html, /HomeMemory/);
+  assert.match(html, /Rank Your Meal Exchanges/);
   assert.match(html, /Brief description/);
   assert.match(html, /Tools \/ Software/);
   assert.match(html, /role="button"/);
   assert.match(html, /\/projects\/betterboxd-dark-preview\.png/);
   assert.match(html, /\/projects\/homememory-dark-preview\.png/);
+  assert.match(html, /\/projects\/rank-your-meal-exchanges-preview\.jpg/);
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*betterboxd/i);
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*homememory/i);
   assert.doesNotMatch(html, /Spatial Inventory System/);
@@ -378,5 +380,7 @@ test("projects route presents cards and connects HomeMemory to its live site", a
   assert.match(projectsSource, /Visit Site/);
   assert.doesNotMatch(projectsSource, /"Demo"/);
   assert.match(projectsSource, /https:\/\/www\.33labs\.org\/homememory\//);
+  assert.match(projectsSource, /https:\/\/rank-your-meal-exchanges\.vercel\.app/);
+  assert.match(projectsSource, /Independent project inspired by Beli\. Not affiliated with or endorsed by Beli or Northwestern University\./);
   assert.doesNotMatch(projectsSource, /i-want-to-make-a-better\.vercel\.app/);
 });

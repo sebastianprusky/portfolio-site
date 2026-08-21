@@ -26,6 +26,20 @@ type Project = {
 
 const projects: Project[] = [
   {
+    slug: "rank-your-meal-exchanges",
+    title: "Rank Your Meal Exchanges",
+    previewSrc: "/projects/rank-your-meal-exchanges-preview.jpg",
+    briefDescription:
+      "A mobile-first, no-login app for Northwestern students to rank campus dining spots in under two minutes. Students sort places into preference groups, resolve close calls through head-to-head choices, add their go-to order, and export a shareable result.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
+    inspiration:
+      "Northwestern meal exchanges are discussed constantly, but rankings are usually scattered across group chats and informal conversations. I wanted to turn those opinions into a fast, visual experience that is easy to complete and share.",
+    goals:
+      "Create a frictionless ranking flow that produces a personal list while also contributing to an aggregate campus leaderboard.",
+    tools: "Next.js, TypeScript, Supabase, Vercel",
+    liveUrl: "https://rank-your-meal-exchanges.vercel.app",
+    liveLabel: "Visit Site",
+  },
+  {
     slug: "betterboxd",
     title: "Betterboxd",
     previewSrc: "/projects/betterboxd-dark-preview.png",

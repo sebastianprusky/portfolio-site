@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AboutClock } from "../about-clock";
 import { AboutEmail } from "../about-email";
 import { AboutMiamiEasterEgg } from "../about-miami-easter-egg";
+import { Recently } from "../recently";
 import { SiteHeader } from "../site-header";
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <Recently />
     </main>
   );
 }

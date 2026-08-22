@@ -207,6 +207,26 @@ test("about centers the name without a redundant eyebrow", async () => {
   assert.match(html, /aria-label="LinkedIn"/);
   assert.doesNotMatch(html, />GitHub<|>LinkedIn</);
   assert.doesNotMatch(html, /class="page-kicker">About/);
+  assert.match(html, /id="recently-heading">Recently/);
+  assert.match(html, /Updated (?:<!-- -->)?August 2026/);
+  assert.match(html, /href="https:\/\/espanso\.org\/"/);
+  assert.match(html, /Normal People/);
+  assert.match(html, /www\.google\.com\/search\?q=Normal\+People\+Sally\+Rooney/);
+  assert.match(html, /Purple/);
+
+  const recentlySource = await readFile(
+    new URL("../app/recently-data.ts", import.meta.url),
+    "utf8",
+  );
+  const recentlyComponentSource = await readFile(
+    new URL("../app/recently.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(recentlySource, /open\.spotify\.com\/embed\/track\/1i2fcqyMYvpvuLyJyOLEAt/);
+  assert.match(recentlySource, /open\.spotify\.com\/track\/1i2fcqyMYvpvuLyJyOLEAt/);
+  assert.match(recentlyComponentSource, /document\.addEventListener\("keydown", handleEscape\)/);
+  assert.match(recentlyComponentSource, /lastActiveElementRef\.current\?\.focus\(\)/);
+  assert.match(recentlyComponentSource, /activeItem \? \(/);
 
   const clockSource = await readFile(
     new URL("../app/about-clock.tsx", import.meta.url),

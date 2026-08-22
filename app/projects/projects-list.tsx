@@ -15,6 +15,7 @@ const projectSections: Array<{ key: ProjectSectionKey; label: string }> = [
 type Project = {
   slug: string;
   title: string;
+  isVisible?: boolean;
   previewSrc: string;
   briefDescription: string;
   inspiration: string;
@@ -28,6 +29,7 @@ const projects: Project[] = [
   {
     slug: "rank-your-meal-exchanges",
     title: "Rank Your Meal Exchanges",
+    isVisible: false,
     previewSrc: "/projects/rank-your-meal-exchanges-preview.jpg",
     briefDescription:
       "A mobile-first, no-login app for Northwestern students to rank campus dining spots in under two minutes. Students sort places into preference groups, resolve close calls through head-to-head choices, add their go-to order, and export a shareable result.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
@@ -68,12 +70,14 @@ const projects: Project[] = [
   },
 ];
 
+const visibleProjects = projects.filter((project) => project.isVisible !== false);
+
 export function ProjectsList() {
   const [activeProjectSlug, setActiveProjectSlug] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
-  const activeProject = projects.find((project) => project.slug === activeProjectSlug) ?? null;
+  const activeProject = visibleProjects.find((project) => project.slug === activeProjectSlug) ?? null;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -119,7 +123,7 @@ export function ProjectsList() {
   return (
     <>
       <section className="projects-layout" aria-label="Projects" data-page-enter="content">
-        {projects.map((project) => (
+        {visibleProjects.map((project) => (
           <div
             aria-label={`Open ${project.title} project details`}
             className="project-card"

@@ -361,13 +361,13 @@ test("projects route presents cards and connects live projects to their sites", 
   assert.doesNotMatch(html, /class="scramble-character"/);
   assert.match(html, /betterboxd/);
   assert.match(html, /HomeMemory/);
-  assert.match(html, /Rank Your Meal Exchanges/);
+  assert.doesNotMatch(html, /Rank Your Meal Exchanges/);
   assert.match(html, /Brief description/);
   assert.match(html, /Tools \/ Software/);
   assert.match(html, /role="button"/);
   assert.match(html, /\/projects\/betterboxd-dark-preview\.png/);
   assert.match(html, /\/projects\/homememory-dark-preview\.png/);
-  assert.match(html, /\/projects\/rank-your-meal-exchanges-preview\.jpg/);
+  assert.doesNotMatch(html, /\/projects\/rank-your-meal-exchanges-preview\.jpg/);
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*betterboxd/i);
   assert.doesNotMatch(html, /href="https?:\/\/[^"]*homememory/i);
   assert.doesNotMatch(html, /Spatial Inventory System/);

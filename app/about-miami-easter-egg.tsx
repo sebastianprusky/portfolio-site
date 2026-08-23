@@ -157,10 +157,7 @@ export function AboutMiamiEasterEgg() {
   }, [clearHoldTimer]);
 
   function revealMiamiPalms() {
-    if (animationRun > 0 && palmsRef.current) {
-      reverseMiamiPalms();
-      return;
-    }
+    if (animationRun > 0) return;
 
     clearHoldTimer();
     setAnimationRun((currentRun) => currentRun + 1);

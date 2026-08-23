@@ -242,6 +242,7 @@ test("about centers the name without a redundant eyebrow", async () => {
     "utf8",
   );
   assert.match(miamiSource, /const PALM_HOLD_DURATION = 3570/);
+  assert.match(miamiSource, /function revealMiamiPalms\(\) \{\s*if \(animationRun > 0\) return/);
   assert.match(miamiSource, /setAnimationRun\(\(currentRun\) => currentRun \+ 1\)/);
   assert.match(miamiSource, /createTreeWalker\(document\.body, NodeFilter\.SHOW_TEXT\)/);
   assert.match(miamiSource, /viewportHeight - contactLinksRect\.bottom - 24/);
@@ -271,9 +272,9 @@ test("about centers the name without a redundant eyebrow", async () => {
   assert.match(styles, /\.about-layout h1 \{\s*margin-top: 0;/);
   assert.match(styles, /\.about-heading\.is-northwestern \{\s*color: #4e2a84/);
   assert.match(styles, /\.about-northwestern-trigger:hover,[\s\S]*?color: inherit;[\s\S]*?text-decoration-color: currentColor/);
-  assert.match(styles, /\.about-northwestern-trigger \{[\s\S]*?text-decoration-color: currentColor/);
-  assert.match(styles, /\.about-miami-trigger \{[\s\S]*?text-decoration-color: currentColor/);
-  assert.match(styles, /\.about-chicago-trigger \{[\s\S]*?text-decoration-color: currentColor/);
+  assert.match(styles, /\.about-northwestern-trigger \{[\s\S]*?text-decoration-line: none/);
+  assert.match(styles, /\.about-miami-trigger \{[\s\S]*?text-decoration-line: none/);
+  assert.match(styles, /\.about-chicago-trigger \{[\s\S]*?text-decoration-line: none/);
   assert.doesNotMatch(styles, /\.about-northwestern-trigger:hover,[^}]*#4e2a84/);
   assert.doesNotMatch(styles, /\.about-northwestern-trigger:hover,[^}]*transform: scale/);
   assert.match(styles, /\.miami-palms \{[\s\S]*?color: var\(--foreground\)/);

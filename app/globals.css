@@ -494,7 +494,7 @@ html[data-ink-transition] .theme-jar {
 .gallery-header {
   display: grid;
   justify-items: start;
-  padding: clamp(68px, 10vw, 150px) clamp(20px, 5vw, 76px) clamp(34px, 5vw, 72px);
+  padding: clamp(28px, 4vw, 56px) clamp(20px, 5vw, 76px) clamp(34px, 5vw, 72px);
 }
 
 .gallery-header h1,
@@ -805,7 +805,7 @@ html[data-ink-transition] .theme-jar {
 }
 
 .projects-header {
-  padding: clamp(68px, 10vw, 150px) clamp(20px, 5vw, 76px) clamp(34px, 5vw, 72px);
+  padding: clamp(28px, 4vw, 56px) clamp(20px, 5vw, 76px) clamp(34px, 5vw, 72px);
 }
 
 .projects-layout {

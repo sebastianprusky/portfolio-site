@@ -135,7 +135,7 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.doesNotMatch(styles, /\.gallery-title span/);
   assert.match(styles, /\.artwork-link > span[\s\S]*?color: #fff/);
   assert.match(styles, /\.artwork-grid \{[\s\S]*?gap: clamp\(8px, 0\.8vw, 12px\)/);
-  assert.match(styles, /\.gallery-header \{[\s\S]*?padding: clamp\(68px, 10vw, 150px\) clamp\(20px, 5vw, 76px\) clamp\(34px, 5vw, 72px\)/);
+  assert.match(styles, /\.gallery-header \{[\s\S]*?padding: clamp\(28px, 4vw, 56px\) clamp\(20px, 5vw, 76px\) clamp\(34px, 5vw, 72px\)/);
   assert.match(styles, /\.gallery-header h1,\s*\.projects-header h1,\s*\.about-layout h1 \{\s*text-transform: none;/);
   assert.match(styles, /\.artwork-grid \{[\s\S]*?padding: clamp\(16px, 2\.4vw, 36px\)/);
   assert.match(styles, /\.artwork-column \{[\s\S]*?gap: clamp\(8px, 0\.8vw, 12px\)/);
@@ -184,6 +184,7 @@ test("inner pages include Home navigation without underline hover rules", async 
   assert.doesNotMatch(aboutSource, /ScrambleHeading/);
   assert.match(projectsSource, /<h1 id="projects-heading">Projects<\/h1>/);
   assert.match(artSource, /<h1 className="gallery-title" id="art-heading">/);
+  assert.match(styles, /\.projects-header \{[\s\S]*?padding: clamp\(28px, 4vw, 56px\)/);
   assert.match(aboutSource, /<h1 className="about-heading" id="about-heading">/);
 });
 

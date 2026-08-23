@@ -61,7 +61,6 @@ Updated August 2026
 Recently — Tech:
 espanso
 Desktop text expander
-A simple desktop app for expanding short text triggers into phrases I use repeatedly.
 Visit espanso
 
 Recently — Read:
@@ -72,9 +71,6 @@ Search the book
 Recently — Enjoyed:
 Purple
 Nas · The Lost Tapes, 2002
-Play on Spotify
-Now playing
-Open in Spotify
 
 PROJECTS PAGE
 

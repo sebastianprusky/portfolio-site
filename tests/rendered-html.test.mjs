@@ -223,10 +223,9 @@ test("about centers the name without a redundant eyebrow", async () => {
     "utf8",
   );
   assert.match(recentlySource, /open\.spotify\.com\/embed\/track\/1i2fcqyMYvpvuLyJyOLEAt/);
-  assert.match(recentlySource, /open\.spotify\.com\/track\/1i2fcqyMYvpvuLyJyOLEAt/);
-  assert.match(recentlyComponentSource, /document\.addEventListener\("keydown", handleEscape\)/);
-  assert.match(recentlyComponentSource, /lastActiveElementRef\.current\?\.focus\(\)/);
-  assert.match(recentlyComponentSource, /activeItem \? \(/);
+  assert.match(recentlyComponentSource, /className="recent-embed-card"/);
+  assert.match(recentlyComponentSource, /className="recent-preview-card"/);
+  assert.doesNotMatch(recentlyComponentSource, /<img|<dialog|"use client"/);
 
   const clockSource = await readFile(
     new URL("../app/about-clock.tsx", import.meta.url),

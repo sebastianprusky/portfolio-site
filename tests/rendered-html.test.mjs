@@ -259,7 +259,8 @@ test("about centers the name without a redundant eyebrow", async () => {
   );
   assert.match(chicagoSource, /className="chicago-train-track"/);
   assert.match(chicagoSource, /contentTop - headerBottom/);
-  assert.match(chicagoSource, /animation\.reverse\(\)/);
+  assert.match(chicagoSource, /if \(trainRun\) return/);
+  assert.doesNotMatch(chicagoSource, /animation\.reverse\(\)/);
   assert.match(chicagoSource, /animation\.finished/);
   assert.match(chicagoSource, /Chicago, IL/);
 

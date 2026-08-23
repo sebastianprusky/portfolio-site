@@ -29,23 +29,7 @@ export function ChicagoEasterEgg() {
   }, [trainRun]);
 
   function driveChicagoTrain() {
-    if (trainRun && runnerRef.current) {
-      const [animation] = runnerRef.current.getAnimations();
-
-      if (!animation) {
-        setTrainRun(null);
-        return;
-      }
-
-      const action = ++animationActionRef.current;
-      animation.reverse();
-      animation.finished
-        .then(() => {
-          if (action === animationActionRef.current) setTrainRun(null);
-        })
-        .catch(() => {});
-      return;
-    }
+    if (trainRun) return;
 
     const headerRect = document
       .querySelector<HTMLElement>(".site-header")

@@ -4,7 +4,7 @@ import { ArtGallery } from "./art-gallery";
 import { artworks } from "./artworks";
 
 export const metadata: Metadata = {
-  title: "Sketches & Paintings | Sebastian Prusky",
+  title: "Artwork | Sebastian Prusky",
 };
 
 export default function ArtPage() {
@@ -13,7 +13,7 @@ export default function ArtPage() {
       <SiteHeader current="art" />
       <header className="gallery-header" data-page-enter="title">
         <h1 className="gallery-title" id="art-heading">
-          Sketches &amp; Paintings
+          Artwork
         </h1>
       </header>
       <ArtGallery artworks={artworks} />

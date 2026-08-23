@@ -7,7 +7,7 @@ GLOBAL NAVIGATION
 
 Home
 Projects
-Sketches & Paintings
+Artwork
 About
 
 Site description:
@@ -26,7 +26,7 @@ exploring engineering, product design, and art
 
 Section links:
 Projects
-Sketches & Paintings
+Artwork
 About
 
 
@@ -136,10 +136,10 @@ Visit Site
 ART PAGE
 
 Browser title:
-Sketches & Paintings | Sebastian Prusky
+Artwork | Sebastian Prusky
 
 Page heading:
-Sketches & Paintings
+Artwork
 
 Gallery count:
 12 works
@@ -148,7 +148,7 @@ Artwork interface labels:
 Close
 Year
 Medium
-Back to Sketches & Paintings
+Back to Artwork
 
 
 ARTWORK: ON THE WAY HOME
@@ -157,7 +157,7 @@ Title:
 on the way home
 
 Category:
-sketches
+Artwork
 
 Year:
 2022
@@ -175,7 +175,7 @@ Title:
 mr morale & the big steppers
 
 Category:
-sketches
+Artwork
 
 Year:
 2022
@@ -193,7 +193,7 @@ Title:
 kids see ghosts
 
 Category:
-sketches
+Artwork
 
 Year:
 2022
@@ -211,7 +211,7 @@ Title:
 nothing was the same
 
 Category:
-sketches
+Artwork
 
 Year:
 2022
@@ -229,7 +229,7 @@ Title:
 "seaside" planning
 
 Category:
-sketches
+Artwork
 
 Year:
 2024
@@ -247,7 +247,7 @@ Title:
 girl sketch
 
 Category:
-sketches
+Artwork
 
 Year:
 2024
@@ -265,7 +265,7 @@ Title:
 blue sketch
 
 Category:
-sketches
+Artwork
 
 Year:
 2024
@@ -283,7 +283,7 @@ Title:
 deserted
 
 Category:
-paintings
+Artwork
 
 Year:
 2023
@@ -301,7 +301,7 @@ Title:
 gps
 
 Category:
-paintings
+Artwork
 
 Year:
 2025
@@ -319,7 +319,7 @@ Title:
 seaside
 
 Category:
-paintings
+Artwork
 
 Year:
 2024
@@ -337,7 +337,7 @@ Title:
 red restaurant
 
 Category:
-paintings
+Artwork
 
 Year:
 2023
@@ -355,7 +355,7 @@ Title:
 snack break
 
 Category:
-paintings
+Artwork
 
 Year:
 2023

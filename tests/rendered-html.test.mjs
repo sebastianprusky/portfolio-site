@@ -300,8 +300,8 @@ test("art presents one combined gallery", async () => {
   const response = await render("/art");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Sketches &amp; Paintings/);
-  assert.doesNotMatch(html, /Replay Sketches &amp; Paintings animation/);
+  assert.match(html, /Artwork/);
+  assert.doesNotMatch(html, /Replay Artwork animation/);
   assert.doesNotMatch(html, /class="scramble-character"/);
   assert.doesNotMatch(html, /12(?:<!-- -->)? works/);
   assert.match(html, /data-slug="desert-haircut"/);
@@ -339,7 +339,9 @@ test("gallery and artwork detail routes render", async () => {
   assert.equal(detailResponse.status, 200);
   const detail = await detailResponse.text();
   assert.match(detail, /seaside/);
-  assert.match(detail, /Back to Sketches &amp; Paintings/);
+  assert.match(detail, /Back to Artwork/);
+  assert.match(detail, /detail-category[^>]*>Artwork</);
+  assert.doesNotMatch(detail, /detail-category[^>]*>paintings</);
   assert.match(detail, /\/art\/painting-03-praying-mantises-display\.webp/);
   assert.match(detail, /width="2200" height="1696"|height="1696" width="2200"/);
 

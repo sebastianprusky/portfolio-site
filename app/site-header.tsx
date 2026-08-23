@@ -15,7 +15,7 @@ export function SectionNav({
   return (
     <nav className={className} aria-label="Portfolio sections" data-page-enter={pageEnter}>
       <Link href="/projects">Projects</Link>
-      <Link href="/art">Sketches &amp; Paintings</Link>
+      <Link href="/art">Artwork</Link>
       <Link href="/about">About</Link>
     </nav>
   );
@@ -38,7 +38,7 @@ export function SiteHeader({ current }: SiteHeaderProps) {
             Projects
           </Link>
           <Link aria-current={current === "art" ? "page" : undefined} href="/art">
-            Sketches &amp; Paintings
+            Artwork
           </Link>
           <Link
             aria-current={current === "about" ? "page" : undefined}

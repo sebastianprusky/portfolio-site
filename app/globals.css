@@ -1075,6 +1075,15 @@ html[data-ink-transition] .theme-jar {
   margin-top: 22px;
 }
 
+.project-demo-note {
+  margin: clamp(42px, 6vw, 72px) 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
 .project-action-link {
   display: inline-flex;
   align-items: center;

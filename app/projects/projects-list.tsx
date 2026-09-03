@@ -13,39 +13,10 @@ type Project = {
   technologies: string[];
   githubUrl: string;
   appStoreUrl?: string;
+  websiteUrl?: string;
 };
 
 const projects: Project[] = [
-  {
-    slug: "rank-your-meal-exchanges",
-    title: "Rank Your Meal Exchanges",
-    shortSubtitle: "A faster way to rank Northwestern dining",
-    previewSrc: "/projects/rank-your-meal-exchanges-preview.jpg",
-    blurb:
-      "Rank Your Meal Exchanges is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
-    technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
-    githubUrl: "https://github.com/sebastianprusky/rank-your-meal-exchanges",
-  },
-  {
-    slug: "hexlearn",
-    title: "Hexlearn",
-    shortSubtitle: "Personal loss-window forecasting from gameplay",
-    previewSrc: "/projects/hexlearn-preview.png",
-    blurb:
-      "Hexlearn is a local-first ML experiment built around Hextris. It's designed to learn from canvas pixels and test whether a personalized visual model can forecast an upcoming loss window more effectively than simple time-based baselines.",
-    technologies: ["Python", "FastAPI", "scikit-learn", "PyTorch", "Next.js", "SQLite"],
-    githubUrl: "https://github.com/sebastianprusky/Hexlearn",
-  },
-  {
-    slug: "pickamovie",
-    title: "PickAMovie",
-    shortSubtitle: "Personalized movie discovery without the endless scroll",
-    previewSrc: "/projects/betterboxd-dark-preview.png",
-    blurb:
-      "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
-    technologies: ["React", "Vite", "TypeScript", "Supabase"],
-    githubUrl: "https://github.com/sebastianprusky/pickamovie",
-  },
   {
     slug: "homememory",
     title: "HomeMemory",
@@ -58,6 +29,37 @@ const projects: Project[] = [
     technologies: ["SwiftUI", "SwiftData", "Firebase"],
     githubUrl: "https://github.com/cabadie/justHome",
     appStoreUrl: "https://apps.apple.com/us/app/homememory/id6760926658",
+  },
+  {
+    slug: "pickamovie",
+    title: "PickAMovie",
+    shortSubtitle: "Personalized movie discovery without the endless scroll",
+    previewSrc: "/projects/betterboxd-dark-preview.png",
+    blurb:
+      "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
+    technologies: ["React", "Vite", "TypeScript", "Supabase"],
+    githubUrl: "https://github.com/sebastianprusky/pickamovie",
+  },
+  {
+    slug: "rank-your-meal-exchanges",
+    title: "Northwestern Dining Ranked",
+    shortSubtitle: "A faster way to rank Northwestern dining",
+    previewSrc: "/projects/rank-your-meal-exchanges-preview.jpg",
+    blurb:
+      "Northwestern Dining Ranked is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
+    technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
+    githubUrl: "https://github.com/sebastianprusky/northwestern-dining-ranked",
+    websiteUrl: "https://rank-your-meal-exchanges.vercel.app",
+  },
+  {
+    slug: "hexlearn",
+    title: "Hexlearn",
+    shortSubtitle: "Personal loss-window forecasting from gameplay",
+    previewSrc: "/projects/hexlearn-preview.png",
+    blurb:
+      "Hexlearn is a local-first ML experiment built around Hextris. It's designed to learn from canvas pixels and test whether a personalized visual model can forecast an upcoming loss window more effectively than simple time-based baselines.",
+    technologies: ["Python", "FastAPI", "scikit-learn", "PyTorch", "Next.js", "SQLite"],
+    githubUrl: "https://github.com/sebastianprusky/Hexlearn",
   },
 ];
 
@@ -189,6 +191,17 @@ export function ProjectsList() {
                   <span aria-hidden="true" className="contact-icon contact-icon-github" />
                   <span>GitHub</span>
                 </a>
+                {activeProject.websiteUrl ? (
+                  <a
+                    aria-label={`Visit the ${activeProject.title} website`}
+                    className="project-action-link"
+                    href={activeProject.websiteUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <span>Website</span>
+                  </a>
+                ) : null}
                 {activeProject.appStoreUrl ? (
                   <a
                     aria-label={`View ${activeProject.title} on the App Store`}
@@ -202,6 +215,7 @@ export function ProjectsList() {
                   </a>
                 ) : null}
               </div>
+              <p className="project-demo-note">Demo coming soon</p>
             </div>
           ) : null}
         </article>

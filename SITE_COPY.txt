@@ -89,10 +89,10 @@ Tools / Software
 Close
 Visit Site
 
-PROJECT: RANK YOUR MEAL EXCHANGES
+PROJECT: NORTHWESTERN DINING RANKED
 
 Title:
-Rank Your Meal Exchanges
+Northwestern Dining Ranked
 
 Brief description:
 A mobile-first, no-login app for Northwestern students to rank campus dining spots in under two minutes. Students sort places into preference groups, resolve close calls through head-to-head choices, add their go-to order, and export a shareable result.

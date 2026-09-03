@@ -232,25 +232,10 @@ test("about centers the name without a redundant eyebrow", async () => {
   assert.match(html, /<nav class="contact-links" aria-label="Contact links">/);
   assert.doesNotMatch(html, />GitHub<|>LinkedIn</);
   assert.doesNotMatch(html, /class="page-kicker">About/);
-  assert.match(html, /id="recently-heading">Recently/);
-  assert.match(html, /Updated (?:<!-- -->)?August 2026/);
-  assert.match(html, /href="https:\/\/espanso\.org\/"/);
-  assert.match(html, /Normal People/);
-  assert.match(html, /www\.google\.com\/search\?q=Normal\+People\+Sally\+Rooney/);
-  assert.doesNotMatch(html, /Spotify player|open\.spotify\.com|>Purple</);
-
-  const recentlySource = await readFile(
-    new URL("../app/recently-data.ts", import.meta.url),
-    "utf8",
+  assert.doesNotMatch(
+    html,
+    /id="recently-heading"|Updated (?:<!-- -->)?August 2026|espanso|Normal People|open\.spotify\.com|>Purple</,
   );
-  const recentlyComponentSource = await readFile(
-    new URL("../app/recently.tsx", import.meta.url),
-    "utf8",
-  );
-  assert.doesNotMatch(recentlySource, /Spotify|open\.spotify\.com|embedUrl|embedHeight/);
-  assert.doesNotMatch(recentlyComponentSource, /<iframe|recent-embed-card/);
-  assert.match(recentlyComponentSource, /className="recent-preview-card"/);
-  assert.doesNotMatch(recentlyComponentSource, /<img|<dialog|"use client"/);
 
   const clockSource = await readFile(
     new URL("../app/about-clock.tsx", import.meta.url),

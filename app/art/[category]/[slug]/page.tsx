@@ -33,7 +33,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
     <main className="artwork-page">
       <SiteHeader current="art" />
       <Link className="back-link" href="/art">
-        Back to Sketches &amp; Paintings
+        Back to Artwork
       </Link>
       <article className="artwork-detail">
         <div className="detail-image" data-page-enter="content">
@@ -46,7 +46,7 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
           />
         </div>
         <div className="detail-copy" data-page-enter="title">
-          <p className="detail-category">{work.category}</p>
+          <p className="detail-category">Artwork</p>
           <h1>{work.title}</h1>
           <dl>
             <div>

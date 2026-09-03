@@ -200,7 +200,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
               />
             </div>
             <div className="detail-copy lightbox-copy">
-              <p className="detail-category">{selectedWork.category}</p>
+              <p className="detail-category">Artwork</p>
               <h1 id="artwork-lightbox-title">{selectedWork.title}</h1>
               <dl>
                 <div>

@@ -15,10 +15,10 @@ export type Artwork = {
 
 export const categoryDetails: Record<ArtCategory, { title: string }> = {
   sketches: {
-    title: "Sketches",
+    title: "Artwork",
   },
   paintings: {
-    title: "Paintings",
+    title: "Artwork",
   },
 };
 

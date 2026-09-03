@@ -1228,7 +1228,7 @@ html[data-ink-transition] .theme-jar {
   font: inherit;
   text-align: inherit;
   text-decoration-color: currentColor;
-  text-decoration-line: underline;
+  text-decoration-line: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.16em;
   transition: text-decoration-color 180ms ease;
@@ -1257,7 +1257,7 @@ html[data-ink-transition] .theme-jar {
   font: inherit;
   text-align: inherit;
   text-decoration-color: currentColor;
-  text-decoration-line: underline;
+  text-decoration-line: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.16em;
   transition: text-decoration-color 180ms ease;
@@ -1285,7 +1285,7 @@ html[data-ink-transition] .theme-jar {
   font: inherit;
   text-align: inherit;
   text-decoration-color: currentColor;
-  text-decoration-line: underline;
+  text-decoration-line: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.16em;
   transition: text-decoration-color 180ms ease;

@@ -157,10 +157,7 @@ export function AboutMiamiEasterEgg() {
   }, [clearHoldTimer]);
 
   function revealMiamiPalms() {
-    if (animationRun > 0 && palmsRef.current) {
-      reverseMiamiPalms();
-      return;
-    }
+    if (animationRun > 0) return;
 
     clearHoldTimer();
     setAnimationRun((currentRun) => currentRun + 1);
@@ -179,7 +176,7 @@ export function AboutMiamiEasterEgg() {
         </button>
         . My work focuses on projects that bring beauty and functionality to
         the user experience, across both visual art and tech. I&apos;m currently
-        studying Industrial Engineering, MMSS, and Computer Science at{" "}
+        studying Computer Science and MMSS at{" "}
         <NorthwesternEasterEgg /> in <ChicagoEasterEgg />.
       </p>
       {animationRun > 0 ? (

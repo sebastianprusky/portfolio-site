@@ -158,7 +158,7 @@ test("routes publish canonical and social-sharing metadata", async () => {
   assert.match(home, /rel="canonical" href="https:\/\/www\.sebastianprusky\.me\/"/);
   assert.match(home, /property="og:image" content="https:\/\/www\.sebastianprusky\.me\/og\.png"/);
   assert.match(home, /name="twitter:card" content="summary_large_image"/);
-  assert.match(home, /rel="icon" href="https:\/\/www\.sebastianprusky\.me\/icon\.png"/);
+  assert.match(home, /rel="icon" href="https:\/\/www\.sebastianprusky\.me\/icon\.svg"/);
 
   const projects = await (await render("/projects")).text();
   assert.match(projects, /rel="canonical" href="https:\/\/www\.sebastianprusky\.me\/projects"/);

@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     images: [socialImage.url],
   },
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
   },
 };
 

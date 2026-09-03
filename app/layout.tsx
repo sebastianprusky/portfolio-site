@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./theme";
+import {
+  defaultDescription,
+  defaultTitle,
+  siteUrl,
+  socialImage,
+} from "./site-metadata";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -16,18 +22,26 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Sebastian Prusky Portfolio",
-  description:
-    "Artist and developer exploring tech, product design, and art",
+  metadataBase: new URL(siteUrl),
+  title: defaultTitle,
+  description: defaultDescription,
   openGraph: {
-    title: "Sebastian Prusky Portfolio",
-    description:
-      "Artist and developer exploring tech, product design, and art",
+    title: defaultTitle,
+    description: defaultDescription,
     type: "website",
+    siteName: defaultTitle,
+    url: "/",
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [socialImage.url],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
   },
 };
 

@@ -3,81 +3,96 @@
 import type { KeyboardEvent, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
-type ProjectSectionKey = "briefDescription" | "inspiration" | "goals" | "tools";
-
-const projectSections: Array<{ key: ProjectSectionKey; label: string }> = [
-  { key: "briefDescription", label: "Brief description" },
-  { key: "inspiration", label: "Inspiration" },
-  { key: "goals", label: "Goal" },
-  { key: "tools", label: "Tools / Software" },
-];
+type ProjectShowcaseItem = {
+  alt: string;
+  caption?: string;
+  src: string;
+};
 
 type Project = {
   slug: string;
   title: string;
-  isVisible?: boolean;
-  previewSrc: string;
-  briefDescription: string;
-  inspiration: string;
-  goals: string;
-  tools: string;
-  liveUrl: string | null;
-  liveLabel?: string;
+  shortSubtitle: string;
+  previewSrc: string | null;
+  blurb: string;
+  releaseNote?: string;
+  technologies: string[];
+  githubUrl: string;
+  appStoreUrl?: string;
+  showcase: ProjectShowcaseItem[];
 };
 
 const projects: Project[] = [
   {
     slug: "rank-your-meal-exchanges",
     title: "Rank Your Meal Exchanges",
-    isVisible: false,
+    shortSubtitle: "A faster way to rank Northwestern dining",
     previewSrc: "/projects/rank-your-meal-exchanges-preview.jpg",
-    briefDescription:
-      "A mobile-first, no-login app for Northwestern students to rank campus dining spots in under two minutes. Students sort places into preference groups, resolve close calls through head-to-head choices, add their go-to order, and export a shareable result.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
-    inspiration:
-      "Northwestern meal exchanges are discussed constantly, but rankings are usually scattered across group chats and informal conversations. I wanted to turn those opinions into a fast, visual experience that is easy to complete and share.",
-    goals:
-      "Create a frictionless ranking flow that produces a personal list while also contributing to an aggregate campus leaderboard.",
-    tools: "Next.js, TypeScript, Supabase, Vercel",
-    liveUrl: "https://rank-your-meal-exchanges.vercel.app",
-    liveLabel: "Visit Site",
+    blurb:
+      "Rank Your Meal Exchanges is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
+    technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
+    githubUrl: "https://github.com/sebastianprusky/rank-your-meal-exchanges",
+    showcase: [
+      {
+        alt: "Rank Your Meal Exchanges ranking results interface",
+        src: "/projects/rank-your-meal-exchanges-preview.jpg",
+      },
+    ],
   },
   {
-    slug: "betterboxd",
-    title: "Betterboxd",
+    slug: "hexlearn",
+    title: "Hexlearn",
+    shortSubtitle: "Personal loss-window forecasting from gameplay",
+    previewSrc: null,
+    blurb:
+      "Hexlearn is a local-first ML experiment built around Hextris. It's designed to learn from canvas pixels and test whether a personalized visual model can forecast an upcoming loss window more effectively than simple time-based baselines.",
+    technologies: ["Python", "FastAPI", "scikit-learn", "PyTorch", "Next.js", "SQLite"],
+    githubUrl: "https://github.com/sebastianprusky/Hexlearn",
+    showcase: [],
+  },
+  {
+    slug: "pickamovie",
+    title: "PickAMovie",
+    shortSubtitle: "Personalized movie discovery without the endless scroll",
     previewSrc: "/projects/betterboxd-dark-preview.png",
-    briefDescription:
-      "Work in progress - case study on the weaknesses of Letterboxd's UX and lack of recommendation engine. I built a site that I consider to be a more-user friendly and intelligent version of Letterboxd, designed more for personal use versus Letterboxd's social media strenth. It features AI semantic search and a left vs. right swipe UI to help users easily pick their next watch.",
-    inspiration:
-      "Letterboxd's visual organization frustrates me - specifically how viewing your own ratings is buried deep in your profile, and the most important functions of the app often carry the same visual weight as functions that are likely never used by most users. Also, despite the large amount of data it collects, it has no reccomendation engine, leading to users aimlessly scrolling streaming services for something to watch.",
-    goals: "Create a more versatile movie search and ranking app.",
-    tools: "React + Vite, TypeScript, Supabase Auth and database sync, TMDB API",
-    liveUrl: null,
+    blurb:
+      "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
+    technologies: ["React", "Vite", "TypeScript", "Supabase", "TMDB API"],
+    githubUrl: "https://github.com/sebastianprusky/pickamovie",
+    showcase: [
+      {
+        alt: "PickAMovie movie recommendation interface",
+        src: "/projects/betterboxd-dark-preview.png",
+      },
+    ],
   },
   {
     slug: "homememory",
     title: "HomeMemory",
+    shortSubtitle: "A visual memory for everything you own",
     previewSrc: "/projects/homememory-dark-preview.png",
-    briefDescription:
-      "HomeMemory is a visual memory for your belongings. It helps you remember what you own and where everything is, whether it lives in a cabinet, moving box, or storage unit. It features semantic AI-powered search allowing users to ask HomeMemory questions about what they own.\n\nThe beta version for iOS is currently pending for App Store release.",
-    inspiration:
-      "Moving in and out of college dorms for the past few years showed me how quickly we forget where our belongings are stored. I frequently found myself wondering if I left a certain belonging in my storage unit at school, or if it was buried in a drawer or closet at home. HomeMemory aims to provide answers to those questions.",
-    goals:
-      "Create an app to help people avoid duplicate purchases, move into a new home, and remember what they own, with potential smart glasses applications in the future.",
-    tools:
-      "Swift / SwiftUI, SwiftData, Gemini API, OpenAI API, Firebase Analytics, Xcode",
-    liveUrl: "https://www.33labs.org/homememory/",
-    liveLabel: "Visit Site",
+    blurb:
+      "HomeMemory is a searchable, visual memory for your belongings. I began building it at 33Labs, motivated by experiences moving in and out of college dorms. The app combines visual inventory tools with semantic AI-powered search so people can ask questions about what they own, avoid duplicate purchases, and make packing or moving easier.",
+    releaseNote:
+      "HomeMemory is now available as an unlisted iOS app through a direct App Store link.",
+    technologies: ["SwiftUI", "SwiftData", "Gemini API", "OpenAI API", "Firebase"],
+    githubUrl: "https://github.com/cabadie/justHome",
+    appStoreUrl: "https://apps.apple.com/us/app/homememory/id6760926658",
+    showcase: [
+      {
+        alt: "HomeMemory visual inventory interface",
+        src: "/projects/homememory-dark-preview.png",
+      },
+    ],
   },
 ];
-
-const visibleProjects = projects.filter((project) => project.isVisible !== false);
 
 export function ProjectsList() {
   const [activeProjectSlug, setActiveProjectSlug] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
-  const activeProject = visibleProjects.find((project) => project.slug === activeProjectSlug) ?? null;
+  const activeProject = projects.find((project) => project.slug === activeProjectSlug) ?? null;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -123,7 +138,7 @@ export function ProjectsList() {
   return (
     <>
       <section className="projects-layout" aria-label="Projects" data-page-enter="content">
-        {visibleProjects.map((project) => (
+        {projects.map((project) => (
           <div
             aria-label={`Open ${project.title} project details`}
             className="project-card"
@@ -133,13 +148,29 @@ export function ProjectsList() {
             role="button"
             tabIndex={0}
           >
-            <div aria-hidden="true" className="project-card-visual">
-              <img
-                alt=""
-                src={project.previewSrc}
-              />
+            <div
+              aria-hidden="true"
+              className={`project-card-visual${project.previewSrc ? "" : " project-card-visual-placeholder"}`}
+            >
+              {project.previewSrc ? <img alt="" src={project.previewSrc} /> : (
+                <span className="project-card-placeholder-mark">
+                  <span>HX</span>
+                  <small>visual forecasting</small>
+                </span>
+              )}
             </div>
-            <span className="project-card-title">{project.title}</span>
+            <div className="project-card-overlay">
+              <h2>{project.title}</h2>
+              <p>{project.shortSubtitle}</p>
+              <ul
+                aria-label={`${project.title} technologies`}
+                className="project-technology-list"
+              >
+                {project.technologies.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </section>
@@ -163,31 +194,68 @@ export function ProjectsList() {
             Close
           </button>
           <header className="project-modal-header">
-            <p className="page-kicker">Project</p>
             <h2 id={activeProject ? `${activeProject.slug}-title` : undefined}>
               {activeProject?.title}
             </h2>
-            {activeProject?.liveUrl ? (
-              <a
-                className="project-live-link"
-                href={activeProject.liveUrl}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {activeProject.liveLabel ?? `Open ${activeProject.title}`}
-              </a>
-            ) : null}
           </header>
-          <div className="project-modal-sections">
-            {projectSections.map((section) => (
-              <section className="project-modal-section" key={section.key}>
-                <h3>{section.label}</h3>
-                <p>
-                  {activeProject?.[section.key]}
-                </p>
+          {activeProject ? (
+            <div className="project-modal-story">
+              <p className="project-blurb">{activeProject.blurb}</p>
+              {activeProject.releaseNote ? (
+                <p className="project-release-note">{activeProject.releaseNote}</p>
+              ) : null}
+              <ul
+                aria-label={`${activeProject.title} technologies`}
+                className="project-technology-list project-technology-list-modal"
+              >
+                {activeProject.technologies.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
+              <div className="project-action-links">
+                <a
+                  aria-label={`View ${activeProject.title} on GitHub`}
+                  className="project-action-link"
+                  href={activeProject.githubUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span aria-hidden="true" className="contact-icon contact-icon-github" />
+                  <span>GitHub</span>
+                </a>
+                {activeProject.appStoreUrl ? (
+                  <a
+                    aria-label={`View ${activeProject.title} on the App Store`}
+                    className="project-action-link"
+                    href={activeProject.appStoreUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <span>View on App Store</span>
+                    <span aria-hidden="true" className="project-action-arrow">↗</span>
+                  </a>
+                ) : null}
+              </div>
+              <section
+                aria-label={`${activeProject.title} project examples`}
+                className="project-showcase"
+              >
+                {activeProject.showcase.length > 0 ? (
+                  activeProject.showcase.map((item) => (
+                    <figure key={item.src}>
+                      <img alt={item.alt} src={item.src} />
+                      {item.caption ? <figcaption>{item.caption}</figcaption> : null}
+                    </figure>
+                  ))
+                ) : (
+                  <div className="project-showcase-placeholder">
+                    <span>Project media</span>
+                    <p>Screenshots, examples, or a demo can be added here.</p>
+                  </div>
+                )}
               </section>
-            ))}
-          </div>
+            </div>
+          ) : null}
         </article>
       </dialog>
     </>

@@ -135,7 +135,7 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.doesNotMatch(styles, /\.gallery-title span/);
   assert.match(styles, /\.artwork-link > span[\s\S]*?color: #fff/);
   assert.match(styles, /\.artwork-grid \{[\s\S]*?gap: clamp\(8px, 0\.8vw, 12px\)/);
-  assert.match(styles, /\.gallery-header \{[\s\S]*?padding: clamp\(68px, 10vw, 150px\) clamp\(20px, 5vw, 76px\) clamp\(34px, 5vw, 72px\)/);
+  assert.match(styles, /\.gallery-header \{[\s\S]*?padding: clamp\(28px, 4vw, 56px\) clamp\(20px, 5vw, 76px\) clamp\(34px, 5vw, 72px\)/);
   assert.match(styles, /\.gallery-header h1,\s*\.projects-header h1,\s*\.about-layout h1 \{\s*text-transform: none;/);
   assert.match(styles, /\.artwork-grid \{[\s\S]*?padding: clamp\(16px, 2\.4vw, 36px\)/);
   assert.match(styles, /\.artwork-column \{[\s\S]*?gap: clamp\(8px, 0\.8vw, 12px\)/);
@@ -184,6 +184,7 @@ test("inner pages include Home navigation without underline hover rules", async 
   assert.doesNotMatch(aboutSource, /ScrambleHeading/);
   assert.match(projectsSource, /<h1 id="projects-heading">Projects<\/h1>/);
   assert.match(artSource, /<h1 className="gallery-title" id="art-heading">/);
+  assert.match(styles, /\.projects-header \{[\s\S]*?padding: clamp\(28px, 4vw, 56px\)/);
   assert.match(aboutSource, /<h1 className="about-heading" id="about-heading">/);
 });
 
@@ -372,34 +373,45 @@ test("gallery and artwork detail routes render", async () => {
   assert.doesNotMatch(room, /mr morale &amp;amp;amp; the big steppers/);
 });
 
-test("projects route presents cards and connects live projects to their sites", async () => {
+test("projects route presents four editorial project cards with project links", async () => {
   const response = await render("/projects");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.doesNotMatch(html, /Replay Projects animation/);
   assert.doesNotMatch(html, /class="scramble-character"/);
-  assert.match(html, /betterboxd/);
+  assert.match(html, /PickAMovie/);
   assert.match(html, /HomeMemory/);
-  assert.doesNotMatch(html, /Rank Your Meal Exchanges/);
-  assert.match(html, /Brief description/);
-  assert.match(html, /Tools \/ Software/);
+  assert.match(html, /Rank Your Meal Exchanges/);
+  assert.match(html, /Hexlearn/);
+  assert.doesNotMatch(html, /Brief description|Inspiration|Tools \/ Software/);
+  assert.match(html, /class="project-card-overlay"/);
+  assert.match(html, /A faster way to rank Northwestern dining/);
   assert.match(html, /role="button"/);
   assert.match(html, /\/projects\/betterboxd-dark-preview\.png/);
   assert.match(html, /\/projects\/homememory-dark-preview\.png/);
-  assert.doesNotMatch(html, /\/projects\/rank-your-meal-exchanges-preview\.jpg/);
-  assert.doesNotMatch(html, /href="https?:\/\/[^"]*betterboxd/i);
-  assert.doesNotMatch(html, /href="https?:\/\/[^"]*homememory/i);
+  assert.match(html, /\/projects\/rank-your-meal-exchanges-preview\.jpg/);
   assert.doesNotMatch(html, /Spatial Inventory System/);
 
   const projectsSource = await readFile(
     new URL("../app/projects/projects-list.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(projectsSource, /Work in progress - case study/);
-  assert.match(projectsSource, /Visit Site/);
-  assert.doesNotMatch(projectsSource, /"Demo"/);
-  assert.match(projectsSource, /https:\/\/www\.33labs\.org\/homememory\//);
-  assert.match(projectsSource, /https:\/\/rank-your-meal-exchanges\.vercel\.app/);
+  assert.match(projectsSource, /type ProjectShowcaseItem/);
+  assert.match(projectsSource, /shortSubtitle/);
+  assert.match(projectsSource, /appStoreUrl\?: string/);
+  assert.match(projectsSource, /className="project-technology-list project-technology-list-modal"/);
+  assert.match(projectsSource, /className="project-action-links"/);
+  assert.match(projectsSource, /className="project-action-link"/);
+  assert.match(projectsSource, /className="project-showcase"/);
+  assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/rank-your-meal-exchanges/);
+  assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/Hexlearn/);
+  assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/pickamovie/);
+  assert.match(projectsSource, /https:\/\/github\.com\/cabadie\/justHome/);
+  assert.match(projectsSource, /https:\/\/apps\.apple\.com\/us\/app\/homememory\/id6760926658/);
+  assert.match(projectsSource, /available as an unlisted iOS app through a direct App Store link/);
+  assert.match(projectsSource, /forecast an upcoming loss window/);
+  assert.match(projectsSource, /imported Letterboxd history and in-app preference signals/);
+  assert.doesNotMatch(projectsSource, /projectSections|briefDescription|liveUrl/);
   assert.match(projectsSource, /Independent project inspired by Beli\. Not affiliated with or endorsed by Beli or Northwestern University\./);
   assert.doesNotMatch(projectsSource, /i-want-to-make-a-better\.vercel\.app/);
 });

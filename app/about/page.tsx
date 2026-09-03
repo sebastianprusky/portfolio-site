@@ -4,9 +4,29 @@ import { AboutEmail } from "../about-email";
 import { AboutMiamiEasterEgg } from "../about-miami-easter-egg";
 import { Recently } from "../recently";
 import { SiteHeader } from "../site-header";
+import { socialImage } from "../site-metadata";
+
+const title = "About | Sebastian Prusky";
+const description =
+  "About Sebastian Prusky, an engineer and artist from Miami studying Computer Science and MMSS at Northwestern University in Chicago.";
 
 export const metadata: Metadata = {
-  title: "About | Sebastian Prusky",
+  title,
+  description,
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    url: "/about",
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage.url],
+  },
 };
 
 export default function AboutPage() {

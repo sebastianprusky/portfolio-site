@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { ScrambleHeading } from "./scramble-heading";
 import { SectionNav, SiteHeader } from "./site-header";
 import { artworks } from "./art/artworks";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

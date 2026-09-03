@@ -106,6 +106,7 @@ test("home scramble and ink transition stay deterministic and accessible", async
     /commitRef\.current\(\)[\s\S]*finishFrame = window\.requestAnimationFrame[\s\S]*preview\.remove\(\)/,
   );
   assert.doesNotMatch(themeSource, /startViewTransition/);
+  assert.match(themeSource, /data-tooltip=\{`Switch to \$\{nextTheme\} mode`\}/);
   assert.match(themeSource, /data-theme-route=\{pathname\}/);
   assert.match(themeSource, /usePathname\(\)/);
   assert.match(themeSource, /animatePageEntry\(page\)/);
@@ -146,7 +147,28 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.doesNotMatch(styles, /\.home-graphic|\.rearrange-button|\.reset-button/);
   assert.doesNotMatch(styles, /\.home-section-nav a[\s\S]*?text-shadow/);
   assert.match(styles, /\.ink-preview\[data-preview-theme="light"\]/);
+  assert.match(styles, /\.theme-toggle::after \{[\s\S]*?content: attr\(data-tooltip\)/);
+  assert.match(styles, /\.theme-toggle:focus-visible::after \{[\s\S]*?opacity: 1/);
+  assert.match(styles, /@media \(hover: hover\)[\s\S]*?transition-delay: 350ms/);
   assert.doesNotMatch(styles, /\.ink-spill-shape-main/);
+});
+
+test("routes publish canonical and social-sharing metadata", async () => {
+  const home = await (await render("/")).text();
+  assert.match(home, /rel="canonical" href="https:\/\/www\.sebastianprusky\.me\/"/);
+  assert.match(home, /property="og:image" content="https:\/\/www\.sebastianprusky\.me\/og\.png"/);
+  assert.match(home, /name="twitter:card" content="summary_large_image"/);
+  assert.match(home, /rel="icon" href="https:\/\/www\.sebastianprusky\.me\/icon\.png"/);
+
+  const projects = await (await render("/projects")).text();
+  assert.match(projects, /rel="canonical" href="https:\/\/www\.sebastianprusky\.me\/projects"/);
+  assert.match(projects, /Selected engineering and product projects by Sebastian Prusky/);
+  assert.match(projects, /property="og:url" content="https:\/\/www\.sebastianprusky\.me\/projects"/);
+
+  const artwork = await (await render("/art\/paintings\/praying-mantises")).text();
+  assert.match(artwork, /rel="canonical" href="https:\/\/www\.sebastianprusky\.me\/art\/paintings\/praying-mantises"/);
+  assert.match(artwork, /seaside, oil on wood, 2024\. Artwork by Sebastian Prusky\./);
+  assert.match(artwork, /property="og:image" content="https:\/\/www\.sebastianprusky\.me\/art\/painting-03-praying-mantises-display\.webp"/);
 });
 
 test("inner pages include Home navigation without underline hover rules", async () => {

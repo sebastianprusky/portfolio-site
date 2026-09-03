@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "../../../site-header";
+import { artworkDescription } from "../../../site-metadata";
 import { artworks, isArtCategory } from "../../artworks";
 
 type ArtworkPageProps = {
@@ -17,7 +18,37 @@ export async function generateMetadata({ params }: ArtworkPageProps): Promise<Me
   const work = artworks.find(
     (item) => item.category === category && item.slug === slug,
   );
-  return work ? { title: `${work.title} | Sebastian Prusky` } : {};
+  if (!work) return {};
+
+  const title = `${work.title} | Sebastian Prusky`;
+  const description = artworkDescription(work.title, work.medium, work.year);
+  const url = `/art/${work.category}/${work.slug}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url,
+      images: [
+        {
+          url: work.src,
+          width: work.width,
+          height: work.height,
+          alt: work.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [work.src],
+    },
+  };
 }
 
 export default async function ArtworkPage({ params }: ArtworkPageProps) {

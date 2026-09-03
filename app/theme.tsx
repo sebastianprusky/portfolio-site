@@ -130,6 +130,7 @@ export function ThemeToggle() {
       aria-label={`Switch to ${nextTheme} mode`}
       className="theme-toggle"
       data-theme-toggle
+      data-tooltip={`Switch to ${nextTheme} mode`}
       disabled={transitionDirection !== null}
       onClick={(event) => {
         const jar = event.currentTarget.querySelector<HTMLElement>(".theme-jar");

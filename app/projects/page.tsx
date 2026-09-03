@@ -1,9 +1,29 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "../site-header";
+import { socialImage } from "../site-metadata";
 import { ProjectsList } from "./projects-list";
 
+const title = "Projects | Sebastian Prusky";
+const description =
+  "Selected engineering and product projects by Sebastian Prusky, including HomeMemory, PickAMovie, Northwestern Dining Ranked, and Hexlearn.";
+
 export const metadata: Metadata = {
-  title: "Projects | Sebastian Prusky",
+  title,
+  description,
+  alternates: { canonical: "/projects" },
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    url: "/projects",
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage.url],
+  },
 };
 
 export default function ProjectsPage() {

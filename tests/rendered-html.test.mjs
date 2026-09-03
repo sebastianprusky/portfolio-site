@@ -133,7 +133,7 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.match(styles, /\.home-description[\s\S]*color: var\(--foreground\)/);
   assert.doesNotMatch(styles, /\.works-count/);
   assert.doesNotMatch(styles, /\.gallery-title span/);
-  assert.match(styles, /\.artwork-link > span[\s\S]*?color: #fff/);
+  assert.match(styles, /\.artwork-overlay \{[\s\S]*?color: #fff/);
   assert.match(styles, /\.artwork-grid \{[\s\S]*?gap: clamp\(8px, 0\.8vw, 12px\)/);
   assert.match(styles, /\.gallery-header \{[\s\S]*?padding: clamp\(28px, 4vw, 56px\) clamp\(20px, 5vw, 76px\) clamp\(34px, 5vw, 72px\)/);
   assert.match(styles, /\.gallery-header h1,\s*\.projects-header h1,\s*\.about-layout h1 \{\s*text-transform: none;/);
@@ -329,12 +329,23 @@ test("art presents one combined gallery", async () => {
   assert.match(html, /data-slug="desert-haircut"/);
   assert.match(html, /data-slug="room-study"/);
   assert.match(html, /alt="mr morale &amp; the big steppers"/);
-  assert.match(html, />mr morale &amp; the big steppers<\/span>/);
+  assert.match(html, /class="artwork-overlay-title">mr morale &amp; the big steppers<\/span>/);
+  assert.match(html, /class="artwork-overlay-meta">colored pencil(?:<!-- -->)? · (?:<!-- -->)?2022<\/span>/);
   assert.doesNotMatch(html, /mr morale &amp;amp; the big steppers/);
   assert.doesNotMatch(html, /mr morale &amp;amp;amp; the big steppers/);
   assert.match(html, /data-featured="true"/);
   assert.match(html, /type="button"/);
   assert.doesNotMatch(html, /Photography|Skeleton Study|Space Figure/);
+
+  const styles = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+  assert.match(styles, /\.artwork-link:hover \.artwork-overlay/);
+  assert.doesNotMatch(
+    styles,
+    /\.artwork-link:hover,\s*\.artwork-link:focus-visible\s*\{[^}]*transform:/,
+  );
 });
 
 test("gallery and artwork detail routes render", async () => {

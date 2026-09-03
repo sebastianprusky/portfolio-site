@@ -134,7 +134,10 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
                   type="button"
                 >
                   <GalleryArtworkImage work={work} />
-                  <span>{work.title}</span>
+                  <span className="artwork-overlay">
+                    <span className="artwork-overlay-title">{work.title}</span>
+                    <span className="artwork-overlay-meta">{work.medium} · {work.year}</span>
+                  </span>
                 </button>
               );
             })}
@@ -163,7 +166,10 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
                       type="button"
                     >
                       <GalleryArtworkImage work={work} />
-                      <span>{work.title}</span>
+                      <span className="artwork-overlay">
+                        <span className="artwork-overlay-title">{work.title}</span>
+                        <span className="artwork-overlay-meta">{work.medium} · {work.year}</span>
+                      </span>
                     </button>
                   ))
               : null}

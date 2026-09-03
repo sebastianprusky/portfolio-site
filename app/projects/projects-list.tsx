@@ -3,23 +3,16 @@
 import type { KeyboardEvent, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
-type ProjectShowcaseItem = {
-  alt: string;
-  caption?: string;
-  src: string;
-};
-
 type Project = {
   slug: string;
   title: string;
   shortSubtitle: string;
-  previewSrc: string | null;
+  previewSrc: string;
   blurb: string;
   releaseNote?: string;
   technologies: string[];
   githubUrl: string;
   appStoreUrl?: string;
-  showcase: ProjectShowcaseItem[];
 };
 
 const projects: Project[] = [
@@ -32,23 +25,16 @@ const projects: Project[] = [
       "Rank Your Meal Exchanges is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
     technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
     githubUrl: "https://github.com/sebastianprusky/rank-your-meal-exchanges",
-    showcase: [
-      {
-        alt: "Rank Your Meal Exchanges ranking results interface",
-        src: "/projects/rank-your-meal-exchanges-preview.jpg",
-      },
-    ],
   },
   {
     slug: "hexlearn",
     title: "Hexlearn",
     shortSubtitle: "Personal loss-window forecasting from gameplay",
-    previewSrc: null,
+    previewSrc: "/projects/hexlearn-preview.png",
     blurb:
       "Hexlearn is a local-first ML experiment built around Hextris. It's designed to learn from canvas pixels and test whether a personalized visual model can forecast an upcoming loss window more effectively than simple time-based baselines.",
     technologies: ["Python", "FastAPI", "scikit-learn", "PyTorch", "Next.js", "SQLite"],
     githubUrl: "https://github.com/sebastianprusky/Hexlearn",
-    showcase: [],
   },
   {
     slug: "pickamovie",
@@ -57,14 +43,8 @@ const projects: Project[] = [
     previewSrc: "/projects/betterboxd-dark-preview.png",
     blurb:
       "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
-    technologies: ["React", "Vite", "TypeScript", "Supabase", "TMDB API"],
+    technologies: ["React", "Vite", "TypeScript", "Supabase"],
     githubUrl: "https://github.com/sebastianprusky/pickamovie",
-    showcase: [
-      {
-        alt: "PickAMovie movie recommendation interface",
-        src: "/projects/betterboxd-dark-preview.png",
-      },
-    ],
   },
   {
     slug: "homememory",
@@ -75,15 +55,9 @@ const projects: Project[] = [
       "HomeMemory is a searchable, visual memory for your belongings. I began building it at 33Labs, motivated by experiences moving in and out of college dorms. The app combines visual inventory tools with semantic AI-powered search so people can ask questions about what they own, avoid duplicate purchases, and make packing or moving easier.",
     releaseNote:
       "HomeMemory is now available as an unlisted iOS app through a direct App Store link.",
-    technologies: ["SwiftUI", "SwiftData", "Gemini API", "OpenAI API", "Firebase"],
+    technologies: ["SwiftUI", "SwiftData", "Firebase"],
     githubUrl: "https://github.com/cabadie/justHome",
     appStoreUrl: "https://apps.apple.com/us/app/homememory/id6760926658",
-    showcase: [
-      {
-        alt: "HomeMemory visual inventory interface",
-        src: "/projects/homememory-dark-preview.png",
-      },
-    ],
   },
 ];
 
@@ -148,16 +122,8 @@ export function ProjectsList() {
             role="button"
             tabIndex={0}
           >
-            <div
-              aria-hidden="true"
-              className={`project-card-visual${project.previewSrc ? "" : " project-card-visual-placeholder"}`}
-            >
-              {project.previewSrc ? <img alt="" src={project.previewSrc} /> : (
-                <span className="project-card-placeholder-mark">
-                  <span>HX</span>
-                  <small>visual forecasting</small>
-                </span>
-              )}
+            <div aria-hidden="true" className="project-card-visual">
+              <img alt="" src={project.previewSrc} />
             </div>
             <div className="project-card-overlay">
               <h2>{project.title}</h2>
@@ -231,29 +197,11 @@ export function ProjectsList() {
                     rel="noreferrer"
                     target="_blank"
                   >
+                    <span aria-hidden="true" className="contact-icon contact-icon-app-store" />
                     <span>View on App Store</span>
-                    <span aria-hidden="true" className="project-action-arrow">↗</span>
                   </a>
                 ) : null}
               </div>
-              <section
-                aria-label={`${activeProject.title} project examples`}
-                className="project-showcase"
-              >
-                {activeProject.showcase.length > 0 ? (
-                  activeProject.showcase.map((item) => (
-                    <figure key={item.src}>
-                      <img alt={item.alt} src={item.src} />
-                      {item.caption ? <figcaption>{item.caption}</figcaption> : null}
-                    </figure>
-                  ))
-                ) : (
-                  <div className="project-showcase-placeholder">
-                    <span>Project media</span>
-                    <p>Screenshots, examples, or a demo can be added here.</p>
-                  </div>
-                )}
-              </section>
             </div>
           ) : null}
         </article>

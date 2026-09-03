@@ -2,8 +2,6 @@
 
 This file records the project copy currently used on the site. The popups do not display separate Description, Inspiration, or Goal fields.
 
-The showcase notes describe the flexible media space beneath each project's GitHub link. They are planning notes and will not appear as a labeled text field on the site.
-
 ## Rank Your Meal Exchanges
 
 ### Title
@@ -27,10 +25,6 @@ Next.js, TypeScript, Supabase, Vercel
 ### GitHub
 
 https://github.com/sebastianprusky/rank-your-meal-exchanges
-
-### Showcase notes
-
-Use the current ranking-results screenshot. A live-app link or short interaction demo could also go here later.
 
 ---
 
@@ -56,10 +50,6 @@ Python, FastAPI, scikit-learn, PyTorch, Next.js, SQLite
 
 https://github.com/sebastianprusky/Hexlearn
 
-### Showcase notes
-
-Add a clean Model Lab screenshot, a capture-overlay example, or a short gameplay-and-forecast demo when one is ready. Do not use personal recordings or model artifacts without reviewing them first.
-
 ---
 
 ## PickAMovie
@@ -78,15 +68,11 @@ PickAMovie reduces the friction of choosing what to watch. It uses imported Lett
 
 ### Technologies
 
-React, Vite, TypeScript, Supabase, TMDB API
+React, Vite, TypeScript, Supabase
 
 ### GitHub
 
 https://github.com/sebastianprusky/pickamovie
-
-### Showcase notes
-
-Use the current dark interface screenshot. Additional recommendation results or a short swipe-flow demo could be added later.
 
 ---
 
@@ -108,7 +94,7 @@ HomeMemory is now available as an unlisted iOS app through a direct App Store li
 
 ### Technologies
 
-SwiftUI, SwiftData, Gemini API, OpenAI API, Firebase
+SwiftUI, SwiftData, Firebase
 
 ### GitHub
 
@@ -117,7 +103,3 @@ https://github.com/cabadie/justHome
 ### App Store
 
 https://apps.apple.com/us/app/homememory/id6760926658
-
-### Showcase notes
-
-Use the current interface screenshot. App Store screens, scanning examples, or a short search demo could replace or expand it later.

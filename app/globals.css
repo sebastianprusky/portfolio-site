@@ -853,47 +853,6 @@ html[data-ink-transition] .theme-jar {
   object-position: top center;
 }
 
-.project-card-visual-placeholder {
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 68% 24%, rgba(155, 196, 255, 0.3), transparent 28%),
-    linear-gradient(145deg, #111820 0%, #090b0f 58%, #18273a 100%);
-}
-
-.project-card-visual-placeholder::before {
-  position: absolute;
-  width: min(42%, 220px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(245, 243, 239, 0.2);
-  content: "";
-  transform: rotate(30deg);
-}
-
-.project-card-placeholder-mark {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  color: #fff;
-}
-
-.project-card-placeholder-mark > span {
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(4rem, 8vw, 8rem);
-  font-weight: 500;
-  letter-spacing: -0.08em;
-  line-height: 0.72;
-}
-
-.project-card-placeholder-mark small {
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
 .project-card-overlay {
   position: absolute;
   inset: 0;
@@ -1131,64 +1090,6 @@ html[data-ink-transition] .theme-jar {
 .project-action-link:hover {
   color: var(--foreground);
   transform: translateY(-1px);
-}
-
-.project-action-arrow {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.project-showcase {
-  display: grid;
-  gap: clamp(16px, 2vw, 28px);
-  width: 100%;
-  margin-top: clamp(58px, 8vw, 108px);
-  border-top: 1px solid var(--line);
-  padding-top: clamp(24px, 4vw, 48px);
-}
-
-.project-showcase figure {
-  margin: 0;
-}
-
-.project-showcase img {
-  display: block;
-  width: 100%;
-  max-height: 620px;
-  border: 1px solid var(--line);
-  object-fit: cover;
-  object-position: top center;
-}
-
-.project-showcase figcaption {
-  max-width: 680px;
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.55;
-}
-
-.project-showcase-placeholder {
-  display: grid;
-  place-content: center;
-  min-height: clamp(260px, 38vw, 460px);
-  background:
-    radial-gradient(circle at 72% 28%, rgba(155, 196, 255, 0.12), transparent 30%),
-    linear-gradient(145deg, rgba(155, 196, 255, 0.05), transparent 58%);
-  text-align: center;
-}
-
-.project-showcase-placeholder span {
-  color: var(--foreground);
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(2rem, 4vw, 4rem);
-  line-height: 1;
-}
-
-.project-showcase-placeholder p {
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 0.82rem;
 }
 
 .about-layout {
@@ -1586,6 +1487,10 @@ html[data-ink-transition] .theme-jar {
 
 .contact-icon-github {
   mask-image: url("/github-icon.svg");
+}
+
+.contact-icon-app-store {
+  mask-image: url("/app-store-icon.svg");
 }
 
 .contact-icon-linkedin {

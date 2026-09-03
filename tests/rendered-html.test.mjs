@@ -394,24 +394,28 @@ test("projects route presents four editorial project cards with project links", 
   assert.match(html, /\/projects\/betterboxd-dark-preview\.png/);
   assert.match(html, /\/projects\/homememory-dark-preview\.png/);
   assert.match(html, /\/projects\/rank-your-meal-exchanges-preview\.jpg/);
+  assert.match(html, /\/projects\/hexlearn-preview\.png/);
   assert.doesNotMatch(html, /Spatial Inventory System/);
 
   const projectsSource = await readFile(
     new URL("../app/projects/projects-list.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(projectsSource, /type ProjectShowcaseItem/);
+  assert.doesNotMatch(projectsSource, /type ProjectShowcaseItem|showcase:/);
   assert.match(projectsSource, /shortSubtitle/);
   assert.match(projectsSource, /appStoreUrl\?: string/);
   assert.match(projectsSource, /className="project-technology-list project-technology-list-modal"/);
   assert.match(projectsSource, /className="project-action-links"/);
   assert.match(projectsSource, /className="project-action-link"/);
-  assert.match(projectsSource, /className="project-showcase"/);
+  assert.doesNotMatch(projectsSource, /project-showcase|Project media|project-card-placeholder/);
   assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/rank-your-meal-exchanges/);
   assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/Hexlearn/);
   assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/pickamovie/);
   assert.match(projectsSource, /https:\/\/github\.com\/cabadie\/justHome/);
   assert.match(projectsSource, /https:\/\/apps\.apple\.com\/us\/app\/homememory\/id6760926658/);
+  assert.match(projectsSource, /contact-icon-app-store/);
+  assert.doesNotMatch(projectsSource, /project-action-arrow|↗/);
+  assert.doesNotMatch(projectsSource, /TMDB API|Gemini API|OpenAI API/);
   assert.match(projectsSource, /available as an unlisted iOS app through a direct App Store link/);
   assert.match(projectsSource, /forecast an upcoming loss window/);
   assert.match(projectsSource, /imported Letterboxd history and in-app preference signals/);

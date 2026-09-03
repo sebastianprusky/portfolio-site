@@ -52,7 +52,7 @@ export function AboutClock() {
 
   return (
     <div className="about-clock-block">
-      <div aria-label="Choose clock location" className="about-locations">
+      <div aria-label="Choose clock location" className="about-locations" role="group">
         {(Object.entries(ZONES) as Array<[ClockZone, (typeof ZONES)[ClockZone]]>).map(
           ([zone, details], index) => (
             <span className="about-location-choice" key={zone}>

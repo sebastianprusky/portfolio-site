@@ -202,10 +202,12 @@ test("about centers the name without a redundant eyebrow", async () => {
   assert.match(html, /miami, fl/);
   assert.match(html, /chicago, il/);
   assert.match(html, /aria-pressed="true"/);
+  assert.match(html, /aria-label="Choose clock location"[^>]*role="group"/);
   assert.match(html, /class="about-email"/);
   assert.doesNotMatch(html, /mailto:sebastianprusky2028@u\.northwestern\.edu/);
   assert.match(html, /aria-label="GitHub"/);
   assert.match(html, /aria-label="LinkedIn"/);
+  assert.match(html, /<nav class="contact-links" aria-label="Contact links">/);
   assert.doesNotMatch(html, />GitHub<|>LinkedIn</);
   assert.doesNotMatch(html, /class="page-kicker">About/);
   assert.match(html, /id="recently-heading">Recently/);
@@ -213,7 +215,7 @@ test("about centers the name without a redundant eyebrow", async () => {
   assert.match(html, /href="https:\/\/espanso\.org\/"/);
   assert.match(html, /Normal People/);
   assert.match(html, /www\.google\.com\/search\?q=Normal\+People\+Sally\+Rooney/);
-  assert.match(html, /Purple/);
+  assert.doesNotMatch(html, /Spotify player|open\.spotify\.com|>Purple</);
 
   const recentlySource = await readFile(
     new URL("../app/recently-data.ts", import.meta.url),
@@ -223,8 +225,8 @@ test("about centers the name without a redundant eyebrow", async () => {
     new URL("../app/recently.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(recentlySource, /open\.spotify\.com\/embed\/track\/1i2fcqyMYvpvuLyJyOLEAt/);
-  assert.match(recentlyComponentSource, /className="recent-embed-card"/);
+  assert.doesNotMatch(recentlySource, /Spotify|open\.spotify\.com|embedUrl|embedHeight/);
+  assert.doesNotMatch(recentlyComponentSource, /<iframe|recent-embed-card/);
   assert.match(recentlyComponentSource, /className="recent-preview-card"/);
   assert.doesNotMatch(recentlyComponentSource, /<img|<dialog|"use client"/);
 
@@ -328,7 +330,9 @@ test("art presents one combined gallery", async () => {
   assert.doesNotMatch(html, /12(?:<!-- -->)? works/);
   assert.match(html, /data-slug="desert-haircut"/);
   assert.match(html, /data-slug="room-study"/);
-  assert.match(html, /alt="mr morale &amp; the big steppers"/);
+  assert.match(html, /aria-label="mr morale &amp; the big steppers, colored pencil, 2022"/);
+  assert.match(html, /<img alt=""/);
+  assert.match(html, /aria-hidden="true" class="artwork-overlay"/);
   assert.match(html, /class="artwork-overlay-title">mr morale &amp; the big steppers<\/span>/);
   assert.match(html, /class="artwork-overlay-meta">colored pencil(?:<!-- -->)? · (?:<!-- -->)?2022<\/span>/);
   assert.doesNotMatch(html, /mr morale &amp;amp; the big steppers/);
@@ -402,8 +406,10 @@ test("projects route presents four editorial project cards with project links", 
   assert.doesNotMatch(html, /Brief description|Inspiration|Tools \/ Software/);
   assert.match(html, /class="project-card-overlay"/);
   assert.match(html, /A faster way to rank Northwestern dining/);
-  assert.match(html, /role="button"/);
-  assert.match(html, /\/projects\/betterboxd-dark-preview\.png/);
+  assert.match(html, /class="project-card-button"/);
+  assert.doesNotMatch(html, /role="button"/);
+  assert.match(html, /\/projects\/pickamovie-light-preview\.png/);
+  assert.doesNotMatch(html, /\/projects\/betterboxd-dark-preview\.png/);
   assert.match(html, /\/projects\/homememory-dark-preview\.png/);
   assert.match(html, /\/projects\/rank-your-meal-exchanges-preview\.jpg/);
   assert.match(html, /\/projects\/hexlearn-preview\.png/);
@@ -434,9 +440,11 @@ test("projects route presents four editorial project cards with project links", 
   assert.match(projectsSource, />Website<\/span>/);
   assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/Hexlearn/);
   assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/pickamovie/);
-  assert.match(projectsSource, /https:\/\/github\.com\/cabadie\/justHome/);
+  assert.doesNotMatch(projectsSource, /https:\/\/github\.com\/cabadie\/justHome/);
+  assert.match(projectsSource, /https:\/\/www\.33labs\.org\/homememory\//);
   assert.match(projectsSource, /https:\/\/apps\.apple\.com\/us\/app\/homememory\/id6760926658/);
   assert.match(projectsSource, /contact-icon-app-store/);
+  assert.match(projectsSource, /contact-icon-website/);
   assert.doesNotMatch(projectsSource, /project-action-arrow|↗/);
   assert.doesNotMatch(projectsSource, /TMDB API|Gemini API|OpenAI API/);
   assert.match(projectsSource, /available as an unlisted iOS app through a direct App Store link/);
@@ -445,4 +453,11 @@ test("projects route presents four editorial project cards with project links", 
   assert.doesNotMatch(projectsSource, /projectSections|briefDescription|liveUrl/);
   assert.match(projectsSource, /Independent project inspired by Beli\. Not affiliated with or endorsed by Beli or Northwestern University\./);
   assert.doesNotMatch(projectsSource, /i-want-to-make-a-better\.vercel\.app/);
+
+  const styles = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+  assert.match(styles, /@media \(max-width: 650px\)[\s\S]*?\.project-card \{\s*aspect-ratio: 16 \/ 9;/);
+  assert.match(styles, /@media \(max-width: 900px\)[\s\S]*?\.project-card-visual img \{\s*object-fit: contain;/);
 });

@@ -16,33 +16,21 @@ export function Recently() {
         {recentItems.map((item) => (
           <article className="recent-item" key={item.slug}>
             <p className="recent-category">{item.category}</p>
-            {item.action.type === "link" ? (
-              <a
-                aria-label={`${item.action.label}: ${item.title}`}
-                className="recent-preview-card"
-                href={item.action.href}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <span className="recent-preview-copy">
-                  <strong>{item.title}</strong>
-                  <span>{item.byline}</span>
-                </span>
-                <span className="recent-preview-action">
-                  {item.action.label} <span aria-hidden="true">↗</span>
-                </span>
-              </a>
-            ) : (
-              <iframe
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                allowFullScreen
-                className="recent-embed-card"
-                height={item.action.embedHeight}
-                loading="lazy"
-                src={item.action.embedUrl}
-                title={item.action.embedTitle}
-              />
-            )}
+            <a
+              aria-label={`${item.action.label}: ${item.title}`}
+              className="recent-preview-card"
+              href={item.action.href}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span className="recent-preview-copy">
+                <strong>{item.title}</strong>
+                <span>{item.byline}</span>
+              </span>
+              <span className="recent-preview-action">
+                {item.action.label} <span aria-hidden="true">↗</span>
+              </span>
+            </a>
           </article>
         ))}
       </div>

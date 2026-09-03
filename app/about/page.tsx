@@ -27,7 +27,7 @@ export default function AboutPage() {
           <p className="about-note">
             You can reach me at <AboutEmail />.
           </p>
-          <div className="contact-links" aria-label="Contact links">
+          <nav className="contact-links" aria-label="Contact links">
             <a
               aria-label="GitHub"
               href="https://github.com/sebastianprusky"
@@ -44,7 +44,7 @@ export default function AboutPage() {
             >
               <span aria-hidden="true" className="contact-icon contact-icon-linkedin" />
             </a>
-          </div>
+          </nav>
         </div>
       </section>
       <Recently />

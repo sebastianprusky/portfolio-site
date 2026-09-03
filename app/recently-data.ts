@@ -1,20 +1,12 @@
 export type RecentItem = {
   slug: string;
-  category: "Tech" | "Read" | "Enjoyed";
+  category: "Tech" | "Read";
   title: string;
   byline: string;
-  action:
-    | {
-        type: "link";
-        href: string;
-        label: string;
-      }
-    | {
-        type: "embed";
-        embedTitle: string;
-        embedUrl: string;
-        embedHeight: number;
-      };
+  action: {
+    href: string;
+    label: string;
+  };
 };
 
 export const recentlyUpdated = "August 2026";
@@ -26,7 +18,6 @@ export const recentItems: RecentItem[] = [
     title: "espanso",
     byline: "Desktop text expander",
     action: {
-      type: "link",
       href: "https://espanso.org/",
       label: "Visit espanso",
     },
@@ -37,22 +28,8 @@ export const recentItems: RecentItem[] = [
     title: "Normal People",
     byline: "Sally Rooney",
     action: {
-      type: "link",
       href: "https://www.google.com/search?q=Normal+People+Sally+Rooney",
       label: "Search the book",
-    },
-  },
-  {
-    slug: "purple",
-    category: "Enjoyed",
-    title: "Purple",
-    byline: "Nas · The Lost Tapes, 2002",
-    action: {
-      type: "embed",
-      embedTitle: "Spotify player for Purple by Nas",
-      embedUrl:
-        "https://open.spotify.com/embed/track/1i2fcqyMYvpvuLyJyOLEAt?utm_source=generator",
-      embedHeight: 80,
     },
   },
 ];

@@ -52,7 +52,7 @@ function GalleryArtworkImage({ work }: { work: Artwork }) {
 
   return (
     <img
-      alt={work.title}
+      alt=""
       decoding="async"
       fetchPriority={isFirstRow ? "high" : "auto"}
       height={work.height}
@@ -121,6 +121,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
 
               return (
                 <button
+                  aria-label={`${work.title}, ${work.medium}, ${work.year}`}
                   className="artwork-link"
                   data-featured={featuredArtworks.has(work.slug) ? "true" : undefined}
                   data-slug={work.slug}
@@ -134,7 +135,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
                   type="button"
                 >
                   <GalleryArtworkImage work={work} />
-                  <span className="artwork-overlay">
+                  <span aria-hidden="true" className="artwork-overlay">
                     <span className="artwork-overlay-title">{work.title}</span>
                     <span className="artwork-overlay-meta">{work.medium} · {work.year}</span>
                   </span>
@@ -151,6 +152,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
                   )
                   .map((work) => (
                     <button
+                      aria-label={`${work.title}, ${work.medium}, ${work.year}`}
                       className="artwork-link"
                       data-featured={
                         featuredArtworks.has(work.slug) ? "true" : undefined
@@ -166,7 +168,7 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
                       type="button"
                     >
                       <GalleryArtworkImage work={work} />
-                      <span className="artwork-overlay">
+                      <span aria-hidden="true" className="artwork-overlay">
                         <span className="artwork-overlay-title">{work.title}</span>
                         <span className="artwork-overlay-meta">{work.medium} · {work.year}</span>
                       </span>

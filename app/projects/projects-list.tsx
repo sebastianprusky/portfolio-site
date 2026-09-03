@@ -1,6 +1,6 @@
 "use client";
 
-import type { KeyboardEvent, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
 type Project = {
@@ -11,7 +11,7 @@ type Project = {
   blurb: string;
   releaseNote?: string;
   technologies: string[];
-  githubUrl: string;
+  githubUrl?: string;
   appStoreUrl?: string;
   websiteUrl?: string;
 };
@@ -27,14 +27,14 @@ const projects: Project[] = [
     releaseNote:
       "HomeMemory is now available as an unlisted iOS app through a direct App Store link.",
     technologies: ["SwiftUI", "SwiftData", "Firebase"],
-    githubUrl: "https://github.com/cabadie/justHome",
+    websiteUrl: "https://www.33labs.org/homememory/",
     appStoreUrl: "https://apps.apple.com/us/app/homememory/id6760926658",
   },
   {
     slug: "pickamovie",
     title: "PickAMovie",
     shortSubtitle: "Personalized movie discovery without the endless scroll",
-    previewSrc: "/projects/betterboxd-dark-preview.png",
+    previewSrc: "/projects/pickamovie-light-preview.png",
     blurb:
       "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
     technologies: ["React", "Vite", "TypeScript", "Supabase"],
@@ -104,26 +104,11 @@ export function ProjectsList() {
     if (event.target === event.currentTarget) closeProject();
   }
 
-  function handleCardKeyDown(event: KeyboardEvent<HTMLDivElement>, projectSlug: string) {
-    if (event.key !== "Enter" && event.key !== " ") return;
-
-    event.preventDefault();
-    setActiveProjectSlug(projectSlug);
-  }
-
   return (
     <>
       <section className="projects-layout" aria-label="Projects" data-page-enter="content">
         {projects.map((project) => (
-          <div
-            aria-label={`Open ${project.title} project details`}
-            className="project-card"
-            key={project.slug}
-            onClick={() => setActiveProjectSlug(project.slug)}
-            onKeyDown={(event) => handleCardKeyDown(event, project.slug)}
-            role="button"
-            tabIndex={0}
-          >
+          <article className="project-card" key={project.slug}>
             <div aria-hidden="true" className="project-card-visual">
               <img alt="" src={project.previewSrc} />
             </div>
@@ -139,7 +124,13 @@ export function ProjectsList() {
                 ))}
               </ul>
             </div>
-          </div>
+            <button
+              aria-label={`Open ${project.title} project details`}
+              className="project-card-button"
+              onClick={() => setActiveProjectSlug(project.slug)}
+              type="button"
+            />
+          </article>
         ))}
       </section>
 
@@ -167,30 +158,20 @@ export function ProjectsList() {
             </h2>
           </header>
           {activeProject ? (
-            <div className="project-modal-story">
-              <p className="project-blurb">{activeProject.blurb}</p>
-              {activeProject.releaseNote ? (
-                <p className="project-release-note">{activeProject.releaseNote}</p>
-              ) : null}
-              <ul
-                aria-label={`${activeProject.title} technologies`}
-                className="project-technology-list project-technology-list-modal"
-              >
-                {activeProject.technologies.map((technology) => (
-                  <li key={technology}>{technology}</li>
-                ))}
-              </ul>
+            <>
               <div className="project-action-links">
-                <a
-                  aria-label={`View ${activeProject.title} on GitHub`}
-                  className="project-action-link"
-                  href={activeProject.githubUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span aria-hidden="true" className="contact-icon contact-icon-github" />
-                  <span>GitHub</span>
-                </a>
+                {activeProject.githubUrl ? (
+                  <a
+                    aria-label={`View ${activeProject.title} on GitHub`}
+                    className="project-action-link"
+                    href={activeProject.githubUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <span aria-hidden="true" className="contact-icon contact-icon-github" />
+                    <span>GitHub</span>
+                  </a>
+                ) : null}
                 {activeProject.websiteUrl ? (
                   <a
                     aria-label={`Visit the ${activeProject.title} website`}
@@ -199,6 +180,7 @@ export function ProjectsList() {
                     rel="noreferrer"
                     target="_blank"
                   >
+                    <span aria-hidden="true" className="contact-icon contact-icon-website" />
                     <span>Website</span>
                   </a>
                 ) : null}
@@ -215,8 +197,22 @@ export function ProjectsList() {
                   </a>
                 ) : null}
               </div>
-              <p className="project-demo-note">Demo coming soon</p>
-            </div>
+              <div className="project-modal-story">
+                <p className="project-blurb">{activeProject.blurb}</p>
+                {activeProject.releaseNote ? (
+                  <p className="project-release-note">{activeProject.releaseNote}</p>
+                ) : null}
+                <ul
+                  aria-label={`${activeProject.title} technologies`}
+                  className="project-technology-list project-technology-list-modal"
+                >
+                  {activeProject.technologies.map((technology) => (
+                    <li key={technology}>{technology}</li>
+                  ))}
+                </ul>
+                <p className="project-demo-note">Demo coming soon</p>
+              </div>
+            </>
           ) : null}
         </article>
       </dialog>

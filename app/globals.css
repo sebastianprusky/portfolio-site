@@ -831,7 +831,6 @@ html[data-ink-transition] .theme-jar {
   border-radius: 0;
   background: #111113;
   color: inherit;
-  cursor: pointer;
   font: inherit;
   padding: 0;
   text-align: inherit;
@@ -839,6 +838,16 @@ html[data-ink-transition] .theme-jar {
     border-color 180ms ease,
     box-shadow 180ms ease,
     transform 180ms ease;
+}
+
+.project-card-button {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 .project-card-visual {
@@ -914,12 +923,12 @@ html[data-ink-transition] .theme-jar {
 }
 
 .project-card:hover .project-card-overlay,
-.project-card:focus-visible .project-card-overlay {
+.project-card:focus-within .project-card-overlay {
   opacity: 1;
 }
 
 .project-card:hover .project-card-visual img,
-.project-card:focus-visible .project-card-visual img {
+.project-card:focus-within .project-card-visual img {
   transform: scale(1.025);
 }
 
@@ -928,7 +937,7 @@ html[data-ink-transition] .theme-jar {
 }
 
 .project-card:hover,
-.project-card:focus-visible {
+.project-card:focus-within {
   border-color: rgba(155, 196, 255, 0.62);
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.24);
   transform: translateY(-2px);
@@ -941,11 +950,17 @@ html[data-ink-transition] .theme-jar {
   }
 }
 
-.project-card:focus-visible,
+.project-card-button:focus-visible,
 .project-modal-close:focus-visible,
 .project-action-link:focus-visible,
 .back-link:focus-visible {
   outline: 2px solid var(--accent);
+  outline-offset: -5px;
+}
+
+.project-modal-close:focus-visible,
+.project-action-link:focus-visible,
+.back-link:focus-visible {
   outline-offset: 4px;
 }
 
@@ -1020,21 +1035,21 @@ html[data-ink-transition] .theme-jar {
 
 .project-modal-header {
   max-width: 900px;
-  margin-top: clamp(24px, 4vw, 52px);
+  margin-top: clamp(12px, 2vw, 28px);
 }
 
 .project-modal-header h2 {
   max-width: 900px;
   margin: 0;
-  font-size: clamp(4rem, 9vw, 8.8rem);
-  line-height: 0.82;
+  font-size: clamp(3.8rem, 7.5vw, 7.2rem);
+  line-height: 0.86;
   text-wrap: balance;
 }
 
 .project-modal-story {
   display: grid;
   justify-items: start;
-  margin-top: clamp(42px, 6vw, 78px);
+  margin-top: clamp(28px, 4vw, 48px);
 }
 
 .project-blurb {
@@ -1072,7 +1087,7 @@ html[data-ink-transition] .theme-jar {
   flex-wrap: wrap;
   align-items: center;
   gap: 14px 24px;
-  margin-top: 22px;
+  margin-top: clamp(22px, 3vw, 34px);
 }
 
 .project-demo-note {
@@ -1511,6 +1526,10 @@ html[data-ink-transition] .theme-jar {
   mask-image: url("/linkedin-icon.svg");
 }
 
+.contact-icon-website {
+  mask-image: url("/globe.svg");
+}
+
 .contact-links a:hover,
 .contact-links a:focus-visible {
   color: var(--foreground);
@@ -1553,10 +1572,10 @@ html[data-ink-transition] .theme-jar {
 
 .recently-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(14px, 1.8vw, 24px);
-  max-width: 1180px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 0;
 }
 
 .recent-item {
@@ -1571,8 +1590,7 @@ html[data-ink-transition] .theme-jar {
   text-transform: uppercase;
 }
 
-.recent-preview-card,
-.recent-embed-card {
+.recent-preview-card {
   display: block;
   width: 100%;
   height: 80px;
@@ -1635,11 +1653,6 @@ html[data-ink-transition] .theme-jar {
   color: var(--accent);
 }
 
-.recent-embed-card {
-  overflow: hidden;
-  border-color: transparent;
-}
-
 @media (max-width: 900px) {
   .home-intro {
     grid-template-columns: minmax(0, 1fr) minmax(160px, 0.32fr);
@@ -1661,6 +1674,10 @@ html[data-ink-transition] .theme-jar {
 
   .project-card {
     aspect-ratio: 16 / 9;
+  }
+
+  .project-card-visual img {
+    object-fit: contain;
   }
 
   .artwork-grid {
@@ -1782,7 +1799,7 @@ html[data-ink-transition] .theme-jar {
   }
 
   .project-card {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
   }
 
   .project-modal {
@@ -1795,7 +1812,7 @@ html[data-ink-transition] .theme-jar {
   }
 
   .project-modal-header h2 {
-    font-size: clamp(3.6rem, 18vw, 6rem);
+    font-size: clamp(3.15rem, 15vw, 5.2rem);
   }
 
   .project-blurb {

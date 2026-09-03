@@ -2,6 +2,7 @@
 
 import type { MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
+import { projectPreviewSources } from "./project-assets";
 
 type Project = {
   slug: string;
@@ -21,7 +22,7 @@ const projects: Project[] = [
     slug: "homememory",
     title: "HomeMemory",
     shortSubtitle: "A visual memory for everything you own",
-    previewSrc: "/projects/homememory-dark-preview.png",
+    previewSrc: projectPreviewSources.homememory,
     blurb:
       "HomeMemory is a searchable, visual memory for your belongings. I began building it at 33Labs, motivated by experiences moving in and out of college dorms. The app combines visual inventory tools with semantic AI-powered search so people can ask questions about what they own, avoid duplicate purchases, and make packing or moving easier.",
     releaseNote:
@@ -34,7 +35,7 @@ const projects: Project[] = [
     slug: "pickamovie",
     title: "PickAMovie",
     shortSubtitle: "Personalized movie discovery without the endless scroll",
-    previewSrc: "/projects/pickamovie-light-preview.png",
+    previewSrc: projectPreviewSources.pickamovie,
     blurb:
       "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
     technologies: ["React", "Vite", "TypeScript", "Supabase"],
@@ -44,7 +45,7 @@ const projects: Project[] = [
     slug: "rank-your-meal-exchanges",
     title: "Northwestern Dining Ranked",
     shortSubtitle: "A faster way to rank Northwestern dining",
-    previewSrc: "/projects/rank-your-meal-exchanges-preview.jpg",
+    previewSrc: projectPreviewSources.dining,
     blurb:
       "Northwestern Dining Ranked is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
     technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
@@ -55,7 +56,7 @@ const projects: Project[] = [
     slug: "hexlearn",
     title: "Hexlearn",
     shortSubtitle: "Personal loss-window forecasting from gameplay",
-    previewSrc: "/projects/hexlearn-preview.png",
+    previewSrc: projectPreviewSources.hexlearn,
     blurb:
       "Hexlearn is a local-first ML experiment built around Hextris. It's designed to learn from canvas pixels and test whether a personalized visual model can forecast an upcoming loss window more effectively than simple time-based baselines.",
     technologies: ["Python", "FastAPI", "scikit-learn", "PyTorch", "Next.js", "SQLite"],

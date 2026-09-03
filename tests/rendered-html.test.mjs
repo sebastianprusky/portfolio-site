@@ -34,10 +34,17 @@ test("home presents a minimal portfolio introduction", async () => {
   assert.match(html, /Sebastian Prusky Portfolio/);
   assert.match(html, /href="\/art"/);
   assert.match(html, /href="\/projects"/);
-  assert.equal((html.match(/rel="prefetch"/g) ?? []).length, 12);
-  assert.match(html, /\/art\/painting-01-desert-haircut-thumb\.webp/);
-  assert.match(html, /\/art\/sketch-09-blueberries-thumb\.webp/);
-  assert.match(html, /exploring tech, product design, and art/);
+  assert.equal((html.match(/rel="preload" as="image"/g) ?? []).length, 1);
+  assert.match(html, /rel="preload" as="image" href="\/ink-jar-filled\.png"/);
+  assert.doesNotMatch(
+    html,
+    /<link[^>]+rel="(?:preload|prefetch)"[^>]+href="\/projects\//,
+  );
+  assert.doesNotMatch(
+    html,
+    /<link[^>]+href="\/projects\/[^>]+rel="(?:preload|prefetch)"/,
+  );
+  assert.match(html, /exploring engineering, product design, and art/);
   assert.doesNotMatch(html, /Hello, I(?:&#x27;|&apos;)m|Rearrange|Reset/);
   assert.doesNotMatch(html, /<a[^>]+href="\/"[^>]*>Home<\/a>/);
   assert.doesNotMatch(html, /portfolio-paths|Selected practice|Spatial Inventory System/);
@@ -68,6 +75,14 @@ test("home scramble and ink transition stay deterministic and accessible", async
     new URL("../app/ink-jar.tsx", import.meta.url),
     "utf8",
   );
+  const idlePrefetchSource = await readFile(
+    new URL("../app/idle-image-prefetch.tsx", import.meta.url),
+    "utf8",
+  );
+  const projectAssetsSource = await readFile(
+    new URL("../app/projects/project-assets.ts", import.meta.url),
+    "utf8",
+  );
   const styles = await readFile(
     new URL("../app/globals.css", import.meta.url),
     "utf8",
@@ -88,6 +103,15 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.match(scrambleSource, /className=\{triggerClassName\}/);
   assert.doesNotMatch(scrambleSource, /Math\.random/);
   assert.match(homeSource, /accentLastWord autoPlay/);
+  assert.match(homeSource, /<IdleProjectImagePrefetch \/>/);
+  assert.match(idlePrefetchSource, /document\.readyState === "complete"/);
+  assert.match(idlePrefetchSource, /requestIdleCallback/);
+  assert.match(idlePrefetchSource, /image\.fetchPriority = "low"/);
+  assert.match(idlePrefetchSource, /setTimeout\(warmNextImage, 150\)/);
+  assert.match(projectAssetsSource, /homememory-dark-preview\.png/);
+  assert.match(projectAssetsSource, /pickamovie-light-preview\.png/);
+  assert.match(projectAssetsSource, /rank-your-meal-exchanges-preview\.jpg/);
+  assert.match(projectAssetsSource, /hexlearn-preview\.png/);
   assert.match(inkSource, /const INK_OUTLINES/);
   assert.match(inkSource, /attributeName="d"/);
   assert.match(inkSource, /dur="1\.8s"/);

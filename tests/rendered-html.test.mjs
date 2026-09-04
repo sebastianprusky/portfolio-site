@@ -384,6 +384,17 @@ test("art presents one combined gallery", async () => {
 });
 
 test("gallery and artwork detail routes render", async () => {
+  const gallerySource = await readFile(
+    new URL("../app/art/art-gallery.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.doesNotMatch(gallerySource, /detail-category">Artwork/);
+  assert.match(
+    gallerySource,
+    /className="lightbox-subtitle">\s*\{selectedWork\.year\} · \{selectedWork\.medium\}/,
+  );
+  assert.doesNotMatch(gallerySource, /<dt>Year<\/dt>|<dt>Medium<\/dt>/);
+
   const galleryResponse = await render("/art");
   assert.equal(galleryResponse.status, 200);
   const gallery = await galleryResponse.text();

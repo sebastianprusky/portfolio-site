@@ -208,18 +208,10 @@ export function ArtGallery({ artworks }: ArtGalleryProps) {
               />
             </div>
             <div className="detail-copy lightbox-copy">
-              <p className="detail-category">Artwork</p>
               <h1 id="artwork-lightbox-title">{selectedWork.title}</h1>
-              <dl>
-                <div>
-                  <dt>Year</dt>
-                  <dd>{selectedWork.year}</dd>
-                </div>
-                <div>
-                  <dt>Medium</dt>
-                  <dd>{selectedWork.medium}</dd>
-                </div>
-              </dl>
+              <p className="lightbox-subtitle">
+                {selectedWork.year} · {selectedWork.medium}
+              </p>
               <p className="detail-note">{selectedWork.note}</p>
             </div>
           </article>

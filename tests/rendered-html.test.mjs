@@ -473,9 +473,9 @@ test("projects route presents four editorial project cards with project links", 
   const pickAMovieIndex = projectsSource.indexOf('slug: "pickamovie"');
   const rankMealsIndex = projectsSource.indexOf('slug: "rank-your-meal-exchanges"');
   const hexlearnIndex = projectsSource.indexOf('slug: "hexlearn"');
-  assert.ok(homeMemoryIndex < pickAMovieIndex);
-  assert.ok(pickAMovieIndex < rankMealsIndex);
-  assert.ok(rankMealsIndex < hexlearnIndex);
+  assert.ok(homeMemoryIndex < rankMealsIndex);
+  assert.ok(rankMealsIndex < pickAMovieIndex);
+  assert.ok(pickAMovieIndex < hexlearnIndex);
   assert.doesNotMatch(projectsSource, /project-showcase|Project media|project-card-placeholder/);
   assert.match(projectsSource, /https:\/\/github\.com\/sebastianprusky\/northwestern-dining-ranked/);
   assert.match(projectsSource, /https:\/\/rank-your-meal-exchanges\.vercel\.app/);

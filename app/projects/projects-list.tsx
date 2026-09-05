@@ -34,16 +34,6 @@ const projects: Project[] = [
     appStoreUrl: "https://apps.apple.com/us/app/homememory/id6760926658",
   },
   {
-    slug: "pickamovie",
-    title: "PickAMovie",
-    shortSubtitle: "Personalized movie discovery without the endless scroll",
-    previewSrc: projectPreviewSources.pickamovie,
-    blurb:
-      "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
-    technologies: ["React", "Vite", "TypeScript", "Supabase"],
-    githubUrl: "https://github.com/sebastianprusky/pickamovie",
-  },
-  {
     slug: "rank-your-meal-exchanges",
     title: "Northwestern Dining Ranked",
     shortSubtitle: "A faster way to rank Northwestern dining",
@@ -55,6 +45,16 @@ const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
     githubUrl: "https://github.com/sebastianprusky/northwestern-dining-ranked",
     websiteUrl: "https://rank-your-meal-exchanges.vercel.app",
+  },
+  {
+    slug: "pickamovie",
+    title: "PickAMovie",
+    shortSubtitle: "Personalized movie discovery without the endless scroll",
+    previewSrc: projectPreviewSources.pickamovie,
+    blurb:
+      "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
+    technologies: ["React", "Vite", "TypeScript", "Supabase"],
+    githubUrl: "https://github.com/sebastianprusky/pickamovie",
   },
   {
     slug: "hexlearn",

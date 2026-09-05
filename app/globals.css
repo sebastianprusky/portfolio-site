@@ -1840,3 +1840,11 @@ html[data-ink-transition] .theme-jar {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Literata is reserved for narrative copy; UI labels retain Manrope. */
+.project-blurb,
+.project-release-note,
+.about-copy > p,
+.detail-note {
+  font-family: var(--font-literata), Georgia, serif;
+}

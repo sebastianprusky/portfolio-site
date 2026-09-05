@@ -44,7 +44,7 @@ html[data-theme="dark"] {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-manrope);
-  --font-serif: var(--font-cormorant);
+  --font-serif: var(--font-literata);
 }
 
 * {
@@ -87,7 +87,7 @@ img {
 h1,
 h2,
 h3 {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
   font-weight: 500;
   letter-spacing: 0;
 }
@@ -614,7 +614,7 @@ html[data-ink-transition] .theme-jar {
 }
 
 .artwork-overlay-title {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
   font-size: clamp(1.2rem, 1.7vw, 1.8rem);
   font-weight: 600;
   line-height: 1;
@@ -750,7 +750,7 @@ html[data-ink-transition] .theme-jar {
   max-width: 100%;
   margin-bottom: 12px;
   font-size: clamp(2.45rem, 3.4vw, 3.8rem);
-  line-height: 0.96;
+  line-height: 1.08;
   overflow-wrap: break-word;
   word-break: normal;
 }
@@ -809,7 +809,7 @@ html[data-ink-transition] .theme-jar {
 .detail-copy h1 {
   margin: 14px 0 42px;
   font-size: clamp(4rem, 8vw, 8.5rem);
-  line-height: 0.82;
+  line-height: 1.04;
 }
 
 .detail-copy dl {
@@ -935,7 +935,7 @@ html[data-ink-transition] .theme-jar {
 .project-card-overlay h2 {
   max-width: 92%;
   margin: 0;
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
   font-size: clamp(2rem, 4.2vw, 5.2rem);
   font-weight: 700;
   letter-spacing: -0.045em;
@@ -1092,8 +1092,8 @@ html[data-ink-transition] .theme-jar {
 .project-modal-header h2 {
   width: 100%;
   margin: 0;
-  font-size: clamp(3.8rem, 7.5vw, 7.2rem);
-  line-height: 0.86;
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  line-height: 1.04;
   text-wrap: balance;
 }
 
@@ -1764,7 +1764,7 @@ html[data-ink-transition] .theme-jar {
   }
 
   .project-modal-header h2 {
-    font-size: clamp(3.15rem, 15vw, 5.2rem);
+    font-size: clamp(2rem, 8.5vw, 3.2rem);
   }
 
   .project-blurb {

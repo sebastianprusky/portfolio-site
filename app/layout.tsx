@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Literata, Manrope } from "next/font/google";
+import { Literata, Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./theme";
 import {
@@ -17,12 +17,6 @@ const manrope = Manrope({
 
 const literata = Literata({
   variable: "--font-literata",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["400", "500"],
 });
@@ -59,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manrope.variable} ${cormorant.variable} ${literata.variable} antialiased`}
+        className={`${manrope.variable} ${literata.variable} antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

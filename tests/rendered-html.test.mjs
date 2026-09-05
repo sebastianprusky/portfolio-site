@@ -493,7 +493,7 @@ test("projects route presents four editorial project cards with project links", 
   assert.match(projectsSource, /forecast an upcoming loss window/);
   assert.match(projectsSource, /imported Letterboxd history and in-app preference signals/);
   assert.doesNotMatch(projectsSource, /projectSections|briefDescription|liveUrl/);
-  assert.match(projectsSource, /Independent project inspired by Beli\. Not affiliated with or endorsed by Beli or Northwestern University\./);
+  assert.doesNotMatch(projectsSource, /Independent project inspired by Beli\. Not affiliated with or endorsed by Beli or Northwestern University\./);
   assert.doesNotMatch(projectsSource, /i-want-to-make-a-better\.vercel\.app/);
 
   const styles = await readFile(

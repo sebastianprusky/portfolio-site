@@ -147,16 +147,16 @@ export function ProjectsList() {
         onClick={handleBackdropClick}
         ref={dialogRef}
       >
+        <button
+          aria-label={activeProject ? `Close ${activeProject.title} details` : "Close project details"}
+          className="project-modal-close"
+          onClick={closeProject}
+          ref={closeButtonRef}
+          type="button"
+        >
+          Close
+        </button>
         <article className="project-modal-panel">
-          <button
-            aria-label={activeProject ? `Close ${activeProject.title} details` : "Close project details"}
-            className="project-modal-close"
-            onClick={closeProject}
-            ref={closeButtonRef}
-            type="button"
-          >
-            Close
-          </button>
           <header className="project-modal-header">
             <h2 id={activeProject ? `${activeProject.slug}-title` : undefined}>
               {activeProject?.title}

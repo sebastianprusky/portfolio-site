@@ -207,6 +207,7 @@ export function ProjectsList() {
                 {activeProject.releaseNote ? (
                   <p className="project-release-note">{activeProject.releaseNote}</p>
                 ) : null}
+                <p className="project-technologies-label">Technologies:</p>
                 <ul
                   aria-label={`${activeProject.title} technologies`}
                   className="project-technology-list project-technology-list-modal"

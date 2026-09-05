@@ -41,7 +41,7 @@ const projects: Project[] = [
     demoSrc: "/projects/northwestern-dining-demo-4k.mp4",
     demoPoster: "/projects/northwestern-dining-demo-4k-poster.jpg",
     blurb:
-      "Northwestern Dining Ranked is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
+      "Northwestern Dining Ranked is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.",
     technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
     githubUrl: "https://github.com/sebastianprusky/northwestern-dining-ranked",
     websiteUrl: "https://rank-your-meal-exchanges.vercel.app",

@@ -1140,6 +1140,17 @@ html[data-ink-transition] .theme-jar {
   margin-top: clamp(22px, 3vw, 34px);
 }
 
+.project-demo-video {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin-top: clamp(42px, 6vw, 72px);
+  border-radius: 12px;
+  background: #f7f4ef;
+}
+
 .project-demo-note {
   margin: clamp(42px, 6vw, 72px) 0 0;
   color: var(--muted);

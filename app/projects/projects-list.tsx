@@ -15,6 +15,8 @@ type Project = {
   githubUrl?: string;
   appStoreUrl?: string;
   websiteUrl?: string;
+  demoSrc?: string;
+  demoPoster?: string;
 };
 
 const projects: Project[] = [
@@ -46,6 +48,8 @@ const projects: Project[] = [
     title: "Northwestern Dining Ranked",
     shortSubtitle: "A faster way to rank Northwestern dining",
     previewSrc: projectPreviewSources.dining,
+    demoSrc: "/projects/northwestern-dining-demo.mp4",
+    demoPoster: "/projects/northwestern-dining-demo-poster.jpg",
     blurb:
       "Northwestern Dining Ranked is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
     technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
@@ -211,7 +215,23 @@ export function ProjectsList() {
                     <li key={technology}>{technology}</li>
                   ))}
                 </ul>
-                <p className="project-demo-note">Demo coming soon</p>
+                {activeProject.demoSrc ? (
+                  <video
+                    aria-label={`${activeProject.title} demo`}
+                    className="project-demo-video"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    poster={activeProject.demoPoster}
+                    src={activeProject.demoSrc}
+                    width={1920}
+                    height={1080}
+                  >
+                    <a href={activeProject.demoSrc}>Watch the demo video</a>
+                  </video>
+                ) : (
+                  <p className="project-demo-note">Demo coming soon</p>
+                )}
               </div>
             </>
           ) : null}

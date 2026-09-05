@@ -38,8 +38,8 @@ const projects: Project[] = [
     title: "Northwestern Dining Ranked",
     shortSubtitle: "A faster way to rank Northwestern dining",
     previewSrc: projectPreviewSources.dining,
-    demoSrc: "/projects/northwestern-dining-demo.mp4",
-    demoPoster: "/projects/northwestern-dining-demo-poster.jpg",
+    demoSrc: "/projects/northwestern-dining-demo-4k.mp4",
+    demoPoster: "/projects/northwestern-dining-demo-4k-poster.jpg",
     blurb:
       "Northwestern Dining Ranked is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.\n\nIndependent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.",
     technologies: ["Next.js", "TypeScript", "Supabase", "Vercel"],
@@ -219,13 +219,15 @@ export function ProjectsList() {
                   <video
                     aria-label={`${activeProject.title} demo`}
                     className="project-demo-video"
-                    controls
+                    autoPlay
+                    muted
+                    loop
                     playsInline
                     preload="metadata"
                     poster={activeProject.demoPoster}
                     src={activeProject.demoSrc}
-                    width={1920}
-                    height={1080}
+                    width={3840}
+                    height={2160}
                   >
                     <a href={activeProject.demoSrc}>Watch the demo video</a>
                   </video>

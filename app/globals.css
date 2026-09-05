@@ -1142,6 +1142,7 @@ html[data-ink-transition] .theme-jar {
 
 .project-demo-video {
   display: block;
+  justify-self: center;
   width: 100%;
   max-width: 960px;
   height: auto;

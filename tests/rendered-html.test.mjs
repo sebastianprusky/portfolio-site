@@ -102,7 +102,7 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.match(scrambleSource, /aria-label=\{`Replay \$\{children\} animation`\}/);
   assert.match(scrambleSource, /className=\{triggerClassName\}/);
   assert.doesNotMatch(scrambleSource, /Math\.random/);
-  assert.doesNotMatch(homeSource, /<ScrambleHeading[^>]*autoPlay/);
+  assert.match(homeSource, /<ScrambleHeading[^>]*autoPlay/);
   assert.match(homeSource, /<IdleProjectImagePrefetch \/>/);
   assert.match(idlePrefetchSource, /document\.readyState === "complete"/);
   assert.match(idlePrefetchSource, /requestIdleCallback/);

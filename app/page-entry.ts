@@ -18,12 +18,13 @@ export function animatePageEntry(root: ParentNode) {
       });
     };
 
-    // Use one gentle entrance style, with a quick, overlapping reading-order stagger.
-    fade(".home-intro h1", 600, 0);
+    // Let the character cycling lead two overlapping entrance sequences.
+    fade(".home-intro .scramble-text .scramble-word-name", 550, 0);
+    fade(".home-intro .scramble-text .scramble-word-portfolio", 550, 180);
     fade(".site-header-home", 500, 0);
-    fade(".home-description", 500, 80);
-    fade(".home-section-nav a", 320, 180, 220);
-    fade(".home-contact-links", 320, 840);
+    fade(".home-description", 480, 340);
+    fade(".home-section-nav a", 360, 220, 150);
+    fade(".home-contact-links", 360, 670);
     return animations;
   }
 

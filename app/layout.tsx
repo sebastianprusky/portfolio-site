@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Literata, Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./theme";
+import { VisitorAnalytics } from "./visitor-analytics";
 import {
   defaultDescription,
   defaultTitle,
@@ -56,6 +57,7 @@ export default function RootLayout({
         className={`${manrope.variable} ${literata.variable} antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
+        <VisitorAnalytics />
       </body>
     </html>
   );

@@ -14,7 +14,7 @@ export default function Home() {
       <SiteHeader current="home" />
       <section className="home-intro" aria-labelledby="home-heading">
         <div className="home-intro-copy" data-page-enter="title">
-          <ScrambleHeading accentLastWord autoPlay id="home-heading" key="home-heading">
+          <ScrambleHeading accentLastWord id="home-heading" key="home-heading">
             Sebastian Prusky Portfolio
           </ScrambleHeading>
           <p className="home-description" data-page-enter="content">

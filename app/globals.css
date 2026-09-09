@@ -354,6 +354,7 @@ html[data-ink-transition] .theme-jar {
 }
 
 .home-page {
+  position: relative;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   height: 100svh;
@@ -1623,6 +1624,19 @@ html[data-ink-transition] .theme-jar {
   outline-offset: 6px;
 }
 
+.home-contact-links {
+  position: absolute;
+  right: max(clamp(20px, 3vw, 52px), env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  gap: 6px;
+  margin-top: 0;
+}
+
+.home-contact-links a {
+  width: 44px;
+  height: 44px;
+}
+
 @media (max-width: 900px) {
   .home-intro {
     grid-template-columns: minmax(0, 1fr) minmax(160px, 0.32fr);
@@ -1695,6 +1709,10 @@ html[data-ink-transition] .theme-jar {
 }
 
 @media (max-width: 650px) {
+  .home-contact-links {
+    right: max(24px, env(safe-area-inset-right));
+  }
+
   .site-header {
     align-items: start;
     gap: 12px;

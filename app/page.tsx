@@ -23,6 +23,24 @@ export default function Home() {
         </div>
         <SectionNav className="home-section-nav" pageEnter="content" />
       </section>
+      <nav className="contact-links home-contact-links" aria-label="Contact links">
+        <a
+          aria-label="GitHub"
+          href="https://github.com/sebastianprusky"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <span aria-hidden="true" className="contact-icon contact-icon-github" />
+        </a>
+        <a
+          aria-label="LinkedIn"
+          href="https://www.linkedin.com/in/sebastian-prusky"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <span aria-hidden="true" className="contact-icon contact-icon-linkedin" />
+        </a>
+      </nav>
     </main>
   );
 }

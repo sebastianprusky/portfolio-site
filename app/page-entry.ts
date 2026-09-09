@@ -30,5 +30,27 @@ export function animatePageEntry(root: ParentNode) {
 
   animateElements('[data-page-enter="title"]', 12, 400, 0);
   animateElements('[data-page-enter="content"]', 16, 500, 70);
+  // Reveal the home navigation in reading order, then its social links.
+  const homeLinks = root.querySelectorAll<HTMLElement>(".home-section-nav a");
+  homeLinks.forEach((element, index) => {
+    animations.push(
+      element.animate([{ opacity: 0 }, { opacity: 1 }], {
+        delay: 200 + index * 650,
+        duration: 650,
+        easing: "ease-in-out",
+        fill: "backwards",
+      }),
+    );
+  });
+  root.querySelectorAll<HTMLElement>(".home-contact-links").forEach((element) => {
+    animations.push(
+      element.animate([{ opacity: 0 }, { opacity: 1 }], {
+        delay: 200 + homeLinks.length * 650,
+        duration: 650,
+        easing: "ease-in-out",
+        fill: "backwards",
+      }),
+    );
+  });
   return animations;
 }

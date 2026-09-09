@@ -141,7 +141,7 @@ test("home scramble and ink transition stay deterministic and accessible", async
   assert.match(inkSource, /refreshPreviewContent\(true\)/);
   assert.match(inkSource, /animatePageEntry\(clonedContent\)/);
   assert.match(homeSource, /className="home-intro-copy" data-page-enter="title"/);
-  assert.match(homeSource, /pageEnter="content"/);
+  assert.doesNotMatch(homeSource, /<SectionNav[^>]*pageEnter=/);
   assert.doesNotMatch(themeSource, /<span>\{nextTheme\} mode<\/span>/);
   assert.match(jarSource, /\/ink-jar-filled\.png/);
   assert.match(jarSource, /\/ink-jar-empty\.png/);

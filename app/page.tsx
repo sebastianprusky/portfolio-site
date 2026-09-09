@@ -21,7 +21,7 @@ export default function Home() {
             exploring engineering, product design, and art
           </p>
         </div>
-        <SectionNav className="home-section-nav" pageEnter="content" />
+        <SectionNav className="home-section-nav" />
       </section>
       <nav className="contact-links home-contact-links" aria-label="Contact links">
         <a

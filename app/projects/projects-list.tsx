@@ -49,6 +49,8 @@ const projects: Project[] = [
     title: "PickAMovie",
     shortSubtitle: "Web app for personalized movie discovery",
     previewSrc: projectPreviewSources.pickamovie,
+    demoSrc: "/projects/pickamovie-demo.mp4",
+    demoPoster: "/projects/pickamovie-demo-poster.jpg",
     blurb:
       "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",
     technologies: ["React", "Vite", "TypeScript", "Supabase"],

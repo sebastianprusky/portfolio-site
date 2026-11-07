@@ -27,8 +27,6 @@ const projects: Project[] = [
     previewSrc: projectPreviewSources.homememory,
     blurb:
       "HomeMemory is a searchable, visual memory for your belongings. I began building it at 33Labs, motivated by experiences moving in and out of college dorms. The app combines visual inventory tools with semantic AI-powered search so people can ask questions about what they own, avoid duplicate purchases, and make packing or moving easier.",
-    releaseNote:
-      "HomeMemory is now available as an unlisted iOS app through a direct App Store link.",
     technologies: ["SwiftUI", "SwiftData", "Firebase"],
     websiteUrl: "https://www.33labs.org/homememory/",
     appStoreUrl: "https://apps.apple.com/us/app/homememory/id6760926658",
@@ -36,7 +34,7 @@ const projects: Project[] = [
   {
     slug: "rank-your-meal-exchanges",
     title: "Northwestern Dining Ranked",
-    shortSubtitle: "A faster way to rank Northwestern dining",
+    shortSubtitle: "Campus dining quiz used by 200+ students",
     previewSrc: projectPreviewSources.dining,
     demoSrc: "/projects/northwestern-dining-demo-4k.mp4",
     demoPoster: "/projects/northwestern-dining-demo-4k-poster.jpg",
@@ -49,7 +47,7 @@ const projects: Project[] = [
   {
     slug: "pickamovie",
     title: "PickAMovie",
-    shortSubtitle: "Personalized movie discovery without the endless scroll",
+    shortSubtitle: "Web app for personalized movie discovery",
     previewSrc: projectPreviewSources.pickamovie,
     blurb:
       "PickAMovie reduces the friction of choosing what to watch. It uses imported Letterboxd history and in-app preference signals to recommend personalized picks. The project combines semantic search with a swipe-based decision flow to turn endless browsing into a smaller set of relevant choices.",

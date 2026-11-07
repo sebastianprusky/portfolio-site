@@ -16,15 +16,13 @@ A visual memory for everything you own
 
 HomeMemory is a searchable, visual memory for your belongings. I began building it at 33Labs, motivated by experiences moving in and out of college dorms. The app combines visual inventory tools with semantic AI-powered search so people can ask questions about what they own, avoid duplicate purchases, and make packing or moving easier.
 
-HomeMemory is now available as an unlisted iOS app through a direct App Store link.
-
 ### Technologies
 
 SwiftUI, SwiftData, Firebase
 
-### GitHub
+### Website
 
-https://github.com/cabadie/justHome
+https://www.33labs.org/homememory/
 
 ### App Store
 
@@ -44,7 +42,7 @@ PickAMovie
 
 ### Hover subtitle
 
-Personalized movie discovery without the endless scroll
+Web app for personalized movie discovery
 
 ### Blurb
 
@@ -72,13 +70,11 @@ Northwestern Dining Ranked
 
 ### Hover subtitle
 
-A faster way to rank Northwestern dining
+Campus dining quiz used by 200+ students
 
 ### Blurb
 
 Northwestern Dining Ranked is a mobile-first, no-login app for Northwestern students to rank campus meal-exchange spots. Inspired by Beli's ranking flow, the app turns individual rankings into an anonymous campus leaderboard.
-
-Independent project inspired by Beli. Not affiliated with or endorsed by Beli or Northwestern University.
 
 ### Technologies
 

@@ -447,7 +447,7 @@ test("projects route presents four editorial project cards with project links", 
   assert.match(html, /Hexlearn/);
   assert.doesNotMatch(html, /Brief description|Inspiration|Tools \/ Software/);
   assert.match(html, /class="project-card-overlay"/);
-  assert.match(html, /A faster way to rank Northwestern dining/);
+  assert.match(html, /Campus dining quiz used by 200\+ students/);
   assert.match(html, /class="project-card-button"/);
   assert.doesNotMatch(html, /role="button"/);
   assert.match(html, /\/projects\/pickamovie-light-preview\.png/);
@@ -489,7 +489,7 @@ test("projects route presents four editorial project cards with project links", 
   assert.match(projectsSource, /contact-icon-website/);
   assert.doesNotMatch(projectsSource, /project-action-arrow|↗/);
   assert.doesNotMatch(projectsSource, /TMDB API|Gemini API|OpenAI API/);
-  assert.match(projectsSource, /available as an unlisted iOS app through a direct App Store link/);
+  assert.doesNotMatch(projectsSource, /available as an unlisted iOS app through a direct App Store link/);
   assert.match(projectsSource, /forecast an upcoming loss window/);
   assert.match(projectsSource, /imported Letterboxd history and in-app preference signals/);
   assert.doesNotMatch(projectsSource, /projectSections|briefDescription|liveUrl/);
